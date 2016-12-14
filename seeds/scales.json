@@ -1,0 +1,97 @@
+{
+  "name": "C",
+  "displayName": "C Major"
+},
+{
+  "name": "D",
+  "displayName": "D Major"
+},
+{
+  "name": "E",
+  "displayName": "E Major"
+},
+{
+  "name": "F",
+  "displayName": "F Major"
+},
+{
+  "name": "G",
+  "displayName": "G Major"
+},
+{
+  "name": "A",
+  "displayName": "A Major"
+},
+{
+  "name": "B",
+  "displayName": "B Major"
+},
+{
+  "name": "Db",
+  "displayName": "C#/Db Major"
+},
+{
+  "name": "Eb",
+  "displayName": "D#/Eb Major"
+},
+{
+  "name": "Gb",
+  "displayName": "F#/Gb Major"
+},
+{
+  "name": "Ab",
+  "displayName": "G#/Ab Major"
+},
+{
+  "name": "Bb",
+  "displayName": "A#/Bb Major"
+},
+{
+  "name": "Cm",
+  "displayName": "C Minor"
+},
+{
+  "name": "Dm",
+  "displayName": "D Minor"
+},
+{
+  "name": "Em",
+  "displayName": "E Minor"
+},
+{
+  "name": "Fm",
+  "displayName": "F Minor"
+},
+{
+  "name": "Gm",
+  "displayName": "G Minor"
+},
+{
+  "name": "Am",
+  "displayName": "A Minor"
+},
+{
+  "name": "Bm",
+  "displayName": "B Minor"
+},
+{
+  "name": "Dbm",
+  "displayName": "C#/Db Minor"
+},
+{
+  "name": "Ebm",
+  "displayName": "D#/Eb Minor"
+},
+{
+  "name": "Gbm",
+  "displayName": "F#/Gb Minor"
+},
+{
+  "name": "Abm",
+  "displayName": "G#/Ab Minor"
+},
+{
+  "name": "Bbm",
+  "displayName": "A#/Bb Minor"
+},
+
