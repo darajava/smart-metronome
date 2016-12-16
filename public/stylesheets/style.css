@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  font-family: 'Cabin', sans-serif;
+  color: #444;
+}
+
+ul a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.login-hint {
+  padding-right: 14px;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.logout.login-hint {
+  text-decoration: underline;
+  padding-right: 0;
+  color: #444;
+}
+
+.scale-name {
+  font-size: 24px;
+}
+
+span.badge {
+  border-radius: 4px;
+  background-color: #F44E53;
+  padding: 4px 8px;
+  color: #fefefe; 
+}
+
+li.list-group-item {
+  padding: 20px 15px;
+}
+
+.right {
+  float: right;
+}
+
+#logo {
+  font-size: 22px;
+  line-height: 22px;
+  text-decoration: none;
+  color: #444;
+}
+
+div.container {
+  background: #f7f7f7;
+  border-bottom: 1px solid #888;
+  padding: 15px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+ul.list-group {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li.list-group-item {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 7px 15px;
+  background-color: #fcfcfc;
+  box-shadow: 2px 2px 2px #888888;
+}
+li.list-group-item:hover {
+  background-color: #fafafa;
+}
+li.list-group-item:active {
+  background-color: #f6f2f2;
+}
+div.image-holder {
+  text-align: center;
+}
+
+.piano-scale {
+  width: 70%;
+  padding: 10px;
+}

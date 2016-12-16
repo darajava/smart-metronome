@@ -2,12 +2,15 @@ extends layout
 
 block content
   div.container
-    div.row
-      div.col-sm-6.col-md-4.col-md-offset-4
-        h1.text-center.login-title Hello #{user.firstName} 
-        h1.text-center.login-title LOTS OF SCALES
-        a(href='logout/') Logout
-    ul
-      each entry in docs
-        li= entry.displayName
-        img(src='/images/scales/' + entry.name + '.png')
+    a#logo(href='/') Smart Scales
+    a.logout.login-hint.right(href='logout/') Logout
+    span.login-hint.right= 'Hello ' + user.firstName
+  ul.list-group
+    each entry in scales
+      a(href='/scalepractice/' + entry.name)
+        li.list-group-item
+          span.right.badge= 100 + 'bpm'
+          div.scale-name= entry.displayName
+          div.image-holder
+            img.piano-scale(src='/images/scales/' + entry.name + '.png')
+

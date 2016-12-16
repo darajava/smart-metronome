@@ -19,10 +19,19 @@ module.exports = function(passport){
   /* GET homepage. */
   router.get('/', isAuthenticated, function(req, res) {
     var Scale = require('../models/scale.js');
-    Scale.find({}, function(err, docs) {
+    Scale.find({}, function(err, scales) {
       if (!err){ 
-        console.log(docs);
-        res.render('index', { user: req.user, docs });
+        res.render('index', { user: req.user, scales:scales });
+      } else {throw err;}
+    });
+  });
+  
+  router.get('/scalepractice/:scale', isAuthenticated, function(req, res) {
+    var Scale = require('../models/scale.js');
+    Scale.find({name: req.params.scale}, function(err, scale) {
+      console.log(scale);
+      if (!err){ 
+        res.render('scalepractice', { user: req.user, scale });
       } else {throw err;}
     });
   });
