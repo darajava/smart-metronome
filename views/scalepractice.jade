@@ -5,16 +5,12 @@ block content
     a#logo(href='/') Smart Scales
     a.logout.login-hint.right(href='logout/') Logout
     span.login-hint.right= 'Hello ' + user.firstName
-  div.main-scale    
-    span.right.badge= 100 + 'bpm'
-    div.scale-name= scale[0].displayName
-    div.image-holder
-      img.piano-scale(src='/images/scales/' + scale[0].name + '.png')
 
   div#root
   div#button
 
-  input(type='hidden' id='bpm' value='144') 
+  input(type='hidden' id='bpm' value='60') 
+  input(type='hidden' id='scale' value=JSON.stringify(scale[0]))
 
   script(src="https://fb.me/react-15.0.0.js")
   script(src="https://fb.me/react-dom-15.0.0.js")
