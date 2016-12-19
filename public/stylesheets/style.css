@@ -81,3 +81,24 @@ div.image-holder {
   width: 70%;
   padding: 10px;
 }
+
+.main-scale {
+  padding: 23px;
+}
+
+.main-scale .image-holder {
+  padding-top: 8px;
+}
+
+.progress {
+  display: inline-block;
+  border-radius: 50%;
+  background-color: red;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+
+.progress.complete {
+  background-color: green;
+}

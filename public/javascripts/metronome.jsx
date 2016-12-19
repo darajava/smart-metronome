@@ -1,62 +1,103 @@
 class Metronome extends React.Component {
   constructor(props) {
     super(props);
-    this.context = new (window.AudioContext || window.webkitAudioContext());
-    this.oscillator = this.context.createOscillator();
-    this._gain = this.context.createGain();
+
+    this.interval;
+
+    this.ac = new (window.AudioContext || window.webkitAudioContext());
+    this.oscillator = this.ac.createOscillator();
+    this._gain = this.ac.createGain();
     this.oscillator.frequency.value = 550;
     this._gain.gain.value = 0;
-    this._gain.connect(this.context.destination);
+    this._gain.connect(this.ac.destination);
     this.oscillator.start(0);
     
-    this.t = this.context.currentTime;
-    
-    this.startMetronome = this.startMetronome.bind(this);
-    this.stopMetronome = this.stopMetronome.bind(this);
-    
+    this.octaves = 4;
+    this.notesInScale = 8;
+    this.beatsInBar = 4;
+    this.barsPerOctave = Math.round(this.notesInScale / this.beatsInBar);
+    this.notesInScale = (2 * (this.barsPerOctave * this.octaves * this.beatsInBar)) + 1;
+ 
     this.state = {
       count: 0,
-      counting:  false
+      counting: false,
+      bpm: this.props.bpm
     }
+
+    this.startMetronome = this.startMetronome.bind(this);
+    this.stopMetronome = this.stopMetronome.bind(this);
   }
   
   startMetronome(e) {
-    var beats = 160;
-    var bpm = 70;
-    var beat = 1/200;
+    var bpm = this.state.bpm;
+    var beat = 1/20;
     var rest = (60 / bpm) - beat;
 
-    for (var i = -1; i < beats; i++) {
-      if (i % 4 == 0) {
-        var gainVal = 1.0;
-      } else {
-        gainVal = 0.5;
-      }
-      this.t += beat;
-      this._gain.gain.setValueAtTime(0.0, this.t);
-      this.t += rest;
-      this._gain.gain.setValueAtTime(gainVal, this.t);
+    var t = this.ac.currentTime;
+
+    var gainVal = 0.1
+    for (var i = 0; i < this.beatsInBar; i++) {
+      t += rest;
+      this._gain.gain.setValueAtTime(gainVal, t);
+      t += beat;
+      this._gain.gain.setValueAtTime(0.0, t);
     }
-    this._gain.gain.setValueAtTime(0.0, this.t);
+
+    beat = 1/200;
+    rest = (60 / bpm) - beat;
+    for (var i = 0; i < this.notesInScale; i++) {
+      if (i % 4 == 0) {
+        gainVal = 1.0;
+      } else {
+        gainVal = 0.1;
+      }
+      t += rest;
+      this._gain.gain.setValueAtTime(gainVal, t);
+      t += beat;
+      this._gain.gain.setValueAtTime(0.0, t);
+    }
+    this._gain.gain.setValueAtTime(0.0, t);
     this.oscillator.connect(this._gain);
 
+    setTimeout(() => {
+      this.interval = setInterval(() => {
+        this.setState({count: this.state.count + 1});
+      }, (60 * 1000)/bpm - beat);
+    }, (beat + rest) * 1000 * this.notesInBar);
     this.setState({counting: true});
   }
 
   stopMetronome() {
+    clearInterval(this.interval); 
     this.oscillator.disconnect(this._gain);
     this.setState({counting: false});
   }
 
   render() {
+    var click = this.state.counting ? this.stopMetronome : this.startMetronome;
+
+    var progresses = [];
+    for (var i=1; i <= 6; i++) {
+      progresses.push(
+        <Progress key={i} complete={this.state.count > i * this.notesInScale}/>
+      );
+    }
+
     return (
       <div>
-        <p>{this.count}</p>
+        <div>{(this.state.count - 1) % this.beatsInBar + 1}</div>
+        {progresses}
         <StartButton
-          onClick={() => this.state.counting ? this.stopMetronome() : this.startMetronome()}
+          onClick={() => click()}
           counting={this.state.counting} />
       </div>
     );
+  }
+}
+
+class Progress extends React.Component {
+  render() {
+    return <div className={'progress ' + (this.props.complete ? 'complete' : '')}></div>
   }
 }
 
@@ -74,4 +115,4 @@ class StartButton extends React.Component {
   }
 }
 
-ReactDOM.render(<Metronome/>, document.getElementById('root'));
+ReactDOM.render(<Metronome bpm={document.getElementById('bpm').value}/>, document.getElementById('root'));
