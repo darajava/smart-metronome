@@ -11,12 +11,14 @@ class Metronome extends React.Component {
     this._gain.gain.value = 0;
     this._gain.connect(this.ac.destination);
     this.oscillator.start(0);
-    
-    this.octaves = 4;
-    this.notesInScale = 8;
+   
     this.beatsInBar = 4;
-    this.barsPerOctave = Math.round(this.notesInScale / this.beatsInBar);
-    this.notesInScale = (2 * (this.barsPerOctave * this.octaves * this.beatsInBar)) + 1;
+    this.reps = 6; 
+    var octaves = 1;
+    var degreesOfScale = 7;
+    var totalNotesInScale = degreesOfScale * octaves * 2 + 1
+    this.notesInScale = Math.ceil(totalNotesInScale / 4) * 4;
+
  
     this.state = {
       count: 0,
@@ -37,24 +39,26 @@ class Metronome extends React.Component {
 
     var gainVal = 0.1
     for (var i = 0; i < this.beatsInBar; i++) {
-      t += rest;
       this._gain.gain.setValueAtTime(gainVal, t);
       t += beat;
       this._gain.gain.setValueAtTime(0.0, t);
+      t += rest;
     }
 
     beat = 1/200;
     rest = (60 / bpm) - beat;
-    for (var i = 0; i < this.notesInScale; i++) {
-      if (i % 4 == 0) {
-        gainVal = 1.0;
-      } else {
-        gainVal = 0.1;
+    for (var rep = 0; rep < this.reps; rep++){
+      for (var i = 1; i <= this.notesInScale; i++) {
+        if ((i-1) % 4 == 0) {
+          gainVal = 1.0;
+        } else {
+          gainVal = 0.1;
+        }
+        this._gain.gain.setValueAtTime(gainVal, t);
+        t += beat;
+        this._gain.gain.setValueAtTime(0.0, t);
+        t += rest;
       }
-      t += rest;
-      this._gain.gain.setValueAtTime(gainVal, t);
-      t += beat;
-      this._gain.gain.setValueAtTime(0.0, t);
     }
     this._gain.gain.setValueAtTime(0.0, t);
     this.oscillator.connect(this._gain);
@@ -63,7 +67,7 @@ class Metronome extends React.Component {
       this.interval = setInterval(() => {
         this.setState({count: this.state.count + 1});
       }, (60 * 1000)/bpm - beat);
-    }, (beat + rest) * 1000 * this.notesInBar);
+    }, (beat + rest) * 1000 * (this.beatsInBar - 1));
     this.setState({counting: true});
   }
 
