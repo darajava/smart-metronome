@@ -1,27 +1,19 @@
 String.prototype.ucFirst = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 }
+
 Number.prototype.toEnglish = function() {
-  if (this == '1')
-    return 'one';
-  if (this == '2')
-    return 'two';
-  if (this == '3')
-    return 'three';
-  if (this == '4')
-    return 'four';
-  if (this == '5')
-    return 'five';
-  if (this == '6')
-    return 'six';
-  if (this == '7')
-    return 'seven';
-  if (this == '8')
-    return 'eight';
-  if (this == '9')
-    return 'nine';
-  if (this == '10')
-    return 'ten';
+  // lol
+  if (this == '1') return 'one';
+  if (this == '2') return 'two';
+  if (this == '3') return 'three';
+  if (this == '4') return 'four';
+  if (this == '5') return 'five';
+  if (this == '6') return 'six';
+  if (this == '7') return 'seven';
+  if (this == '8') return 'eight';
+  if (this == '9') return 'nine';
+  if (this == '10') return 'ten';
   return this;
 }
 
@@ -29,7 +21,7 @@ class Metronome extends React.Component {
   constructor(props) {
     super(props);
 
-    this.interval;
+    this.interval, this.timeout;
 
     this.ac = new (window.AudioContext || window.webkitAudioContext());
     this.oscillator = this.ac.createOscillator();
@@ -52,11 +44,14 @@ class Metronome extends React.Component {
     this.state = {
       count: 0,
       counting: false,
-      bpm: this.props.bpm
+      bpm: this.props.bpm,
+      displayRetryDialogue: false
     }
 
     this.startMetronome = this.startMetronome.bind(this);
     this.stopMetronome = this.stopMetronome.bind(this);
+    this.userStopMetronome = this.userStopMetronome.bind(this);
+    this.slowMetronome = this.slowMetronome.bind(this);
   }
   
   startMetronome(e) {
@@ -92,22 +87,35 @@ class Metronome extends React.Component {
     this._gain.gain.setValueAtTime(0.0, t);
     this.oscillator.connect(this._gain);
 
-    setTimeout(() => {
+    this.timeout = setTimeout(() => {
       this.interval = setInterval(() => {
         this.setState({count: this.state.count + 1});
       }, (60 * 1000)/bpm - beat);
     }, (beat + rest) * 1000 * (this.beatsInBar - 1));
-    this.setState({counting: true});
+    this.setState({counting: true, displayRetryDialogue: false});
   }
 
   stopMetronome() {
     clearInterval(this.interval); 
+    clearTimeout(this.timeout); 
     this.oscillator.disconnect(this._gain);
-    this.setState({counting: false});
+    this._gain = this.ac.createGain();
+    this._gain.connect(this.ac.destination);
+    this.setState({count:0, counting: false});
+  }
+
+  userStopMetronome() {
+    this.stopMetronome();
+    this.setState({displayRetryDialogue: true});
+  }
+
+  slowMetronome() {
+    this.setState({bpm: this.state.bpm - 5});
+    this.startMetronome();
   }
 
   render() {
-    var click = this.state.counting ? this.stopMetronome : this.startMetronome;
+    var click = this.state.counting ? this.userStopMetronome : this.startMetronome;
 
     var progresses = [];
     for (var i=1; i <= 6; i++) {
@@ -118,8 +126,9 @@ class Metronome extends React.Component {
 
     return (
       <div>
+        {this.state.displayRetryDialogue ? <RetryModal fail={() => this.slowMetronome()} retry={() => this.startMetronome()}/> : null}
         <div className="todo">
-          <h2>Play <b>{this.props.scale.displayName}</b>:</h2> 
+          <h2>Play <b>{this.props.scale.displayName}</b> :</h2> 
           <div className="image-holder">
             <img className="piano-scale" src={"/images/scales/" + this.props.scale.name + ".png"} />
           </div>
@@ -133,11 +142,13 @@ class Metronome extends React.Component {
             <li>Adjusted BPM: <b>{this.state.bpm*(this.notesPerBeat/4)}</b></li>
           </ul>
         </div>
-        {progresses}
-        <div>{(this.state.count - 1) % this.beatsInBar + 1}</div>
-        <StartButton
-          onClick={() => click()}
-          counting={this.state.counting} />
+        <div className="progress-container"><span className="progress-holder">{progresses}</span></div>
+        <div className="metronome-holder">
+          <div><h1>{(this.state.count - 1) % this.beatsInBar + 1}</h1></div>
+          <StartButton
+            onClick={() => click()}
+            counting={this.state.counting} />
+        </div>
       </div>
     );
   }
@@ -162,6 +173,20 @@ class StartButton extends React.Component {
         {this.props.counting ? 'Stop' : 'Start'}
       </button>
     );
+  }
+}
+
+class RetryModal extends React.Component {
+  render() {
+    return <div className="modal-bg">
+      <div className="modal">
+        <div className="message">
+          Would you like to retry or slow down?
+        </div>
+        <button className="retry" onClick={() => this.props.retry()}>Retry</button>
+        <button className="fail" onClick={() => this.props.fail()}>Slow down</button>
+      </div>
+    </div>
   }
 }
 

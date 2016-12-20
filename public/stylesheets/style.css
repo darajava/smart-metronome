@@ -79,7 +79,9 @@ div.image-holder {
 
 .piano-scale {
   width: 70%;
-  padding: 10px;
+  max-width: 270px;
+  max-width: 270px;
+  margin: 10px;
 }
 
 .main-scale {
@@ -94,20 +96,28 @@ div.image-holder {
   display: inline-block;
   border-radius: 50%;
   background-color: #f44e53;
-  width: 30px;
-  height: 30px;
-  margin: 10px;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
   box-shadow: 1px 1px 1px #999;
   color: #542424;
   text-align: center;
   vertical-align: middle;
-  line-height: 30px;  
+  line-height: 40px;  
   font-weight: bold;
 }
 
 .progress.complete {
   color: #444;
   background-color: #8bd45d;
+}
+
+.progress-container {
+  text-align: center;
+}
+
+.progress-holder {
+  width: 100%;
 }
 
 .todo {
@@ -132,4 +142,76 @@ div.image-holder {
    padding: 3px 10px 5px 20px;
    border-bottom: 1px solid #ccc;
    color: #444; 
+}
+
+.metronome-holder {
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  background-color: #8bd45d;
+  border: 0;
+  border-radius: 0.4rem;
+  color: #555;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  line-height: 3.2rem;
+  outline: 0;
+  padding: 0 3.0rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  max-width: 200px;
+}
+
+button:hover {
+  background-color: #8ed95f;
+}
+
+button:active {
+  background-color: #8fe462;
+}
+
+.modal-bg {
+    position: fixed;
+    overflow: hidden;
+    width: 100%; 
+    height:100%;
+    top:0; 
+    left:0;
+    background:rgba(0,0,0,0.5);
+    opacity: 1;
+}
+
+.modal-bg .modal {
+  margin: 0 auto;
+  width: 290px;
+  height: 157px;
+  background-color: white;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 25px;
+}
+
+.modal-bg .modal .message {
+  font-size: 24px;
+  text-align: center;
+}
+.modal-bg .modal .fail,
+.modal-bg .modal .retry {
+  width: 125px;
+  margin: 10px;
+  padding: 0;
+  margin-top: 30px;
+  color: #333;
+}
+.modal-bg .modal .fail {
+  background-color: #ff4646;
+}
+.modal-bg .modal .retry {
+  background-color: #ffad16;
 }
