@@ -33,19 +33,20 @@ class Metronome extends React.Component {
   
     this.hands = "both"; 
     this.beatsInBar = 4;
-    this.reps = 6; 
+    this.reps = 6;
     this.octaves = 1;
     var degreesOfScale = 7;
     var totalNotesInScale = degreesOfScale * this.octaves * 2 + 1;
 
     this.notesPerBeat = 4;
-    this.beatsInScale = (Math.ceil(totalNotesInScale / 4) * 4) / this.notesPerBeat;
- 
+    this.beatsInScale = Math.ceil((totalNotesInScale / this.notesPerBeat)/4) * 4;
+    
     this.state = {
       count: 0,
       counting: false,
       bpm: this.props.bpm,
-      displayRetryDialogue: false
+      displayRetryDialogue: false,
+      completed: false
     }
 
     this.startMetronome = this.startMetronome.bind(this);
@@ -90,9 +91,13 @@ class Metronome extends React.Component {
     this.timeout = setTimeout(() => {
       this.interval = setInterval(() => {
         this.setState({count: this.state.count + 1});
+        if (this.state.count > this.beatsInScale * this.reps) {
+          clearTimeout(this.interval);
+          this.setState({completed: true, count: 0, counting: false});
+        }
       }, (60 * 1000)/bpm - beat);
     }, (beat + rest) * 1000 * (this.beatsInBar - 1));
-    this.setState({counting: true, displayRetryDialogue: false});
+    this.setState({counting: true, displayRetryDialogue: false, completed: false});
   }
 
   stopMetronome() {
@@ -106,13 +111,17 @@ class Metronome extends React.Component {
 
   userStopMetronome() {
     this.stopMetronome();
-    this.setState({displayRetryDialogue: true});
+    this.setState({displayRetryDialogue: true, completed: false});
   }
 
   slowMetronome() {
-    this.setState({bpm: this.state.bpm - 5});
+    this.setState({bpm: this.state.bpm - 4});
     this.startMetronome();
   }
+
+  saveWorkout() {
+    console.log("Success!");
+  } 
 
   render() {
     var click = this.state.counting ? this.userStopMetronome : this.startMetronome;
@@ -120,29 +129,69 @@ class Metronome extends React.Component {
     var progresses = [];
     for (var i=1; i <= 6; i++) {
       progresses.push(
-        <Progress key={i} number={i} complete={this.state.count > i * this.beatsInScale}/>
+        <Progress key={i} number={i} complete={this.state.count > i * this.beatsInScale || this.state.completed}/>
       );
     }
 
     return (
       <div>
-        {this.state.displayRetryDialogue ? <RetryModal fail={() => this.slowMetronome()} retry={() => this.startMetronome()}/> : null}
+        {
+          this.state.displayRetryDialogue ? 
+              <RetryModal
+                fail={() => this.slowMetronome()}
+                retry={() => this.startMetronome()}/> :
+              null
+        }
+        {
+          this.state.completed ? 
+              <CompleteModal
+                fail={() => this.slowMetronome()}
+                retry={() => this.startMetronome()}
+                success={() => this.saveWorkout()}/> :
+              null
+        }
         <div className="todo">
           <h2>Play <b>{this.props.scale.displayName}</b> :</h2> 
           <div className="image-holder">
-            <img className="piano-scale" src={"/images/scales/" + this.props.scale.name + ".png"} />
+            <img
+              className="piano-scale"
+              src={"/images/scales/" + this.props.scale.name + ".png"} />
           </div>
           <ul className="rounded-list">
-            <li><b>{this.reps.toEnglish().ucFirst()}</b> time{this.reps == 1 ? '' : 's'}</li>
-            <li><b>{this.notesPerBeat.toEnglish().ucFirst()}</b> notes per beat</li>
-            <li><b>{this.octaves.toEnglish().ucFirst()}</b> Octave{this.octaves == 1 ? '' : 's'}</li>
-            <li><b>Similar</b> motion</li>
-            <li><b>{this.hands.ucFirst()}</b> hands</li>
-            <li>BPM: <b>{this.state.bpm}</b></li>
-            <li>Adjusted BPM: <b>{this.state.bpm*(this.notesPerBeat/4)}</b></li>
+            <li>
+              <b>{this.reps.toEnglish().ucFirst()} </b>
+              time{this.reps == 1 ? '' : 's'} 
+            </li>
+            <li>
+              <b>{this.notesPerBeat.toEnglish().ucFirst()} </b>
+              notes per beat
+            </li>
+            <li>
+              <b>{this.octaves.toEnglish().ucFirst()} </b>
+              octave{this.octaves == 1 ? '' : 's'}
+            </li>
+            <li>
+              <b>Similar</b> motion
+            </li>
+            <li>
+              <b>{this.hands.ucFirst()} </b>
+              hands
+            </li>
+            <li>
+              BPM:
+              <b> {this.state.bpm} </b>
+            </li>
+            <li>
+              Adjusted BPM:
+              <b> {this.state.bpm*(this.notesPerBeat/4)}</b>
+            </li>
           </ul>
         </div>
-        <div className="progress-container"><span className="progress-holder">{progresses}</span></div>
+        <div className="progress-container">
+          <span className="progress-holder">
+            {progresses}
+          </span>
+        </div>
         <div className="metronome-holder">
           <div><h1>{(this.state.count - 1) % this.beatsInBar + 1}</h1></div>
           <StartButton
@@ -175,7 +224,6 @@ class StartButton extends React.Component {
     );
   }
 }
-
 class RetryModal extends React.Component {
   render() {
     return <div className="modal-bg">
@@ -183,11 +231,28 @@ class RetryModal extends React.Component {
         <div className="message">
           Would you like to retry or slow down?
         </div>
-        <button className="retry" onClick={() => this.props.retry()}>Retry</button>
         <button className="fail" onClick={() => this.props.fail()}>Slow down</button>
+        <button className="retry" onClick={() => this.props.retry()}>Retry</button>
+        <a className="go-home" href="/">or <span>go back home</span></a>
+      </div>
+    </div>
+  }
+}
+
+class CompleteModal extends React.Component {
+  render() {
+    return <div className="modal-bg">
+      <div className="modal complete">
+        <div className="message">
+          How did it go?
+        </div>
+        <button className="fail" onClick={() => this.props.fail()}>Not good - slow down</button>
+        <button className="retry" onClick={() => this.props.retry()}>A bit iffy - retry</button>
+        <button className="success" onClick={() => this.props.success()}>Great! Count it</button>
       </div>
     </div>
   }
 }
 
 ReactDOM.render(<Metronome scale={JSON.parse(document.getElementById('scale').value)} bpm={document.getElementById('bpm').value}/>, document.getElementById('root'));
+

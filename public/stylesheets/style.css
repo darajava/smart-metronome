@@ -157,7 +157,6 @@ button {
   cursor: pointer;
   display: inline-block;
   font-weight: 700;
-  letter-spacing: 0.1rem;
   line-height: 3.2rem;
   outline: 0;
   padding: 0 3.0rem;
@@ -197,6 +196,10 @@ button:active {
   padding: 25px;
 }
 
+.modal-bg .modal.complete {
+  height: 190px;
+}
+
 .modal-bg .modal .message {
   font-size: 24px;
   text-align: center;
@@ -214,4 +217,29 @@ button:active {
 }
 .modal-bg .modal .retry {
   background-color: #ffad16;
+}
+.modal-bg .modal.complete .success {
+  margin: auto;
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.modal-bg .modal.complete button {
+  line-height: 15px;
+  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+.modal-bg .modal .go-home {
+  float: right;
+  color: #444;
+  text-decoration: none;
+}
+.modal-bg .modal .go-home span {
+  text-decoration: underline;
 }
