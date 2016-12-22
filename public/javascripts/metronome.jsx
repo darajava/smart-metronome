@@ -2,18 +2,18 @@ String.prototype.ucFirst = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
-Number.prototype.toEnglish = function() {
+var toEnglish = function(w) {
   // lol
-  if (this == '1') return 'one';
-  if (this == '2') return 'two';
-  if (this == '3') return 'three';
-  if (this == '4') return 'four';
-  if (this == '5') return 'five';
-  if (this == '6') return 'six';
-  if (this == '7') return 'seven';
-  if (this == '8') return 'eight';
-  if (this == '9') return 'nine';
-  if (this == '10') return 'ten';
+  if (w == '1') return 'one';
+  if (w == '2') return 'two';
+  if (w == '3') return 'three';
+  if (w == '4') return 'four';
+  if (w == '5') return 'five';
+  if (w == '6') return 'six';
+  if (w == '7') return 'seven';
+  if (w == '8') return 'eight';
+  if (w == '9') return 'nine';
+  if (w == '10') return 'ten';
   return this;
 }
 
@@ -35,22 +35,25 @@ class Metronome extends React.Component {
     this._gain.connect(this.ac.destination);
     this.oscillatorStarted = false;
 
-    this.scaleName = this.props.scale.name;
+    var userlog = this.props.userlog[0];
+
+    this.scaleName = userlog.scale[0].name;
+    this.displayName = userlog.scale[0].displayName;
 
     this.hands = "both"; 
     this.beatsInBar = 4;
     this.reps = 6;
-    this.octaves = 1;
+    this.octaves = userlog.octaves;
     var degreesOfScale = 7;
     var totalNotesInScale = degreesOfScale * this.octaves * 2 + 1;
 
-    this.notesPerBeat = 4;
+    this.notesPerBeat = userlog.notesPerBeat;
     this.beatsInScale = Math.ceil((totalNotesInScale / this.notesPerBeat)/4) * 4;
     
     this.state = {
       count: 0,
       counting: false,
-      bpm: this.props.bpm,
+      bpm: userlog.bpm * 10,
       displayRetryDialogue: false,
       completed: false
     }
@@ -159,8 +162,8 @@ class Metronome extends React.Component {
       url: '/saveuserlog',
       data: userlog,
       success: function() {console.log('Success!');},
-    }).fail(function() {
-      console.log('fail');
+    }).fail(function(err) {
+      console.log(err);
     });
   } 
 
@@ -192,31 +195,24 @@ class Metronome extends React.Component {
               null
         }
         <div className="todo">
-          <h2>Play <b>{this.props.scale.displayName}</b> :</h2> 
+          <h2>Play <b>{this.displayName}</b> :</h2> 
           <div className="image-holder">
             <img
               className="piano-scale"
-              src={"/images/scales/" + this.props.scale.name + ".png"} />
+              src={"/images/scales/" + this.scaleName + ".png"} />
           </div>
           <ul className="rounded-list">
             <li>
-              <b>{this.reps.toEnglish().ucFirst()} </b>
+              <b>{toEnglish(this.reps).ucFirst()} </b>
               time{this.reps == 1 ? '' : 's'} 
             </li>
             <li>
-              <b>{this.notesPerBeat.toEnglish().ucFirst()} </b>
-              notes per beat
+              <b>{toEnglish(this.notesPerBeat).ucFirst()} </b>
+              note{this.notesPerBeat == 1 ? '' : 's'} per beat
             </li>
             <li>
-              <b>{this.octaves.toEnglish().ucFirst()} </b>
+              <b>{toEnglish(this.octaves).ucFirst()} </b>
               octave{this.octaves == 1 ? '' : 's'}
-            </li>
-            <li>
-              <b>Similar</b> motion
-            </li>
-            <li>
-              <b>{this.hands.ucFirst()} </b>
-              hands
             </li>
             <li>
               BPM:
@@ -304,4 +300,9 @@ class Hamster extends React.Component {
   }
 }
 
-ReactDOM.render(<Metronome scale={JSON.parse(document.getElementById('scale').value)} bpm={document.getElementById('bpm').value}/>, document.getElementById('root'));
+ReactDOM.render(<Metronome userlog={JSON.parse(document.getElementById('userlog').value)} />, document.getElementById('root'));
+
+
+
+
+

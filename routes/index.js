@@ -1,4 +1,5 @@
 var express = require('express');
+var mongoose = require('mongoose');
 var router = express.Router();
 
 var isAuthenticated = function (req, res, next) {
@@ -21,22 +22,40 @@ module.exports = function(passport){
     var Scale = require('../models/scale.js');
     var UserLog = require('../models/userlog.js');
     Scale.aggregate([
-        {$lookup: {
-            from: "userlogs",
-            localField: "name",
-            foreignField: "scale",
-            as: "log"
-        }},
-          {$match: {"$or":[{'log.userId': {"$exists": false}}, {'log.userId': ""+req.user._id}]}},
-          {$unwind: {path: '$log', preserveNullAndEmptyArrays: true}},
-          {$sort: {'log.time':-1}},
-          {$group: {_id: '$name', displayName: {$first: "$displayName"}, date: {$first: "$log.time"}, notesPerBeat: {$first: "$log.notesPerBeat"}}}
-        ],
-        function(err, userlog) {
-          console.log((userlog));
-          if (!err)
-            res.render('index', { user: req.user, userlog: userlog});
-          else throw err;
+      { $lookup: {
+          from: "userlogs",
+          localField: "name",
+          foreignField: "scale",
+          as: "log"
+        }
+      },
+      { $match: {
+        "$or":[
+          {'log.userId': {"$exists": false}},
+          {'log.userId': "" + req.user._id}
+        ]}
+      },
+      { $unwind:
+        {
+          path: '$log', preserveNullAndEmptyArrays: true
+        }
+      },
+      { $sort: {'log.time':-1}},
+      { $group:
+        {
+          _id: '$name',
+          exerciseId: {$first: "$log._id"},
+          displayName: {$first: "$displayName"},
+          date: {$first: "$log.time"},
+          bpm: {$first: "$log.bpm"},
+          notesPerBeat: {$first: "$log.notesPerBeat"}}
+        }
+      ],
+      function(err, scales) {
+        console.log(scales);
+        if (!err)
+          res.render('index', { user: req.user, scales: scales});
+        else throw err;
     });
   });
   
@@ -46,6 +65,26 @@ module.exports = function(passport){
       console.log(scale);
       if (!err){ 
         res.render('scalepractice', { user: req.user, scale });
+      } else {throw err;}
+    });
+  });
+  
+  /* GET login page. */
+  router.get('/scalepractice/:scale/:exerciseId', isAuthenticated, function(req, res) {
+    var UserLog = require('../models/userlog.js');
+    UserLog.aggregate([
+      {$match: {_id: mongoose.Types.ObjectId(req.params.exerciseId)}},
+      {$lookup: {
+          from: "scales",
+          localField: "scale",
+          foreignField: "name",
+          as: "scale"
+        }
+      }
+    ], function(err, userlog) {
+      console.log(userlog);
+      if (!err){ 
+        res.render('scalepractice', { user: req.user, userlog: userlog });
       } else {throw err;}
     });
   });
@@ -82,6 +121,7 @@ module.exports = function(passport){
 
   router.post('/saveuserlog', function(req, res) {
     try {
+      console.log(req.body);
       var UserLog = require('../models/userlog.js');
       var log = new UserLog({
         scale: req.body.scale,
