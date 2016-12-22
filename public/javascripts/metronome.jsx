@@ -53,12 +53,12 @@ class Metronome extends React.Component {
     this.state = {
       count: 0,
       counting: false,
-      bpm: userlog.bpm * 10,
+      bpm: userlog.bpm,
       displayRetryDialogue: false,
       completed: false
     }
 
-    this.adjustedBpm = this.state.bpm * (this.notesPerBeat / 4);
+    this.actualBpm = this.state.bpm / (this.notesPerBeat / 4);
 
     this.startMetronome = this.startMetronome.bind(this);
     this.stopMetronome = this.stopMetronome.bind(this);
@@ -73,8 +73,7 @@ class Metronome extends React.Component {
 
     this.flag = true;
     setTimeout(() => {this.flag = false;}, 1000);
-
-    var bpm = this.state.bpm;
+    var bpm = this.actualBpm;
     var beat = 1/20;
     var rest = (60 / bpm) - beat;
 
@@ -153,7 +152,7 @@ class Metronome extends React.Component {
       scale: this.scaleName,
       notesPerBeat: this.notesPerBeat,
       octaves: this.octaves,
-      bpm: this.state.bpm
+      bpm: parseInt(this.state.bpm) + 2 // increment for next time
     };
 
     console.log(userlog);
@@ -161,7 +160,13 @@ class Metronome extends React.Component {
     $.post({
       url: '/saveuserlog',
       data: userlog,
-      success: function() {console.log('Success!');},
+      success: function() {
+        console.log('Success!');
+        $('.success').html('Saved!<br/>Congrats!');
+        setTimeout(function() {
+          document.location = '/';
+        }, 400);
+      },
     }).fail(function(err) {
       console.log(err);
     });
@@ -215,12 +220,12 @@ class Metronome extends React.Component {
               octave{this.octaves == 1 ? '' : 's'}
             </li>
             <li>
-              BPM:
-              <b> {this.state.bpm} </b>
+              Actual BPM:
+              <b> {this.actualBpm} </b>
             </li>
             <li>
-              Adjusted BPM:
-              <b> {this.adjustedBpm}</b>
+              Equivalant BPM:
+              <b> {this.state.bpm}</b>
             </li>
           </ul>
         </div>

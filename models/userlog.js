@@ -3,9 +3,9 @@ var Schema = mongoose.Schema;
 var userLogSchema = new Schema({
   scale: String,
   userId: String,
-  notesPerBeat: String,
-  octaves: String,
-  bpm: String,
+  notesPerBeat: Number,
+  octaves: Number,
+  bpm: Number,
   time: {type: Date, default: Date.now}
 });
 

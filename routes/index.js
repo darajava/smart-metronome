@@ -49,7 +49,8 @@ module.exports = function(passport){
           date: {$first: "$log.time"},
           bpm: {$first: "$log.bpm"},
           notesPerBeat: {$first: "$log.notesPerBeat"}}
-        }
+        },
+      { $sort: {'bpm':-1}},
       ],
       function(err, scales) {
         console.log(scales);
@@ -60,13 +61,20 @@ module.exports = function(passport){
   });
   
   router.get('/scalepractice/:scale', isAuthenticated, function(req, res) {
-    var Scale = require('../models/scale.js');
-    Scale.find({name: req.params.scale}, function(err, scale) {
-      console.log(scale);
-      if (!err){ 
-        res.render('scalepractice', { user: req.user, scale });
-      } else {throw err;}
+    var UserLog = require('../models/userlog.js');
+    var log = new UserLog({
+      scale: req.params.scale,
+      userId: req.user._id,
+      notesPerBeat: 1,
+      octaves: 2,
+      bpm: 15
     });
+
+    log.save(function(err, userlog) {
+      if (err) return console.log(err); 
+      res.redirect('/scalepractice/' + userlog.scale + '/' + userlog._id);
+    });
+
   });
   
   /* GET login page. */
