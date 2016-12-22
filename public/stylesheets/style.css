@@ -187,7 +187,7 @@ button:active {
 
 .modal-bg .modal {
   margin: 0 auto;
-  width: 290px;
+  width: 270px;
   height: 157px;
   background-color: white;
   position: relative;
@@ -206,7 +206,7 @@ button:active {
 }
 .modal-bg .modal .fail,
 .modal-bg .modal .retry {
-  width: 125px;
+  width: 115px;
   margin: 10px;
   padding: 0;
   margin-top: 30px;
@@ -223,8 +223,8 @@ button:active {
   display: block;
   margin-top: 10px;
   margin-bottom: 10px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-right: 40px;
+  padding-left: 40px;
 }
 
 .modal-bg .modal.complete button {
@@ -242,4 +242,18 @@ button:active {
 }
 .modal-bg .modal .go-home span {
   text-decoration: underline;
+}
+
+.hamster {
+  margin-top: 33px;
+  width: 100%;
+  background-image: url(/images/grass.png);
+  background-position: bottom;
+  background-repeat: repeat-x; 
+}
+
+.hamster img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }

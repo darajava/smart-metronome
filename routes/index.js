@@ -19,10 +19,24 @@ module.exports = function(passport){
   /* GET homepage. */
   router.get('/', isAuthenticated, function(req, res) {
     var Scale = require('../models/scale.js');
-    Scale.find({}, function(err, scales) {
-      if (!err){ 
-        res.render('index', { user: req.user, scales:scales });
-      } else {throw err;}
+    var UserLog = require('../models/userlog.js');
+    Scale.aggregate([
+        {$lookup: {
+            from: "userlogs",
+            localField: "name",
+            foreignField: "scale",
+            as: "log"
+        }},
+          {$match: {"$or":[{'log.userId': {"$exists": false}}, {'log.userId': ""+req.user._id}]}},
+          {$unwind: {path: '$log', preserveNullAndEmptyArrays: true}},
+          {$sort: {'log.time':-1}},
+          {$group: {_id: '$name', displayName: {$first: "$displayName"}, date: {$first: "$log.time"}, notesPerBeat: {$first: "$log.notesPerBeat"}}}
+        ],
+        function(err, userlog) {
+          console.log((userlog));
+          if (!err)
+            res.render('index', { user: req.user, userlog: userlog});
+          else throw err;
     });
   });
   
@@ -64,6 +78,28 @@ module.exports = function(passport){
   router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
+  });
+
+  router.post('/saveuserlog', function(req, res) {
+    try {
+      var UserLog = require('../models/userlog.js');
+      var log = new UserLog({
+        scale: req.body.scale,
+        userId: req.user._id,
+        notesPerBeat: req.body.notesPerBeat,
+        octaves: req.body.octaves,
+        bpm: req.body.bpm
+      });
+    
+      log.save(function(err, userlog){
+        if (err) return console.log(err);
+        console.log(userlog);
+      });
+    } catch (err) {
+      res.status(500);
+      console.log(err);
+    }
+    res.send('hello');
   });
 
   return router;

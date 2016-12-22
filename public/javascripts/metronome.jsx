@@ -21,16 +21,22 @@ class Metronome extends React.Component {
   constructor(props) {
     super(props);
 
-    this.interval, this.timeout;
+    this.interval, this.timeout, this.flag = false;
 
-    this.ac = new (window.AudioContext || window.webkitAudioContext());
+    this.ac = new (window.AudioContext || 
+      window.webkitAudioContext || 
+      window.mozAudioContext || 
+      window.oAudioContext || 
+      window.msAudioContext);
     this.oscillator = this.ac.createOscillator();
     this._gain = this.ac.createGain();
     this.oscillator.frequency.value = 550;
     this._gain.gain.value = 0;
     this._gain.connect(this.ac.destination);
-    this.oscillator.start(0);
-  
+    this.oscillatorStarted = false;
+
+    this.scaleName = this.props.scale.name;
+
     this.hands = "both"; 
     this.beatsInBar = 4;
     this.reps = 6;
@@ -49,16 +55,30 @@ class Metronome extends React.Component {
       completed: false
     }
 
+    this.adjustedBpm = this.state.bpm * (this.notesPerBeat / 4);
+
     this.startMetronome = this.startMetronome.bind(this);
     this.stopMetronome = this.stopMetronome.bind(this);
     this.userStopMetronome = this.userStopMetronome.bind(this);
     this.slowMetronome = this.slowMetronome.bind(this);
   }
   
-  startMetronome(e) {
+  startMetronome() {
+    if (this.flag) {
+      return;
+    }
+
+    this.flag = true;
+    setTimeout(() => {this.flag = false;}, 1000);
+
     var bpm = this.state.bpm;
     var beat = 1/20;
     var rest = (60 / bpm) - beat;
+
+    if (!this.oscillatorStarted) {
+      this.oscillator.start(0);
+      this.oscillatorStarted = true;
+    } 
 
     var t = this.ac.currentTime;
 
@@ -93,7 +113,9 @@ class Metronome extends React.Component {
         this.setState({count: this.state.count + 1});
         if (this.state.count > this.beatsInScale * this.reps) {
           clearTimeout(this.interval);
-          this.setState({completed: true, count: 0, counting: false});
+          setTimeout(() => {
+            this.setState({completed: true, count: 0, counting: false});
+          }, 100);
         }
       }, (60 * 1000)/bpm - beat);
     }, (beat + rest) * 1000 * (this.beatsInBar - 1));
@@ -110,6 +132,10 @@ class Metronome extends React.Component {
   }
 
   userStopMetronome() {
+    if (this.flag) {
+      return;
+    }
+
     this.stopMetronome();
     this.setState({displayRetryDialogue: true, completed: false});
   }
@@ -120,7 +146,22 @@ class Metronome extends React.Component {
   }
 
   saveWorkout() {
-    console.log("Success!");
+    var userlog = {
+      scale: this.scaleName,
+      notesPerBeat: this.notesPerBeat,
+      octaves: this.octaves,
+      bpm: this.state.bpm
+    };
+
+    console.log(userlog);
+
+    $.post({
+      url: '/saveuserlog',
+      data: userlog,
+      success: function() {console.log('Success!');},
+    }).fail(function() {
+      console.log('fail');
+    });
   } 
 
   render() {
@@ -183,7 +224,7 @@ class Metronome extends React.Component {
             </li>
             <li>
               Adjusted BPM:
-              <b> {this.state.bpm*(this.notesPerBeat/4)}</b>
+              <b> {this.adjustedBpm}</b>
             </li>
           </ul>
         </div>
@@ -195,9 +236,10 @@ class Metronome extends React.Component {
         <div className="metronome-holder">
           <div><h1>{(this.state.count - 1) % this.beatsInBar + 1}</h1></div>
           <StartButton
-            onClick={() => click()}
+            onClick={(e) => click(e)}
             counting={this.state.counting} />
         </div>
+        <Hamster />
       </div>
     );
   }
@@ -218,7 +260,7 @@ class StartButton extends React.Component {
 
   render() {
     return (
-      <button onClick={() => this.props.onClick()}>
+      <button onTouchEnd={() => this.props.onClick()} onClick={() => this.props.onClick()}>
         {this.props.counting ? 'Stop' : 'Start'}
       </button>
     );
@@ -244,15 +286,22 @@ class CompleteModal extends React.Component {
     return <div className="modal-bg">
       <div className="modal complete">
         <div className="message">
-          How did it go?
+          Finished! How did it go?
         </div>
-        <button className="fail" onClick={() => this.props.fail()}>Not good - slow down</button>
-        <button className="retry" onClick={() => this.props.retry()}>A bit iffy - retry</button>
-        <button className="success" onClick={() => this.props.success()}>Great! Count it</button>
+        <button className="fail" onClick={() => this.props.fail()}>Not good -<br/> slow down</button>
+        <button className="retry" onClick={() => this.props.retry()}>A bit iffy -<br/> retry</button>
+        <button className="success" onClick={() => this.props.success()}>Great!<br/> Count it</button>
       </div>
     </div>
   }
 }
 
-ReactDOM.render(<Metronome scale={JSON.parse(document.getElementById('scale').value)} bpm={document.getElementById('bpm').value}/>, document.getElementById('root'));
+class Hamster extends React.Component {
+  render() {
+    return <div className="hamster">
+      <img src="/images/cutehamster.gif" title="Arrr" />
+    </div>
+  }
+}
 
+ReactDOM.render(<Metronome scale={JSON.parse(document.getElementById('scale').value)} bpm={document.getElementById('bpm').value}/>, document.getElementById('root'));

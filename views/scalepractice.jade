@@ -7,11 +7,11 @@ block content
     span.login-hint.right= 'Hello ' + user.firstName
 
   div#root
-  div#button
 
-  input(type='hidden' id='bpm' value='500') 
+  input(type='hidden' id='bpm' value='1600') 
   input(type='hidden' id='scale' value=JSON.stringify(scale[0]))
 
+  script(src="https://code.jquery.com/jquery-3.1.1.min.js")
   script(src="https://fb.me/react-15.0.0.js")
   script(src="https://fb.me/react-dom-15.0.0.js")
   script(type='text/babel', src='/javascripts/metronome.jsx')

@@ -1,12 +1,14 @@
 extends layout
 
 block content
+  pre= JSON.stringify(userlog)
   div.container
     a#logo(href='/') Smart Scales
     a.logout.login-hint.right(href='logout/') Logout
     span.login-hint.right= 'Hello ' + user.firstName
   ul.list-group
-    each entry in scales
+    //
+      each entry in scales
       a(href='/scalepractice/' + entry.name)
         li.list-group-item
           span.right.badge= 100 + 'bpm'
