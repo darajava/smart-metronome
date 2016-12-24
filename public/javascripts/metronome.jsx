@@ -43,37 +43,37 @@ class Metronome extends React.Component {
     this.hands = "both"; 
     this.beatsInBar = 4;
     this.reps = 6;
-    this.octaves = userlog.octaves;
-    var degreesOfScale = 7;
-    var totalNotesInScale = degreesOfScale * this.octaves * 2 + 1;
-
-    this.notesPerBeat = userlog.notesPerBeat;
-    this.beatsInScale = Math.ceil((totalNotesInScale / this.notesPerBeat)/4) * 4;
     
     this.state = {
       count: 0,
       counting: false,
-      bpm: userlog.bpm,
+      bpm: userlog.bpm + 10,
+      octaves: userlog.octaves,
       displayRetryDialogue: false,
+      notesPerBeat: userlog.notesPerBeat,
+      actualBpm: (userlog.bpm + 10) / (userlog.notesPerBeat / 4),
       completed: false
     }
-
-    this.actualBpm = this.state.bpm / (this.notesPerBeat / 4);
-
+    
     this.startMetronome = this.startMetronome.bind(this);
     this.stopMetronome = this.stopMetronome.bind(this);
     this.userStopMetronome = this.userStopMetronome.bind(this);
     this.slowMetronome = this.slowMetronome.bind(this);
+    this.changeNotesPerBeat = this.changeNotesPerBeat.bind(this);
   }
   
   startMetronome() {
     if (this.flag) {
       return;
     }
-
     this.flag = true;
-    setTimeout(() => {this.flag = false;}, 1000);
-    var bpm = this.actualBpm;
+    setTimeout(() => {this.flag = false;}, 200);
+
+    var degreesOfScale = 7;
+    var totalNotesInScale = degreesOfScale * this.state.octaves * 2 + 1;
+    this.beatsInScale = Math.ceil((totalNotesInScale / this.state.notesPerBeat)/4) * 4;
+    
+    var bpm = this.state.actualBpm;
     var beat = 1/20;
     var rest = (60 / bpm) - beat;
 
@@ -143,16 +143,21 @@ class Metronome extends React.Component {
   }
 
   slowMetronome() {
-    this.setState({bpm: this.state.bpm - 4});
-    this.startMetronome();
+    this.setState({
+      bpm: (this.state.bpm - 40),
+      actualBpm: (this.state.bpm - 40) / (this.state.notesPerBeat / 4)
+    }, () => {
+      console.log(this.state);
+      this.startMetronome();
+    });
   }
 
   saveWorkout() {
     var userlog = {
       scale: this.scaleName,
-      notesPerBeat: this.notesPerBeat,
-      octaves: this.octaves,
-      bpm: parseInt(this.state.bpm) + 2 // increment for next time
+      notesPerBeat: this.state.notesPerBeat,
+      octaves: this.state.octaves,
+      bpm: parseInt(this.state.bpm)
     };
 
     console.log(userlog);
@@ -172,6 +177,13 @@ class Metronome extends React.Component {
     });
   } 
 
+  changeNotesPerBeat(event) {
+    this.setState({
+      notesPerBeat: event.target.value,
+      actualBpm: this.state.actualBpm * (this.state.notesPerBeat / event.target.value), 
+    });
+  }
+
   render() {
     var click = this.state.counting ? this.userStopMetronome : this.startMetronome;
 
@@ -179,6 +191,13 @@ class Metronome extends React.Component {
     for (var i=1; i <= 6; i++) {
       progresses.push(
         <Progress key={i} number={i} complete={this.state.count > i * this.beatsInScale || this.state.completed}/>
+      );
+    }
+
+    var options = [];
+    for (var notes = 1; notes <= 4; notes++) {
+      options.push(
+        <option key={notes} value={notes}>{toEnglish(notes).ucFirst()}</option>
       );
     }
 
@@ -212,16 +231,21 @@ class Metronome extends React.Component {
               time{this.reps == 1 ? '' : 's'} 
             </li>
             <li>
-              <b>{toEnglish(this.notesPerBeat).ucFirst()} </b>
-              note{this.notesPerBeat == 1 ? '' : 's'} per beat
+              <div className="select-style" >
+                <select value={this.state.notesPerBeat} onChange={this.changeNotesPerBeat}>
+                  {options}
+                </select>
+                <span></span>
+              </div>
+              note{this.state.notesPerBeat == 1 ? '' : 's'} per beat
             </li>
             <li>
-              <b>{toEnglish(this.octaves).ucFirst()} </b>
-              octave{this.octaves == 1 ? '' : 's'}
+              <b>{toEnglish(this.state.octaves).ucFirst()} </b>
+              octave{this.state.octaves == 1 ? '' : 's'}
             </li>
             <li>
               Actual BPM:
-              <b> {this.actualBpm} </b>
+              <b> {this.state.actualBpm} </b>
             </li>
             <li>
               Equivalant BPM:
