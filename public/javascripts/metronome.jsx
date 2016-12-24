@@ -59,6 +59,7 @@ class Metronome extends React.Component {
     this.stopMetronome = this.stopMetronome.bind(this);
     this.userStopMetronome = this.userStopMetronome.bind(this);
     this.slowMetronome = this.slowMetronome.bind(this);
+    this.changeOctaves = this.changeOctaves.bind(this);
     this.changeNotesPerBeat = this.changeNotesPerBeat.bind(this);
   }
   
@@ -184,6 +185,12 @@ class Metronome extends React.Component {
     });
   }
 
+  changeOctaves(event) {
+    this.setState({
+      octaves: event.target.value,
+    });
+  }
+
   render() {
     var click = this.state.counting ? this.userStopMetronome : this.startMetronome;
 
@@ -194,10 +201,17 @@ class Metronome extends React.Component {
       );
     }
 
-    var options = [];
+    var notesOptions = [];
     for (var notes = 1; notes <= 4; notes++) {
-      options.push(
+      notesOptions.push(
         <option key={notes} value={notes}>{toEnglish(notes).ucFirst()}</option>
+      );
+    }
+
+    var octavesOptions = [];
+    for (var octaves = 2; octaves <= 4; octaves++) {
+      octavesOptions.push(
+        <option key={octaves} value={octaves}>{toEnglish(octaves).ucFirst()}</option>
       );
     }
 
@@ -233,14 +247,19 @@ class Metronome extends React.Component {
             <li>
               <div className="select-style" >
                 <select value={this.state.notesPerBeat} onChange={this.changeNotesPerBeat}>
-                  {options}
+                  {notesOptions}
                 </select>
                 <span></span>
               </div>
               note{this.state.notesPerBeat == 1 ? '' : 's'} per beat
             </li>
             <li>
-              <b>{toEnglish(this.state.octaves).ucFirst()} </b>
+              <div className="select-style" >
+                <select value={this.state.octaves} onChange={this.changeOctaves}>
+                  {octavesOptions}
+                </select>
+                <span></span>
+              </div>
               octave{this.state.octaves == 1 ? '' : 's'}
             </li>
             <li>

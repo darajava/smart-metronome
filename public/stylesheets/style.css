@@ -252,8 +252,8 @@ button:active {
   margin-top: 33px;
   width: 100%;
   background-image: url(/images/grass.png);
-  background-position: bottom;
-  background-repeat: repeat-x; 
+  background-position: bottom center;
+  background-repeat: no-repeat; 
 }
 
 .hamster img {
