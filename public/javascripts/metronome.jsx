@@ -51,7 +51,7 @@ class Metronome extends React.Component {
       octaves: userlog.octaves,
       displayRetryDialogue: false,
       notesPerBeat: userlog.notesPerBeat,
-      actualBpm: (userlog.bpm + 10) / (userlog.notesPerBeat / 4),
+      actualBpm: this.calculateActualBpm(userlog.bpm + 10, userlog.notesPerBeat),
       completed: false
     }
     
@@ -61,6 +61,7 @@ class Metronome extends React.Component {
     this.slowMetronome = this.slowMetronome.bind(this);
     this.changeOctaves = this.changeOctaves.bind(this);
     this.changeNotesPerBeat = this.changeNotesPerBeat.bind(this);
+    this.calculateActualBpm = this.calculateActualBpm.bind(this);
   }
   
   startMetronome() {
@@ -146,7 +147,7 @@ class Metronome extends React.Component {
   slowMetronome() {
     this.setState({
       bpm: (this.state.bpm - 40),
-      actualBpm: (this.state.bpm - 40) / (this.state.notesPerBeat / 4)
+      actualBpm: this.calculateActualBpm(this.state.bpm - 40),
     }, () => {
       console.log(this.state);
       this.startMetronome();
@@ -178,16 +179,36 @@ class Metronome extends React.Component {
     });
   } 
 
+  calculateActualBpm(bpm, notesPerBeat) {
+    var npb = typeof notesPerBeat === "undefined" ? this.state.notesPerBeat : notesPerBeat; 
+    return bpm / (npb/ 4);
+  }
+
   changeNotesPerBeat(event) {
     this.setState({
       notesPerBeat: event.target.value,
-      actualBpm: this.state.actualBpm * (this.state.notesPerBeat / event.target.value), 
+    }, () => {
+      this.setState({actualBpm: this.calculateActualBpm(this.state.bpm)});
     });
   }
 
   changeOctaves(event) {
     this.setState({
       octaves: event.target.value,
+    });
+  }
+
+  incrementBpm(inc) {
+    this.setState({
+      bpm: this.state.bpm + inc,
+      actualBpm: this.calculateActualBpm(this.state.bpm + inc)
+    });
+  }
+
+  closeModal() {
+    this.setState({
+      completed: false,
+      displayRetryDialogue: false
     });
   }
 
@@ -220,6 +241,7 @@ class Metronome extends React.Component {
         {
           this.state.displayRetryDialogue ? 
               <RetryModal
+                closeModal={() => this.closeModal()}
                 fail={() => this.slowMetronome()}
                 retry={() => this.startMetronome()}/> :
               null
@@ -227,6 +249,7 @@ class Metronome extends React.Component {
         {
           this.state.completed ? 
               <CompleteModal
+                closeModal={() => this.closeModal()}
                 fail={() => this.slowMetronome()}
                 retry={() => this.startMetronome()}
                 success={() => this.saveWorkout()}/> :
@@ -268,7 +291,9 @@ class Metronome extends React.Component {
             </li>
             <li>
               Equivalant BPM:
+              <input type="button" value="-" className="plus-minus"  onClick={() => this.incrementBpm(-1)}/>
               <b> {this.state.bpm}</b>
+              <input type="button" value="+" className="plus-minus"  onClick={() => this.incrementBpm(1)}/>
             </li>
           </ul>
         </div>
@@ -312,8 +337,9 @@ class StartButton extends React.Component {
 }
 class RetryModal extends React.Component {
   render() {
-    return <div className="modal-bg">
-      <div className="modal">
+    return <div className="modal-bg" onClick={() => this.props.closeModal()} >
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <span className="close-modal" onClick={() => this.props.closeModal()}></span>
         <div className="message">
           Would you like to retry or slow down?
         </div>
@@ -327,8 +353,9 @@ class RetryModal extends React.Component {
 
 class CompleteModal extends React.Component {
   render() {
-    return <div className="modal-bg">
-      <div className="modal complete">
+    return <div className="modal-bg" onClick={() => this.props.closeModal()}>
+      <div className="modal complete"  onClick={(e) => e.stopPropagation()}>
+        <span className="close-modal" onClick={() => this.props.closeModal()}></span>
         <div className="message">
           Finished! How did it go?
         </div>

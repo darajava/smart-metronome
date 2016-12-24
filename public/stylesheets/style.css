@@ -204,6 +204,16 @@ button:active {
   height: 190px;
 }
 
+.modal .close-modal {
+    background-image: url(/images/close.png);
+    background-position: center;
+    padding: 18px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 .modal-bg .modal .message {
   font-size: 24px;
   text-align: center;
@@ -302,4 +312,17 @@ button:active {
   outline:none;
   cursor:pointer;
   padding:7px 10px;
+}
+
+.plus-minus {
+  width: 27px;
+  height: 27px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  color: #ddd;
+  background-color: white;
+  outline: none;
+  margin-left: 5px;
 }
