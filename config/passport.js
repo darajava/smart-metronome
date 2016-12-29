@@ -56,7 +56,7 @@ module.exports = function(passport) {
           var newUser      = new User();
 
           // set all of the relevant information
-          newUser.id  = profile.id;
+          newUser.google.id  = profile.id;
           newUser.token = token;
           newUser.name  = profile.displayName;
           newUser.image = profile._json.image.url;

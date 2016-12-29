@@ -40,10 +40,6 @@ app.use(passport.session());
 var flash = require('connect-flash');
 app.use(flash());
 
-// Initialize Passport
-var initPassport = require('./passport/init');
-initPassport(passport);
-
 var routes = require('./routes/index')(passport);
 app.use('/', routes);
 

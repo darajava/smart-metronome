@@ -51,7 +51,7 @@ class Metronome extends React.Component {
       octaves: userlog.octaves,
       displayRetryDialogue: false,
       notesPerBeat: userlog.notesPerBeat,
-      actualBpm: this.calculateActualBpm(userlog.bpm + 10, userlog.notesPerBeat),
+      actualBpm: this.calculateActualBpm(userlog.bpm + 10000, userlog.notesPerBeat),
       completed: false
     }
     

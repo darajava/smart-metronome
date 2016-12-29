@@ -32,16 +32,16 @@ module.exports = function(passport){
           as: "log"
         }
       },
-      { $match: {
-        "$or":[
-          {'log.userId': {"$exists": false}},
-          {'log.userId': "" + req.user._id}
-        ]}
-      },
       { $unwind:
         {
           path: '$log', preserveNullAndEmptyArrays: true
         }
+      },
+      { $match: {
+        "$or":[
+          {'log.userId': "" + req.user._id},
+          {'log.userId': {"$exists" : false}}
+        ]}
       },
       { $sort: {'log.time':-1}},
       { $group:
