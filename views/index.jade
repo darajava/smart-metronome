@@ -4,7 +4,8 @@ block content
   div.container
     a#logo(href='/') Smart Scales
     a.logout.login-hint.right(href='logout/') Logout
-    span.login-hint.right= 'Hello ' + user.firstName
+    img(src=user.image)
+    span.login-hint.right= 'Hello ' + user.name
   ul.list-group
     each entry in scales
       a(href='/scalepractice/' + entry._id + '/' + (entry.exerciseId ? entry.exerciseId : ''))

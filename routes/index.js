@@ -1,6 +1,9 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var router = express.Router();
+var passport = require('passport');
+require('../config/passport.js')(passport)
+
 
 var isAuthenticated = function (req, res, next) {
   // if user is authenticated in the session,
@@ -109,18 +112,6 @@ module.exports = function(passport){
     failureFlash : true  
   }));
 
-  /* GET Registration Page */
-  router.get('/signup', function(req, res){
-    res.render('register',{message: req.flash('message')});
-  });
-
-  /* Handle Registration POST */
-  router.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/',
-    failureRedirect: '/signup',
-    failureFlash : true  
-  }));
-
   /* Handle Logout */
   router.get('/logout', function(req, res) {
     req.logout();
@@ -149,6 +140,15 @@ module.exports = function(passport){
     }
     res.send('hello');
   });
+
+  router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+  // the callback after google has authenticated the user
+  router.get('/auth/google/callback',
+            passport.authenticate('google', {
+                    successRedirect : '/',
+                    failureRedirect : '/login'
+            }));
 
   return router;
 }

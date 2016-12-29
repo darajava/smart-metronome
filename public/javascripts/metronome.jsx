@@ -287,7 +287,7 @@ class Metronome extends React.Component {
             </li>
             <li>
               Actual BPM:
-              <b> {this.state.actualBpm} </b>
+              <b> {Number(this.state.actualBpm.toFixed(2))} </b>
             </li>
             <li>
               Equivalant BPM:
