@@ -1,11 +1,6 @@
 extends layout
 
 block content
-  div.container
-    a#logo(href='/') Smart Scales
-    a.logout.login-hint.right(href='logout/') Logout
-    span.login-hint.right= 'Hello ' + user.firstName
-
   div#root
 
   input(type='hidden' id='userlog' value=JSON.stringify(userlog))

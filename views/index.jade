@@ -1,16 +1,11 @@
 extends layout
 
 block content
-  div.container
-    a#logo(href='/') Smart Scales
-    a.logout.login-hint.right(href='logout/') Logout
-    img(src=user.image)
-    span.login-hint.right= 'Hello ' + user.name
   ul.list-group
     each entry in scales
       a(href='/scalepractice/' + entry._id + '/' + (entry.exerciseId ? entry.exerciseId : ''))
         li.list-group-item
-          span.right.badge= (entry.bpm?entry.bpm:15)+ 'bpm'
+          span.right.badge= (entry.bpm)+ 'bpm'
           div.scale-name= entry.displayName
           div.image-holder
             img.piano-scale(src='/images/scales/' + entry._id + '.png')

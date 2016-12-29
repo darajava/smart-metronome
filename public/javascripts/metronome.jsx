@@ -146,8 +146,8 @@ class Metronome extends React.Component {
 
   slowMetronome() {
     this.setState({
-      bpm: (this.state.bpm - 40),
-      actualBpm: this.calculateActualBpm(this.state.bpm - 40),
+      bpm: (this.state.bpm - 2),
+      actualBpm: this.calculateActualBpm(this.state.bpm - 2),
     }, () => {
       console.log(this.state);
       this.startMetronome();

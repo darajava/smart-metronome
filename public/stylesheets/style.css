@@ -55,6 +55,19 @@ div.container {
   box-sizing: border-box;
 }
 
+.user-section {
+  background: url(/images/arrow.png) no-repeat;
+  background-position: right center;
+  width: 47px;
+  margin-top: -5px;
+}
+
+.user-section img {
+  height: 28px;
+  border: 2px solid;
+  border-radius: 50%;
+}
+
 ul.list-group {
   list-style-type: none;
   padding-left: 0;
