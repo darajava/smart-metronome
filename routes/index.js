@@ -56,11 +56,9 @@ module.exports = function(passport){
       { $sort: {'bpm':-1}},
       ],
       function(err, scales) {
-        // We want to randomly choose 2 of the user's slowest scales
-        // and one of the user's fastest scales.
         var goodScales = scales.slice(0, scales.length / 2).slice(0, 3);
         var badScales = scales.slice(scales.length / 2).slice(0, 3);
-        
+        console.log(scales);
         if (!err)
           res.render('index', { user: req.user, goodScales: goodScales, badScales, badScales});
         else throw err;

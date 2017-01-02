@@ -37,6 +37,7 @@ class Metronome extends React.Component {
 
     var userlog = this.props.userlog[0];
 
+    this.scaleName = userlog.scale[0].name;
     this.key = userlog.scale[0].key;
     this.displayName = userlog.scale[0].displayName;
 
@@ -62,7 +63,7 @@ class Metronome extends React.Component {
       octaves: userlog.octaves,
       displayRetryDialogue: false,
       notesPerBeat: userlog.notesPerBeat,
-      actualBpm: this.calculateActualBpm(userlog.bpm + 10, userlog.notesPerBeat),
+      actualBpm: this.calculateActualBpm(userlog.bpm + 1000, userlog.notesPerBeat),
       completed: false
     }
     
@@ -169,13 +170,13 @@ class Metronome extends React.Component {
 
   saveWorkout() {
     var userlog = {
-      scale: this.key,
+      scale: this.scaleName,
       notesPerBeat: this.state.notesPerBeat,
       octaves: this.state.octaves,
       bpm: parseInt(this.state.bpm)
     };
 
-    console.log(userlog);
+    console.log(this.scaleName);
 
     $.post({
       url: '/saveuserlog',
@@ -338,8 +339,6 @@ class Piano extends React.Component {
 
     var i = 0;
     for (var noteValue of noteValues) {
-      console.log(noteValue);
-      console.log(this.props.startingKey);
       if (noteValue == this.props.startingKey) {
         key[i] = "pressed";
         for (var value of this.props.sequence) {

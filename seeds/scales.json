@@ -2,121 +2,145 @@
 {
   "key": "c",
   "name": "c-major",
+  "displayName": "C Major Scale",
   "type": "major-scale"
 },
 {
   "key": "d",
   "name": "d-major",
+  "displayName": "D Major Scale",
   "type": "major-scale"
 },
 {
   "key": "e",
   "name": "e-major",
+  "displayName": "E Major Scale",
   "type": "major-scale"
 },
 {
   "key": "f",
   "name": "f-major",
+  "displayName": "F Major Scale",
   "type": "major-scale"
 },
 {
   "key": "g",
   "name": "g-major",
+  "displayName": "G Major Scale",
   "type": "major-scale"
 },
 {
   "key": "a",
   "name": "a-major",
+  "displayName": "A Major Scale",
   "type": "major-scale"
 },
 {
   "key": "b",
   "name": "b-major",
+  "displayName": "B Major Scale",
   "type": "major-scale"
 },
 {
   "key": "db",
   "name": "db-major",
+  "displayName": "D♭/C♯ Major Scale",
   "type": "major-scale"
 },
 {
   "key": "eb",
   "name": "eb-major",
+  "displayName": "E♭ Major Scale",
   "type": "major-scale"
 },
 {
   "key": "gb",
   "name": "gb-major",
+  "displayName": "G♭/F♯ Major Scale",
   "type": "major-scale"
 },
 {
   "key": "ab",
   "name": "ab-major",
+  "displayName": "A♭ Major",
   "type": "major-scale"
 },
 {
   "key": "bb",
   "name": "bb-major",
+  "displayName": "B♭ Major Scale",
   "type": "major-scale"
 },
 {
   "key": "c",
   "name": "c-harmonic-minor",
+  "displayName": "C Harmonic Minor",
   "type": "minor-scale"
 },
 {
   "key": "d",
   "name": "d-harmonic-minor",
+  "displayName": "D Harmonic Minor",
   "type": "minor-scale"
 },
 {
   "key": "e",
   "name": "e-harmonic-minor",
+  "displayName": "E Harmonic Minor",
   "type": "minor-scale"
 },
 {
   "key": "f",
   "name": "f-harmonic-minor",
+  "displayName": "F Harmonic Minor",
   "type": "minor-scale"
 },
 {
   "key": "g",
   "name": "g-harmonic-minor",
+  "displayName": "G Harmonic Minor",
   "type": "minor-scale"
 },
 {
   "key": "a",
   "name": "a-harmonic-minor",
+  "displayName": "A Harmonic Minor",
   "type": "minor-scale"
 },
 {
   "key": "b",
   "name": "b-harmonic-minor",
+  "displayName": "B Harmonic Minor",
   "type": "minor-scale"
 },
 {
   "key": "db",
   "name": "db-harmonic-minor",
+  "displayName": "D♭ Harmonic Minor",
   "type": "minor-scale"
 },
 {
   "key": "eb",
   "name": "eb-harmonic-minor",
+  "displayName": "E♭ Harmonic Minor",
   "type": "minor-scale"
 },
 {
   "key": "gb",
   "name": "gb-harmonic-minor",
+  "displayName": "G♭/F♯ Harmonic Minor",
   "type": "minor-scale"
 },
 {
   "key": "ab",
   "name": "ab-harmonic-minor",
+  "displayName": "A♭ Harmonic Minor",
   "type": "minor-scale"
 },
 {
   "key": "bb",
   "name": "bb-harmonic-minor",
+  "displayName": "B♭ Harmonic Minor",
   "type": "minor-scale"
 }
 ]
