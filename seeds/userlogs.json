@@ -1,170 +1,146 @@
 [
 {
-  "scale": "C",
+  "scale": "c-major",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "C Major"
+  "bpm": 5
 },
 {
-  "scale": "D",
+  "scale": "d-major",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "D Major"
+  "bpm": 5
 },
 {
-  "scale": "E",
+  "scale": "e-major",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "E Major"
+  "bpm": 5
 },
 {
-  "scale": "F",
+  "scale": "f-major",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "F Major"
+  "bpm": 5
 },
 {
-  "scale": "G",
+  "scale": "g-major",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "G Major"
+  "bpm": 5
 },
 {
-  "scale": "A",
+  "scale": "a-major",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "A Major"
+  "bpm": 5
 },
 {
-  "scale": "B",
+  "scale": "b-major",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "B Major"
+  "bpm": 5
 },
 {
-  "scale": "Db",
+  "scale": "db-major",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "C♯/D♭ Major"
+  "bpm": 5
 },
 {
-  "scale": "Eb",
+  "scale": "eb-major",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "D♯/E♭ Major"
+  "bpm": 5
 },
 {
-  "scale": "Gb",
+  "scale": "gb-major",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "F♯/G♭ Major"
+  "bpm": 5
 },
 {
-  "scale": "Ab",
+  "scale": "ab-major",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "G♯/A♭ Major"
+  "bpm": 5
 },
 {
-  "scale": "Bb",
+  "scale": "bb-major",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "A♯/B♭ Major"
+  "bpm": 5
 },
 {
-  "scale": "Cm",
+  "scale": "c-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "C Minor"
+  "bpm": 5
 },
 {
-  "scale": "Dm",
+  "scale": "d-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "D Minor"
+  "bpm": 5
 },
 {
-  "scale": "Em",
+  "scale": "e-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "E Minor"
+  "bpm": 5
 },
 {
-  "scale": "Fm",
+  "scale": "f-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "F Minor"
+  "bpm": 5
 },
 {
-  "scale": "Gm",
+  "scale": "g-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "G Minor"
+  "bpm": 5
 },
 {
-  "scale": "Am",
+  "scale": "a-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "A Minor"
+  "bpm": 5
 },
 {
-  "scale": "Bm",
+  "scale": "b-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "B Minor"
+  "bpm": 5
 },
 {
-  "scale": "Dbm",
+  "scale": "db-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "C♯/D♭ Minor"
+  "bpm": 5
 },
 {
-  "scale": "Ebm",
+  "scale": "eb-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "D♯/E♭ Minor"
+  "bpm": 5
 },
 {
-  "scale": "Gbm",
+  "scale": "gb-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "F♯/G♭ Minor"
+  "bpm": 5
 },
 {
-  "scale": "Abm",
+  "scale": "ab-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "G♯/A♭ Minor"
+  "bpm": 5
 },
 {
-  "scale": "Bbm",
+  "scale": "bb-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 
-  "bpm": 5,
-  "displayName": "A♯/B♭ Minor"
+  "bpm": 5
 }
 ]

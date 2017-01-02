@@ -37,8 +37,19 @@ class Metronome extends React.Component {
 
     var userlog = this.props.userlog[0];
 
-    this.scaleName = userlog.scale[0].name;
+    this.key = userlog.scale[0].key;
     this.displayName = userlog.scale[0].displayName;
+
+    switch (userlog.scale[0].type) {
+      case "major-scale":
+        this.sequence = [2, 2, 1, 2, 2, 2, 1];
+        break;
+      case "minor-scale":
+        this.sequence = [2, 1, 2, 2, 1, 3, 1];
+        break;
+    }
+
+    console.log(this.sequence);
 
     this.hands = "both"; 
     this.beatsInBar = 4;
@@ -51,7 +62,7 @@ class Metronome extends React.Component {
       octaves: userlog.octaves,
       displayRetryDialogue: false,
       notesPerBeat: userlog.notesPerBeat,
-      actualBpm: this.calculateActualBpm(userlog.bpm + 10000, userlog.notesPerBeat),
+      actualBpm: this.calculateActualBpm(userlog.bpm + 10, userlog.notesPerBeat),
       completed: false
     }
     
@@ -140,8 +151,10 @@ class Metronome extends React.Component {
       return;
     }
 
-    this.stopMetronome();
-    this.setState({displayRetryDialogue: true, completed: false});
+    setTimeout(() => {
+      this.stopMetronome();
+      this.setState({displayRetryDialogue: true, completed: false});
+    }, 10);
   }
 
   slowMetronome() {
@@ -156,7 +169,7 @@ class Metronome extends React.Component {
 
   saveWorkout() {
     var userlog = {
-      scale: this.scaleName,
+      scale: this.key,
       notesPerBeat: this.state.notesPerBeat,
       octaves: this.state.octaves,
       bpm: parseInt(this.state.bpm)
@@ -256,12 +269,12 @@ class Metronome extends React.Component {
               null
         }
         <div className="todo">
-          <h2>Play <b>{this.displayName}</b> :</h2> 
+          <h2><b>{this.displayName}</b></h2> 
           <div className="image-holder">
-            <img
-              className="piano-scale"
-              src={"/images/scales/" + this.scaleName + ".png"} />
+            <Piano startingKey={this.key} sequence={this.sequence} />
           </div>
+          <hr />
+          <h3>Play this scale:</h3> 
           <ul className="rounded-list">
             <li>
               <b>{toEnglish(this.reps).ucFirst()} </b>
@@ -290,7 +303,7 @@ class Metronome extends React.Component {
               <b> {Number(this.state.actualBpm.toFixed(2))} </b>
             </li>
             <li>
-              Equivalant BPM:
+              BPM at 4 notes per beat:
               <input type="button" value="-" className="plus-minus"  onClick={() => this.incrementBpm(-1)}/>
               <b> {this.state.bpm}</b>
               <input type="button" value="+" className="plus-minus"  onClick={() => this.incrementBpm(1)}/>
@@ -311,6 +324,71 @@ class Metronome extends React.Component {
         <Hamster />
       </div>
     );
+  }
+}
+
+class Piano extends React.Component {
+  
+  render() {
+
+    // 24 empty strings
+    var key = Array(24).join(".").split(".");
+
+    var noteValues = ['c', 'db', 'd', 'eb', 'e', 'f', 'gb', 'g', 'ab', 'a', 'bb', 'b'];
+
+    var i = 0;
+    for (var noteValue of noteValues) {
+      console.log(noteValue);
+      console.log(this.props.startingKey);
+      if (noteValue == this.props.startingKey) {
+        key[i] = "pressed";
+        for (var value of this.props.sequence) {
+          i += value;
+          key[i] = "pressed";
+        }
+        break;
+      }
+      i++;
+    }
+
+    return <div className="piano">
+      <div className="keys">
+        <span className={"c " + key[0]}></span>
+        <span className={"d " + key[2]}>
+          <span className={"db " + key[1]}></span>
+        </span>
+        <span className={"e " + key[4]}>
+          <span className={"eb " + key[3]}></span>
+        </span>
+        <span className={"f " + key[5]}></span>
+        <span className={"g " + key[7]}>
+          <span className={"gb " + key[6]}></span>
+        </span>
+        <span className={"a " + key[9]}>
+          <span className={"ab " + key[8]}></span>
+        </span>
+        <span className={"b " + key[11]}>
+          <span className={"bb " + key[10]}></span>
+        </span>
+        <span className={"c " + key[12]}></span>
+        <span className={"d " + key[14]}>
+          <span className={"db " + key[13]}></span>
+        </span>
+        <span className={"e " + key[16]}>
+          <span className={"eb " + key[15]}></span>
+        </span>
+        <span className={"f " + key[17]}></span>
+        <span className={"g " + key[19]}>
+          <span className={"gb " + key[18]}></span>
+        </span>
+        <span className={"a " + key[21]}>
+          <span className={"ab " + key[20]}></span>
+        </span>
+        <span className={"b " + key[23]}>
+          <span className={"bb " + key[22]}></span>
+        </span>
+      </div>
+    </div>
   }
 }
 

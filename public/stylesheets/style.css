@@ -68,6 +68,10 @@ div.container {
   border-radius: 50%;
 }
 
+.exercise-container h3 {
+  padding: 5px;
+}
+
 ul.list-group {
   list-style-type: none;
   padding-left: 0;

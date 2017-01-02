@@ -1,12 +1,25 @@
 extends layout
 
 block content
-  ul.list-group
-    each entry in scales
-      a(href='/scalepractice/' + entry._id + '/' + (entry.exerciseId ? entry.exerciseId : ''))
-        li.list-group-item
-          span.right.badge= (entry.bpm)+ 'bpm'
-          div.scale-name= entry.displayName
-          div.image-holder
-            img.piano-scale(src='/images/scales/' + entry._id + '.png')
+  .exercise-container
+    h3 A few of your slowest scales:
+    ul.list-group
+      each entry in badScales
+        a(href='/scalepractice/' + entry._id + '/' + (entry.exerciseId ? entry.exerciseId : ''))
+          li.list-group-item
+            span.right.badge= (entry.bpm)+ 'bpm'
+            div.scale-name= entry.displayName
+            div.image-holder
+              img.piano-scale(src='/images/scales/' + entry._id + '.png')
+
+  .exercise-container
+    h2 A few of your fastest scales:
+    ul.list-group
+      each entry in goodScales
+        a(href='/scalepractice/' + entry._id + '/' + (entry.exerciseId ? entry.exerciseId : ''))
+          li.list-group-item
+            span.right.badge= (entry.bpm)+ 'bpm'
+            div.scale-name= entry.displayName
+            div.image-holder
+              img.piano-scale(src='/images/scales/' + entry._id + '.png')
 

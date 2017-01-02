@@ -1,98 +1,122 @@
 [
 {
-  "name": "C",
-  "displayName": "C Major"
+  "key": "c",
+  "name": "c-major",
+  "type": "major-scale"
 },
 {
-  "name": "D",
-  "displayName": "D Major"
+  "key": "d",
+  "name": "d-major",
+  "type": "major-scale"
 },
 {
-  "name": "E",
-  "displayName": "E Major"
+  "key": "e",
+  "name": "e-major",
+  "type": "major-scale"
 },
 {
-  "name": "F",
-  "displayName": "F Major"
+  "key": "f",
+  "name": "f-major",
+  "type": "major-scale"
 },
 {
-  "name": "G",
-  "displayName": "G Major"
+  "key": "g",
+  "name": "g-major",
+  "type": "major-scale"
 },
 {
-  "name": "A",
-  "displayName": "A Major"
+  "key": "a",
+  "name": "a-major",
+  "type": "major-scale"
 },
 {
-  "name": "B",
-  "displayName": "B Major"
+  "key": "b",
+  "name": "b-major",
+  "type": "major-scale"
 },
 {
-  "name": "Db",
-  "displayName": "C♯/D♭ Major"
+  "key": "db",
+  "name": "db-major",
+  "type": "major-scale"
 },
 {
-  "name": "Eb",
-  "displayName": "D♯/E♭ Major"
+  "key": "eb",
+  "name": "eb-major",
+  "type": "major-scale"
 },
 {
-  "name": "Gb",
-  "displayName": "F♯/G♭ Major"
+  "key": "gb",
+  "name": "gb-major",
+  "type": "major-scale"
 },
 {
-  "name": "Ab",
-  "displayName": "G♯/A♭ Major"
+  "key": "ab",
+  "name": "ab-major",
+  "type": "major-scale"
 },
 {
-  "name": "Bb",
-  "displayName": "A♯/B♭ Major"
+  "key": "bb",
+  "name": "bb-major",
+  "type": "major-scale"
 },
 {
-  "name": "Cm",
-  "displayName": "C Minor"
+  "key": "c",
+  "name": "c-harmonic-minor",
+  "type": "minor-scale"
 },
 {
-  "name": "Dm",
-  "displayName": "D Minor"
+  "key": "d",
+  "name": "d-harmonic-minor",
+  "type": "minor-scale"
 },
 {
-  "name": "Em",
-  "displayName": "E Minor"
+  "key": "e",
+  "name": "e-harmonic-minor",
+  "type": "minor-scale"
 },
 {
-  "name": "Fm",
-  "displayName": "F Minor"
+  "key": "f",
+  "name": "f-harmonic-minor",
+  "type": "minor-scale"
 },
 {
-  "name": "Gm",
-  "displayName": "G Minor"
+  "key": "g",
+  "name": "g-harmonic-minor",
+  "type": "minor-scale"
 },
 {
-  "name": "Am",
-  "displayName": "A Minor"
+  "key": "a",
+  "name": "a-harmonic-minor",
+  "type": "minor-scale"
 },
 {
-  "name": "Bm",
-  "displayName": "B Minor"
+  "key": "b",
+  "name": "b-harmonic-minor",
+  "type": "minor-scale"
 },
 {
-  "name": "Dbm",
-  "displayName": "C♯/D♭ Minor"
+  "key": "db",
+  "name": "db-harmonic-minor",
+  "type": "minor-scale"
 },
 {
-  "name": "Ebm",
-  "displayName": "D♯/E♭ Minor"
+  "key": "eb",
+  "name": "eb-harmonic-minor",
+  "type": "minor-scale"
 },
 {
-  "name": "Gbm",
-  "displayName": "F♯/G♭ Minor"
+  "key": "gb",
+  "name": "gb-harmonic-minor",
+  "type": "minor-scale"
 },
 {
-  "name": "Abm",
-  "displayName": "G♯/A♭ Minor"
+  "key": "ab",
+  "name": "ab-harmonic-minor",
+  "type": "minor-scale"
 },
 {
-  "name": "Bbm",
-  "displayName": "A♯/B♭ Minor"
+  "key": "bb",
+  "name": "bb-harmonic-minor",
+  "type": "minor-scale"
 }
 ]
