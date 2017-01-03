@@ -49,6 +49,12 @@ class Metronome extends React.Component {
       case "minor-scale":
         this.sequence = [2, 1, 2, 2, 1, 3, 1];
         break;
+      case "major-arpeggio":
+        this.sequence = [4, 3];
+        break;
+      case "minor-arpeggio":
+        this.sequence = [3, 4];
+        break;
     }
 
     console.log(this.sequence);
@@ -86,7 +92,7 @@ class Metronome extends React.Component {
     this.flag = true;
     setTimeout(() => {this.flag = false;}, 200);
 
-    var degreesOfScale = 7;
+    var degreesOfScale = this.sequence.length;
     var totalNotesInScale = degreesOfScale * this.state.octaves * 2 + 1;
     this.beatsInScale = Math.ceil((totalNotesInScale / this.state.notesPerBeat)/4) * 4;
     
@@ -284,10 +290,12 @@ class Metronome extends React.Component {
     }
 
     var modesOptions = [];
-    for (var i = 0; i < modes.length; i++) {
-      modesOptions.push(
-        <option key={i} value={i}>{modes[i]}</option>
-      );
+    if (typeof modes !== "undefined") {
+      for (var i = 0; i < modes.length; i++) {
+        modesOptions.push(
+          <option key={i} value={i}>{modes[i]}</option>
+        );
+      }
     }
 
     return (

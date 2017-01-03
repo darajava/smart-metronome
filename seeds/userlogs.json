@@ -72,6 +72,150 @@
   "bpm": 5
 },
 {
+  "scale": "c-major-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "d-major-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "e-major-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "f-major-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "g-major-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "a-major-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "b-major-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "db-major-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "eb-major-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "gb-major-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "ab-major-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "bb-major-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "c-minor-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "d-minor-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "e-minor-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "f-minor-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "g-minor-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "a-minor-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "b-minor-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "db-minor-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "eb-minor-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "gb-minor-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "ab-minor-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
+  "scale": "bb-minor-arpeggio",
+  "notesPerBeat": 1,
+  "octaves": 2, 
+  "bpm": 5
+},
+{
   "scale": "c-harmonic-minor",
   "notesPerBeat": 1,
   "octaves": 2, 

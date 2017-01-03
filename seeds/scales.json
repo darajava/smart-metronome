@@ -142,5 +142,149 @@
   "name": "bb-harmonic-minor",
   "displayName": "B♭ Harmonic Minor",
   "type": "minor-scale"
+},
+{
+  "key": "c",
+  "name": "c-major-arpeggio",
+  "displayName": "C Major Arpeggio",
+  "type": "major-arpeggio"
+},
+{
+  "key": "d",
+  "name": "d-major-arpeggio",
+  "displayName": "D Major Arpeggio",
+  "type": "major-arpeggio"
+},
+{
+  "key": "e",
+  "name": "e-major-arpeggio",
+  "displayName": "E Major Arpeggio",
+  "type": "major-arpeggio"
+},
+{
+  "key": "f",
+  "name": "f-major-arpeggio",
+  "displayName": "F Major Arpeggio",
+  "type": "major-arpeggio"
+},
+{
+  "key": "g",
+  "name": "g-major-arpeggio",
+  "displayName": "G Major Arpeggio",
+  "type": "major-arpeggio"
+},
+{
+  "key": "a",
+  "name": "a-major-arpeggio",
+  "displayName": "A Major Arpeggio",
+  "type": "major-arpeggio"
+},
+{
+  "key": "b",
+  "name": "b-major-arpeggio",
+  "displayName": "B Major Arpeggio",
+  "type": "major-arpeggio"
+},
+{
+  "key": "db",
+  "name": "db-major-arpeggio",
+  "displayName": "D♭/C♯ Major Arpeggio",
+  "type": "major-arpeggio"
+},
+{
+  "key": "eb",
+  "name": "eb-major-arpeggio",
+  "displayName": "E♭ Major Arpeggio",
+  "type": "major-arpeggio"
+},
+{
+  "key": "gb",
+  "name": "gb-major-arpeggio",
+  "displayName": "G♭/F♯ Major Arpeggio",
+  "type": "major-arpeggio"
+},
+{
+  "key": "ab",
+  "name": "ab-major-arpeggio",
+  "displayName": "A♭ Major",
+  "type": "major-arpeggio"
+},
+{
+  "key": "bb",
+  "name": "bb-major-arpeggio",
+  "displayName": "B♭ Major Arpeggio",
+  "type": "major-arpeggio"
+},
+{
+  "key": "c",
+  "name": "c-minor-arpeggio",
+  "displayName": "C Minor Arpeggio",
+  "type": "minor-arpeggio"
+},
+{
+  "key": "d",
+  "name": "d-minor-arpeggio",
+  "displayName": "D Minor Arpeggio",
+  "type": "minor-arpeggio"
+},
+{
+  "key": "e",
+  "name": "e-minor-arpeggio",
+  "displayName": "E Minor Arpeggio",
+  "type": "minor-arpeggio"
+},
+{
+  "key": "f",
+  "name": "f-minor-arpeggio",
+  "displayName": "F Minor Arpeggio",
+  "type": "minor-arpeggio"
+},
+{
+  "key": "g",
+  "name": "g-minor-arpeggio",
+  "displayName": "G Minor Arpeggio",
+  "type": "minor-arpeggio"
+},
+{
+  "key": "a",
+  "name": "a-minor-arpeggio",
+  "displayName": "A Minor Arpeggio",
+  "type": "minor-arpeggio"
+},
+{
+  "key": "b",
+  "name": "b-minor-arpeggio",
+  "displayName": "B Minor Arpeggio",
+  "type": "minor-arpeggio"
+},
+{
+  "key": "db",
+  "name": "db-minor-arpeggio",
+  "displayName": "D♭/C♯ Minor Arpeggio",
+  "type": "minor-arpeggio"
+},
+{
+  "key": "eb",
+  "name": "eb-minor-arpeggio",
+  "displayName": "E♭ Minor Arpeggio",
+  "type": "minor-arpeggio"
+},
+{
+  "key": "gb",
+  "name": "gb-minor-arpeggio",
+  "displayName": "G♭/F♯ Minor Arpeggio",
+  "type": "minor-arpeggio"
+},
+{
+  "key": "ab",
+  "name": "ab-minor-arpeggio",
+  "displayName": "A♭ Minor Arpeggio",
+  "type": "minor-arpeggio"
+},
+{
+  "key": "bb",
+  "name": "bb-minor-arpeggio",
+  "displayName": "B♭ Minor Arpeggio",
+  "type": "minor-arpeggio"
 }
 ]

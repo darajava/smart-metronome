@@ -60,7 +60,7 @@ module.exports = function(passport){
         var badScales = scales.slice(scales.length / 2).slice(0, 3);
         console.log(scales);
         if (!err)
-          res.render('index', { user: req.user, goodScales: goodScales, badScales, badScales});
+          res.render('index', { user: req.user, goodScales: scales, badScales, badScales});
         else throw err;
     });
   });
