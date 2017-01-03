@@ -61,6 +61,7 @@ class Metronome extends React.Component {
       counting: false,
       bpm: userlog.bpm + 10,
       octaves: userlog.octaves,
+      mode: 0,
       displayRetryDialogue: false,
       notesPerBeat: userlog.notesPerBeat,
       actualBpm: this.calculateActualBpm(userlog.bpm + 1000, userlog.notesPerBeat),
@@ -72,6 +73,7 @@ class Metronome extends React.Component {
     this.userStopMetronome = this.userStopMetronome.bind(this);
     this.slowMetronome = this.slowMetronome.bind(this);
     this.changeOctaves = this.changeOctaves.bind(this);
+    this.changeMode = this.changeMode.bind(this);
     this.changeNotesPerBeat = this.changeNotesPerBeat.bind(this);
     this.calculateActualBpm = this.calculateActualBpm.bind(this);
   }
@@ -212,6 +214,12 @@ class Metronome extends React.Component {
     });
   }
 
+  changeMode(event) {
+    this.setState({
+      mode: event.target.value,
+    });
+  }
+
   incrementBpm(inc) {
     this.setState({
       bpm: this.state.bpm + inc,
@@ -250,6 +258,23 @@ class Metronome extends React.Component {
       );
     }
 
+    var modes = [
+      "I - Ionian",
+      "II - Dorian",
+      "III - Phrygian",
+      "IV - Lydian",
+      "V - Mixolydian",
+      "VI - Aeolian",
+      "VII - Locrian",
+    ];
+
+    var modesOptions = [];
+    for (var i = 0; i < modes.length; i++) {
+      modesOptions.push(
+        <option key={i} value={i}>{modes[i]}</option>
+      );
+    }
+
     return (
       <div>
         {
@@ -272,7 +297,7 @@ class Metronome extends React.Component {
         <div className="todo">
           <h2><b>{this.displayName}</b></h2> 
           <div className="image-holder">
-            <Piano startingKey={this.key} sequence={this.sequence} />
+            <Piano mode={this.state.mode} startingKey={this.key} sequence={this.sequence} />
           </div>
           <hr />
           <h3>Play this scale:</h3> 
@@ -280,6 +305,15 @@ class Metronome extends React.Component {
             <li>
               <b>{toEnglish(this.reps).ucFirst()} </b>
               time{this.reps == 1 ? '' : 's'} 
+            </li>
+            <li>
+              <div className="select-style" >
+                <select onChange={this.changeMode}>
+                  {modesOptions}
+                </select>
+                <span></span>
+              </div>
+              mode
             </li>
             <li>
               <div className="select-style" >
@@ -335,19 +369,37 @@ class Piano extends React.Component {
     // 24 empty strings
     var key = Array(24).join(".").split(".");
 
-    var noteValues = ['c', 'db', 'd', 'eb', 'e', 'f', 'gb', 'g', 'ab', 'a', 'bb', 'b'];
+    var noteValues = [
+      'c', 'db', 'd', 'eb', 'e', 'f', 'gb', 'g', 'ab', 'a', 'bb', 'b',
+      'c', 'db', 'd', 'eb', 'e', 'f', 'gb', 'g', 'ab', 'a', 'bb', 'b',
+    ];
+
+    // Wrap the sequence around depending on the mode we are on
+    var head = this.props.sequence.slice(0, this.props.mode);
+    var tail = this.props.sequence.slice(this.props.mode);
+    var sequence = tail.concat(head);
 
     var i = 0;
     for (var noteValue of noteValues) {
+      // Count until we find the right key
       if (noteValue == this.props.startingKey) {
-        key[i] = "pressed";
-        for (var value of this.props.sequence) {
-          i += value;
-          key[i] = "pressed";
-        }
+        // Then add notes as appropriate depending on the mode
+        // So that we find the right starting note
+        i += head.reduce((a, b) => a + b, 0);
+        // Wrap so we always start at the first half of the keyboard
+        i %= 12;
         break;
       }
       i++;
+    }
+   
+    console.log(sequence);
+ 
+    // Press the correct notes
+    key[i] = "pressed";
+    for (var value of sequence) {
+      i += value;
+      key[i] = "pressed";
     }
 
     return <div className="piano">
