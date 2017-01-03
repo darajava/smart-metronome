@@ -40,8 +40,9 @@ class Metronome extends React.Component {
     this.scaleName = userlog.scale[0].name;
     this.key = userlog.scale[0].key;
     this.displayName = userlog.scale[0].displayName;
+    this.scaleType = userlog.scale[0].type;
 
-    switch (userlog.scale[0].type) {
+    switch (this.scaleType) {
       case "major-scale":
         this.sequence = [2, 2, 1, 2, 2, 2, 1];
         break;
@@ -258,15 +259,29 @@ class Metronome extends React.Component {
       );
     }
 
-    var modes = [
-      "I - Ionian",
-      "II - Dorian",
-      "III - Phrygian",
-      "IV - Lydian",
-      "V - Mixolydian",
-      "VI - Aeolian",
-      "VII - Locrian",
-    ];
+    console.log(this.scaleType);
+
+    if (this.scaleType == 'major-scale') {
+      var modes = [
+        "I - Ionian",
+        "II - Dorian",
+        "III - Phrygian",
+        "IV - Lydian",
+        "V - Mixolydian",
+        "VI - Aeolian",
+        "VII - Locrian",
+      ];
+    } else if (this.scaleType == 'minor-scale') {
+      var modes = [
+        "I - Harmonic Minor",
+        "II - Locrian #6",
+        "III - Ionian #5",
+        "IV - Dorian #4",
+        "V - Phrygian Dominant",
+        "VI - Lydian #2",
+        "VII - Superlocrian",
+      ];
+    }
 
     var modesOptions = [];
     for (var i = 0; i < modes.length; i++) {
