@@ -3,1014 +3,1328 @@
   "key": "c",
   "name": "c-major",
   "displayName": "C Major Scale",
-  "type": "major-scale"
+  "type": "major-scale",
+  "scale": "true"
 },
 {
   "key": "d",
   "name": "d-major",
   "displayName": "D Major Scale",
-  "type": "major-scale"
+  "type": "major-scale",
+  "scale": "true"
 },
 {
   "key": "e",
   "name": "e-major",
   "displayName": "E Major Scale",
-  "type": "major-scale"
+  "type": "major-scale",
+  "scale": "true"
 },
 {
   "key": "f",
   "name": "f-major",
   "displayName": "F Major Scale",
-  "type": "major-scale"
+  "type": "major-scale",
+  "scale": "true"
 },
 {
   "key": "g",
   "name": "g-major",
   "displayName": "G Major Scale",
-  "type": "major-scale"
+  "type": "major-scale",
+  "scale": "true"
 },
 {
   "key": "a",
   "name": "a-major",
   "displayName": "A Major Scale",
-  "type": "major-scale"
+  "type": "major-scale",
+  "scale": "true"
 },
 {
   "key": "b",
   "name": "b-major",
   "displayName": "B Major Scale",
-  "type": "major-scale"
+  "type": "major-scale",
+  "scale": "true"
 },
 {
   "key": "db",
   "name": "db-major",
   "displayName": "D♭/C♯ Major Scale",
-  "type": "major-scale"
+  "type": "major-scale",
+  "scale": "true"
 },
 {
   "key": "eb",
   "name": "eb-major",
   "displayName": "E♭ Major Scale",
-  "type": "major-scale"
+  "type": "major-scale",
+  "scale": "true"
 },
 {
   "key": "gb",
   "name": "gb-major",
   "displayName": "G♭/F♯ Major Scale",
-  "type": "major-scale"
+  "type": "major-scale",
+  "scale": "true"
 },
 {
   "key": "ab",
   "name": "ab-major",
   "displayName": "A♭ Major",
-  "type": "major-scale"
+  "type": "major-scale",
+  "scale": "true"
 },
 {
   "key": "bb",
   "name": "bb-major",
   "displayName": "B♭ Major Scale",
-  "type": "major-scale"
+  "type": "major-scale",
+  "scale": "true"
 },
 {
   "key": "c",
   "name": "c-harmonic-minor",
   "displayName": "C Harmonic Minor",
-  "type": "minor-scale"
+  "type": "minor-scale",
+  "scale": "true"
 },
 {
   "key": "d",
   "name": "d-harmonic-minor",
   "displayName": "D Harmonic Minor",
-  "type": "minor-scale"
+  "type": "minor-scale",
+  "scale": "true"
 },
 {
   "key": "e",
   "name": "e-harmonic-minor",
   "displayName": "E Harmonic Minor",
-  "type": "minor-scale"
+  "type": "minor-scale",
+  "scale": "true"
 },
 {
   "key": "f",
   "name": "f-harmonic-minor",
   "displayName": "F Harmonic Minor",
-  "type": "minor-scale"
+  "type": "minor-scale",
+  "scale": "true"
 },
 {
   "key": "g",
   "name": "g-harmonic-minor",
   "displayName": "G Harmonic Minor",
-  "type": "minor-scale"
+  "type": "minor-scale",
+  "scale": "true"
 },
 {
   "key": "a",
   "name": "a-harmonic-minor",
   "displayName": "A Harmonic Minor",
-  "type": "minor-scale"
+  "type": "minor-scale",
+  "scale": "true"
 },
 {
   "key": "b",
   "name": "b-harmonic-minor",
   "displayName": "B Harmonic Minor",
-  "type": "minor-scale"
+  "type": "minor-scale",
+  "scale": "true"
 },
 {
   "key": "db",
   "name": "db-harmonic-minor",
   "displayName": "D♭ Harmonic Minor",
-  "type": "minor-scale"
+  "type": "minor-scale",
+  "scale": "true"
 },
 {
   "key": "eb",
   "name": "eb-harmonic-minor",
   "displayName": "E♭ Harmonic Minor",
-  "type": "minor-scale"
+  "type": "minor-scale",
+  "scale": "true"
 },
 {
   "key": "gb",
   "name": "gb-harmonic-minor",
   "displayName": "G♭/F♯ Harmonic Minor",
-  "type": "minor-scale"
+  "type": "minor-scale",
+  "scale": "true"
 },
 {
   "key": "ab",
   "name": "ab-harmonic-minor",
   "displayName": "A♭ Harmonic Minor",
-  "type": "minor-scale"
+  "type": "minor-scale",
+  "scale": "true"
 },
 {
   "key": "bb",
   "name": "bb-harmonic-minor",
   "displayName": "B♭ Harmonic Minor",
-  "type": "minor-scale"
+  "type": "minor-scale",
+  "scale": "true"
 },
 {
   "key": "c",
   "name": "c-minor-pentatonic",
+  "scale": "true",
   "displayName": "C Minor Pentatonic",
-  "type": "minor-pentatonic"
+  "type": "minor-pentatonic",
+  "scale": "true"
 },
 {
   "key": "d",
   "name": "d-minor-pentatonic",
+  "scale": "true",
   "displayName": "D Minor Pentatonic",
-  "type": "minor-pentatonic"
+  "type": "minor-pentatonic",
+  "scale": "true"
 },
 {
   "key": "e",
   "name": "e-minor-pentatonic",
+  "scale": "true",
   "displayName": "E Minor Pentatonic",
-  "type": "minor-pentatonic"
+  "type": "minor-pentatonic",
+  "scale": "true"
 },
 {
   "key": "f",
   "name": "f-minor-pentatonic",
+  "scale": "true",
   "displayName": "F Minor Pentatonic",
-  "type": "minor-pentatonic"
+  "type": "minor-pentatonic",
+  "scale": "true"
 },
 {
   "key": "g",
   "name": "g-minor-pentatonic",
+  "scale": "true",
   "displayName": "G Minor Pentatonic",
-  "type": "minor-pentatonic"
+  "type": "minor-pentatonic",
+  "scale": "true"
 },
 {
   "key": "a",
   "name": "a-minor-pentatonic",
+  "scale": "true",
   "displayName": "A Minor Pentatonic",
-  "type": "minor-pentatonic"
+  "type": "minor-pentatonic",
+  "scale": "true"
 },
 {
   "key": "b",
   "name": "b-minor-pentatonic",
+  "scale": "true",
   "displayName": "B Minor Pentatonic",
-  "type": "minor-pentatonic"
+  "type": "minor-pentatonic",
+  "scale": "true"
 },
 {
   "key": "db",
   "name": "db-minor-pentatonic",
+  "scale": "true",
   "displayName": "D♭ Minor Pentatonic",
-  "type": "minor-pentatonic"
+  "type": "minor-pentatonic",
+  "scale": "true"
 },
 {
   "key": "eb",
   "name": "eb-minor-pentatonic",
+  "scale": "true",
   "displayName": "E♭ Minor Pentatonic",
-  "type": "minor-pentatonic"
+  "type": "minor-pentatonic",
+  "scale": "true"
 },
 {
   "key": "gb",
   "name": "gb-minor-pentatonic",
+  "scale": "true",
   "displayName": "G♭/F♯ Minor Pentatonic",
-  "type": "minor-pentatonic"
+  "type": "minor-pentatonic",
+  "scale": "true"
 },
 {
   "key": "ab",
   "name": "ab-minor-pentatonic",
+  "scale": "true",
   "displayName": "A♭ Minor Pentatonic",
-  "type": "minor-pentatonic"
+  "type": "minor-pentatonic",
+  "scale": "true"
 },
 {
   "key": "bb",
   "name": "bb-minor-pentatonic",
+  "scale": "true",
   "displayName": "B♭ Minor Pentatonic",
-  "type": "minor-pentatonic"
+  "type": "minor-pentatonic",
+  "scale": "true"
 },
 {
   "key": "c",
   "name": "c-blues-pentatonic",
+  "scale": "true",
   "displayName": "C Blues Pentatonic",
-  "type": "blues-pentatonic"
+  "type": "blues-pentatonic",
+  "scale": "true"
 },
 {
   "key": "d",
   "name": "d-blues-pentatonic",
+  "scale": "true",
   "displayName": "D Blues Pentatonic",
-  "type": "blues-pentatonic"
+  "type": "blues-pentatonic",
+  "scale": "true"
 },
 {
   "key": "e",
   "name": "e-blues-pentatonic",
+  "scale": "true",
   "displayName": "E Blues Pentatonic",
-  "type": "blues-pentatonic"
+  "type": "blues-pentatonic",
+  "scale": "true"
 },
 {
   "key": "f",
   "name": "f-blues-pentatonic",
+  "scale": "true",
   "displayName": "F Blues Pentatonic",
-  "type": "blues-pentatonic"
+  "type": "blues-pentatonic",
+  "scale": "true"
 },
 {
   "key": "g",
   "name": "g-blues-pentatonic",
+  "scale": "true",
   "displayName": "G Blues Pentatonic",
-  "type": "blues-pentatonic"
+  "type": "blues-pentatonic",
+  "scale": "true"
 },
 {
   "key": "a",
   "name": "a-blues-pentatonic",
+  "scale": "true",
   "displayName": "A Blues Pentatonic",
-  "type": "blues-pentatonic"
+  "type": "blues-pentatonic",
+  "scale": "true"
 },
 {
   "key": "b",
   "name": "b-blues-pentatonic",
+  "scale": "true",
   "displayName": "B Blues Pentatonic",
-  "type": "blues-pentatonic"
+  "type": "blues-pentatonic",
+  "scale": "true"
 },
 {
   "key": "db",
   "name": "db-blues-pentatonic",
+  "scale": "true",
   "displayName": "D♭ Blues Pentatonic",
-  "type": "blues-pentatonic"
+  "type": "blues-pentatonic",
+  "scale": "true"
 },
 {
   "key": "eb",
   "name": "eb-blues-pentatonic",
+  "scale": "true",
   "displayName": "E♭ Blues Pentatonic",
-  "type": "blues-pentatonic"
+  "type": "blues-pentatonic",
+  "scale": "true"
 },
 {
   "key": "gb",
   "name": "gb-blues-pentatonic",
+  "scale": "true",
   "displayName": "G♭/F♯ Blues Pentatonic",
-  "type": "blues-pentatonic"
+  "type": "blues-pentatonic",
+  "scale": "true"
 },
 {
   "key": "ab",
   "name": "ab-blues-pentatonic",
+  "scale": "true",
   "displayName": "A♭ Blues Pentatonic",
-  "type": "blues-pentatonic"
+  "type": "blues-pentatonic",
+  "scale": "true"
 },
 {
   "key": "bb",
   "name": "bb-blues-pentatonic",
+  "scale": "true",
   "displayName": "B♭ Blues Pentatonic",
-  "type": "blues-pentatonic"
+  "type": "blues-pentatonic",
+  "scale": "true"
 },
 {
   "key": "c",
   "name": "c-major-arpeggio",
+  "scale": "false",
   "displayName": "C Major Arpeggio",
-  "type": "major-arpeggio"
+  "type": "major-arpeggio",
+  "scale": "false"
 },
 {
   "key": "d",
   "name": "d-major-arpeggio",
+  "scale": "false",
   "displayName": "D Major Arpeggio",
-  "type": "major-arpeggio"
+  "type": "major-arpeggio",
+  "scale": "false"
 },
 {
   "key": "e",
   "name": "e-major-arpeggio",
+  "scale": "false",
   "displayName": "E Major Arpeggio",
-  "type": "major-arpeggio"
+  "type": "major-arpeggio",
+  "scale": "false"
 },
 {
   "key": "f",
   "name": "f-major-arpeggio",
+  "scale": "false",
   "displayName": "F Major Arpeggio",
-  "type": "major-arpeggio"
+  "type": "major-arpeggio",
+  "scale": "false"
 },
 {
   "key": "g",
   "name": "g-major-arpeggio",
+  "scale": "false",
   "displayName": "G Major Arpeggio",
-  "type": "major-arpeggio"
+  "type": "major-arpeggio",
+  "scale": "false"
 },
 {
   "key": "a",
   "name": "a-major-arpeggio",
+  "scale": "false",
   "displayName": "A Major Arpeggio",
-  "type": "major-arpeggio"
+  "type": "major-arpeggio",
+  "scale": "false"
 },
 {
   "key": "b",
   "name": "b-major-arpeggio",
+  "scale": "false",
   "displayName": "B Major Arpeggio",
-  "type": "major-arpeggio"
+  "type": "major-arpeggio",
+  "scale": "false"
 },
 {
   "key": "db",
   "name": "db-major-arpeggio",
+  "scale": "false",
   "displayName": "D♭/C♯ Major Arpeggio",
-  "type": "major-arpeggio"
+  "type": "major-arpeggio",
+  "scale": "false"
 },
 {
   "key": "eb",
   "name": "eb-major-arpeggio",
+  "scale": "false",
   "displayName": "E♭ Major Arpeggio",
-  "type": "major-arpeggio"
+  "type": "major-arpeggio",
+  "scale": "false"
 },
 {
   "key": "gb",
   "name": "gb-major-arpeggio",
+  "scale": "false",
   "displayName": "G♭/F♯ Major Arpeggio",
-  "type": "major-arpeggio"
+  "type": "major-arpeggio",
+  "scale": "false"
 },
 {
   "key": "ab",
   "name": "ab-major-arpeggio",
+  "scale": "false",
   "displayName": "A♭ Major",
-  "type": "major-arpeggio"
+  "type": "major-arpeggio",
+  "scale": "false"
 },
 {
   "key": "bb",
   "name": "bb-major-arpeggio",
+  "scale": "false",
   "displayName": "B♭ Major Arpeggio",
-  "type": "major-arpeggio"
+  "type": "major-arpeggio",
+  "scale": "false"
 },
 {
   "key": "c",
   "name": "c-minor-arpeggio",
+  "scale": "false",
   "displayName": "C Minor Arpeggio",
-  "type": "minor-arpeggio"
+  "type": "minor-arpeggio",
+  "scale": "false"
 },
 {
   "key": "d",
   "name": "d-minor-arpeggio",
+  "scale": "false",
   "displayName": "D Minor Arpeggio",
-  "type": "minor-arpeggio"
+  "type": "minor-arpeggio",
+  "scale": "false"
 },
 {
   "key": "e",
   "name": "e-minor-arpeggio",
+  "scale": "false",
   "displayName": "E Minor Arpeggio",
-  "type": "minor-arpeggio"
+  "type": "minor-arpeggio",
+  "scale": "false"
 },
 {
   "key": "f",
   "name": "f-minor-arpeggio",
+  "scale": "false",
   "displayName": "F Minor Arpeggio",
-  "type": "minor-arpeggio"
+  "type": "minor-arpeggio",
+  "scale": "false"
 },
 {
   "key": "g",
   "name": "g-minor-arpeggio",
+  "scale": "false",
   "displayName": "G Minor Arpeggio",
-  "type": "minor-arpeggio"
+  "type": "minor-arpeggio",
+  "scale": "false"
 },
 {
   "key": "a",
   "name": "a-minor-arpeggio",
+  "scale": "false",
   "displayName": "A Minor Arpeggio",
-  "type": "minor-arpeggio"
+  "type": "minor-arpeggio",
+  "scale": "false"
 },
 {
   "key": "b",
   "name": "b-minor-arpeggio",
+  "scale": "false",
   "displayName": "B Minor Arpeggio",
-  "type": "minor-arpeggio"
+  "type": "minor-arpeggio",
+  "scale": "false"
 },
 {
   "key": "db",
   "name": "db-minor-arpeggio",
+  "scale": "false",
   "displayName": "D♭/C♯ Minor Arpeggio",
-  "type": "minor-arpeggio"
+  "type": "minor-arpeggio",
+  "scale": "false"
 },
 {
   "key": "eb",
   "name": "eb-minor-arpeggio",
+  "scale": "false",
   "displayName": "E♭ Minor Arpeggio",
-  "type": "minor-arpeggio"
+  "type": "minor-arpeggio",
+  "scale": "false"
 },
 {
   "key": "gb",
   "name": "gb-minor-arpeggio",
+  "scale": "false",
   "displayName": "G♭/F♯ Minor Arpeggio",
-  "type": "minor-arpeggio"
+  "type": "minor-arpeggio",
+  "scale": "false"
 },
 {
   "key": "ab",
   "name": "ab-minor-arpeggio",
+  "scale": "false",
   "displayName": "A♭ Minor Arpeggio",
-  "type": "minor-arpeggio"
+  "type": "minor-arpeggio",
+  "scale": "false"
 },
 {
   "key": "bb",
   "name": "bb-minor-arpeggio",
+  "scale": "false",
   "displayName": "B♭ Minor Arpeggio",
-  "type": "minor-arpeggio"
+  "type": "minor-arpeggio",
+  "scale": "false"
 },
 {
   "key": "c",
   "name": "c-major-7-arpeggio",
+  "scale": "false",
   "displayName": "CM7 Arpeggio",
-  "type": "major-7-arpeggio"
+  "type": "major-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "d",
   "name": "d-major-7-arpeggio",
+  "scale": "false",
   "displayName": "DM7 Arpeggio",
-  "type": "major-7-arpeggio"
+  "type": "major-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "e",
   "name": "e-major-7-arpeggio",
+  "scale": "false",
   "displayName": "EM7 Arpeggio",
-  "type": "major-7-arpeggio"
+  "type": "major-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "f",
   "name": "f-major-7-arpeggio",
+  "scale": "false",
   "displayName": "FM7 Arpeggio",
-  "type": "major-7-arpeggio"
+  "type": "major-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "g",
   "name": "g-major-7-arpeggio",
+  "scale": "false",
   "displayName": "GM7 Arpeggio",
-  "type": "major-7-arpeggio"
+  "type": "major-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "a",
   "name": "a-major-7-arpeggio",
+  "scale": "false",
   "displayName": "AM7 Arpeggio",
-  "type": "major-7-arpeggio"
+  "type": "major-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "b",
   "name": "b-major-7-arpeggio",
+  "scale": "false",
   "displayName": "BM7 Arpeggio",
-  "type": "major-7-arpeggio"
+  "type": "major-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "db",
   "name": "db-major-7-arpeggio",
+  "scale": "false",
   "displayName": "D♭/C♯M7 Arpeggio",
-  "type": "major-7-arpeggio"
+  "type": "major-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "eb",
   "name": "eb-major-7-arpeggio",
+  "scale": "false",
   "displayName": "E♭M7 Arpeggio",
-  "type": "major-7-arpeggio"
+  "type": "major-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "gb",
   "name": "gb-major-7-arpeggio",
+  "scale": "false",
   "displayName": "G♭/F♯M7 Arpeggio",
-  "type": "major-7-arpeggio"
+  "type": "major-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "ab",
   "name": "ab-major-7-arpeggio",
+  "scale": "false",
   "displayName": "A♭M7 Arpeggio",
-  "type": "major-7-arpeggio"
+  "type": "major-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "bb",
   "name": "bb-major-7-arpeggio",
+  "scale": "false",
   "displayName": "B♭M7 Arpeggio",
-  "type": "major-7-arpeggio"
+  "type": "major-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "c",
   "name": "c-minor-7-arpeggio",
+  "scale": "false",
   "displayName": "Cmin7 Arpeggio",
-  "type": "minor-7-arpeggio"
+  "type": "minor-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "d",
   "name": "d-minor-7-arpeggio",
+  "scale": "false",
   "displayName": "Dmin7 Arpeggio",
-  "type": "minor-7-arpeggio"
+  "type": "minor-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "e",
   "name": "e-minor-7-arpeggio",
+  "scale": "false",
   "displayName": "Emin7 Arpeggio",
-  "type": "minor-7-arpeggio"
+  "type": "minor-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "f",
   "name": "f-minor-7-arpeggio",
+  "scale": "false",
   "displayName": "Fmin7 Arpeggio",
-  "type": "minor-7-arpeggio"
+  "type": "minor-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "g",
   "name": "g-minor-7-arpeggio",
+  "scale": "false",
   "displayName": "Gmin7 Arpeggio",
-  "type": "minor-7-arpeggio"
+  "type": "minor-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "a",
   "name": "a-minor-7-arpeggio",
+  "scale": "false",
   "displayName": "Amin7 Arpeggio",
-  "type": "minor-7-arpeggio"
+  "type": "minor-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "b",
   "name": "b-minor-7-arpeggio",
+  "scale": "false",
   "displayName": "Bmin7 Arpeggio",
-  "type": "minor-7-arpeggio"
+  "type": "minor-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "db",
   "name": "db-minor-7-arpeggio",
+  "scale": "false",
   "displayName": "D♭/C♯min7 Arpeggio",
-  "type": "minor-7-arpeggio"
+  "type": "minor-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "eb",
   "name": "eb-minor-7-arpeggio",
+  "scale": "false",
   "displayName": "E♭min7 Arpeggio",
-  "type": "minor-7-arpeggio"
+  "type": "minor-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "gb",
   "name": "gb-minor-7-arpeggio",
+  "scale": "false",
   "displayName": "G♭/F♯min7 Arpeggio",
-  "type": "minor-7-arpeggio"
+  "type": "minor-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "ab",
   "name": "ab-minor-7-arpeggio",
+  "scale": "false",
   "displayName": "A♭min7 Arpeggio",
-  "type": "minor-7-arpeggio"
+  "type": "minor-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "bb",
   "name": "bb-minor-7-arpeggio",
+  "scale": "false",
   "displayName": "B♭min7 Arpeggio",
-  "type": "minor-7-arpeggio"
+  "type": "minor-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "c",
   "name": "c-major-6-arpeggio",
+  "scale": "false",
   "displayName": "CM6 Arpeggio",
-  "type": "major-6-arpeggio"
+  "type": "major-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "d",
   "name": "d-major-6-arpeggio",
+  "scale": "false",
   "displayName": "DM6 Arpeggio",
-  "type": "major-6-arpeggio"
+  "type": "major-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "e",
   "name": "e-major-6-arpeggio",
+  "scale": "false",
   "displayName": "EM6 Arpeggio",
-  "type": "major-6-arpeggio"
+  "type": "major-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "f",
   "name": "f-major-6-arpeggio",
+  "scale": "false",
   "displayName": "FM6 Arpeggio",
-  "type": "major-6-arpeggio"
+  "type": "major-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "g",
   "name": "g-major-6-arpeggio",
+  "scale": "false",
   "displayName": "GM6 Arpeggio",
-  "type": "major-6-arpeggio"
+  "type": "major-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "a",
   "name": "a-major-6-arpeggio",
+  "scale": "false",
   "displayName": "AM6 Arpeggio",
-  "type": "major-6-arpeggio"
+  "type": "major-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "b",
   "name": "b-major-6-arpeggio",
+  "scale": "false",
   "displayName": "BM6 Arpeggio",
-  "type": "major-6-arpeggio"
+  "type": "major-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "db",
   "name": "db-major-6-arpeggio",
+  "scale": "false",
   "displayName": "D♭/C♯M6 Arpeggio",
-  "type": "major-6-arpeggio"
+  "type": "major-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "eb",
   "name": "eb-major-6-arpeggio",
+  "scale": "false",
   "displayName": "E♭M6 Arpeggio",
-  "type": "major-6-arpeggio"
+  "type": "major-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "gb",
   "name": "gb-major-6-arpeggio",
+  "scale": "false",
   "displayName": "G♭/F♯M6 Arpeggio",
-  "type": "major-6-arpeggio"
+  "type": "major-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "ab",
   "name": "ab-major-6-arpeggio",
+  "scale": "false",
   "displayName": "A♭M6 Arpeggio",
-  "type": "major-6-arpeggio"
+  "type": "major-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "bb",
   "name": "bb-major-6-arpeggio",
+  "scale": "false",
   "displayName": "B♭M6 Arpeggio",
-  "type": "major-6-arpeggio"
+  "type": "major-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "c",
   "name": "c-minor-6-arpeggio",
+  "scale": "false",
   "displayName": "Cmin6 Arpeggio",
-  "type": "minor-6-arpeggio"
+  "type": "minor-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "d",
   "name": "d-minor-6-arpeggio",
+  "scale": "false",
   "displayName": "Dmin6 Arpeggio",
-  "type": "minor-6-arpeggio"
+  "type": "minor-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "e",
   "name": "e-minor-6-arpeggio",
+  "scale": "false",
   "displayName": "Emin6 Arpeggio",
-  "type": "minor-6-arpeggio"
+  "type": "minor-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "f",
   "name": "f-minor-6-arpeggio",
+  "scale": "false",
   "displayName": "Fmin6 Arpeggio",
-  "type": "minor-6-arpeggio"
+  "type": "minor-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "g",
   "name": "g-minor-6-arpeggio",
+  "scale": "false",
   "displayName": "Gmin6 Arpeggio",
-  "type": "minor-6-arpeggio"
+  "type": "minor-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "a",
   "name": "a-minor-6-arpeggio",
+  "scale": "false",
   "displayName": "Amin6 Arpeggio",
-  "type": "minor-6-arpeggio"
+  "type": "minor-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "b",
   "name": "b-minor-6-arpeggio",
+  "scale": "false",
   "displayName": "Bmin6 Arpeggio",
-  "type": "minor-6-arpeggio"
+  "type": "minor-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "db",
   "name": "db-minor-6-arpeggio",
+  "scale": "false",
   "displayName": "D♭/C♯min6 Arpeggio",
-  "type": "minor-6-arpeggio"
+  "type": "minor-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "eb",
   "name": "eb-minor-6-arpeggio",
+  "scale": "false",
   "displayName": "E♭min6 Arpeggio",
-  "type": "minor-6-arpeggio"
+  "type": "minor-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "gb",
   "name": "gb-minor-6-arpeggio",
+  "scale": "false",
   "displayName": "G♭/F♯min6 Arpeggio",
-  "type": "minor-6-arpeggio"
+  "type": "minor-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "ab",
   "name": "ab-minor-6-arpeggio",
+  "scale": "false",
   "displayName": "A♭min6 Arpeggio",
-  "type": "minor-6-arpeggio"
+  "type": "minor-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "bb",
   "name": "bb-minor-6-arpeggio",
+  "scale": "false",
   "displayName": "B♭min6 Arpeggio",
-  "type": "minor-6-arpeggio"
+  "type": "minor-6-arpeggio",
+  "scale": "false"
 },
 {
   "key": "c",
   "name": "c-augmented-arpeggio",
+  "scale": "false",
   "displayName": "Caug Arpeggio",
-  "type": "augmented-arpeggio"
+  "type": "augmented-arpeggio",
+  "scale": "false"
 },
 {
   "key": "d",
   "name": "d-augmented-arpeggio",
+  "scale": "false",
   "displayName": "Daug Arpeggio",
-  "type": "augmented-arpeggio"
+  "type": "augmented-arpeggio",
+  "scale": "false"
 },
 {
   "key": "e",
   "name": "e-augmented-arpeggio",
+  "scale": "false",
   "displayName": "Eaug Arpeggio",
-  "type": "augmented-arpeggio"
+  "type": "augmented-arpeggio",
+  "scale": "false"
 },
 {
   "key": "f",
   "name": "f-augmented-arpeggio",
+  "scale": "false",
   "displayName": "Faug Arpeggio",
-  "type": "augmented-arpeggio"
+  "type": "augmented-arpeggio",
+  "scale": "false"
 },
 {
   "key": "g",
   "name": "g-augmented-arpeggio",
+  "scale": "false",
   "displayName": "Gaug Arpeggio",
-  "type": "augmented-arpeggio"
+  "type": "augmented-arpeggio",
+  "scale": "false"
 },
 {
   "key": "a",
   "name": "a-augmented-arpeggio",
+  "scale": "false",
   "displayName": "Aaug Arpeggio",
-  "type": "augmented-arpeggio"
+  "type": "augmented-arpeggio",
+  "scale": "false"
 },
 {
   "key": "b",
   "name": "b-augmented-arpeggio",
+  "scale": "false",
   "displayName": "Baug Arpeggio",
-  "type": "augmented-arpeggio"
+  "type": "augmented-arpeggio",
+  "scale": "false"
 },
 {
   "key": "db",
   "name": "db-augmented-arpeggio",
+  "scale": "false",
   "displayName": "D♭/C♯aug Arpeggio",
-  "type": "augmented-arpeggio"
+  "type": "augmented-arpeggio",
+  "scale": "false"
 },
 {
   "key": "eb",
   "name": "eb-augmented-arpeggio",
+  "scale": "false",
   "displayName": "E♭aug Arpeggio",
-  "type": "augmented-arpeggio"
+  "type": "augmented-arpeggio",
+  "scale": "false"
 },
 {
   "key": "gb",
   "name": "gb-augmented-arpeggio",
+  "scale": "false",
   "displayName": "G♭/F♯aug Arpeggio",
-  "type": "augmented-arpeggio"
+  "type": "augmented-arpeggio",
+  "scale": "false"
 },
 {
   "key": "ab",
   "name": "ab-augmented-arpeggio",
+  "scale": "false",
   "displayName": "A♭aug Arpeggio",
-  "type": "augmented-arpeggio"
+  "type": "augmented-arpeggio",
+  "scale": "false"
 },
 {
   "key": "bb",
   "name": "bb-augmented-arpeggio",
+  "scale": "false",
   "displayName": "B♭aug Arpeggio",
-  "type": "augmented-arpeggio"
+  "type": "augmented-arpeggio",
+  "scale": "false"
 },
 {
   "key": "c",
   "name": "c-diminished-arpeggio",
+  "scale": "false",
   "displayName": "Cdim Arpeggio",
-  "type": "diminished-arpeggio"
+  "type": "diminished-arpeggio",
+  "scale": "false"
 },
 {
   "key": "d",
   "name": "d-diminished-arpeggio",
+  "scale": "false",
   "displayName": "Ddim Arpeggio",
-  "type": "diminished-arpeggio"
+  "type": "diminished-arpeggio",
+  "scale": "false"
 },
 {
   "key": "e",
   "name": "e-diminished-arpeggio",
+  "scale": "false",
   "displayName": "Edim Arpeggio",
-  "type": "diminished-arpeggio"
+  "type": "diminished-arpeggio",
+  "scale": "false"
 },
 {
   "key": "f",
   "name": "f-diminished-arpeggio",
+  "scale": "false",
   "displayName": "Fdim Arpeggio",
-  "type": "diminished-arpeggio"
+  "type": "diminished-arpeggio",
+  "scale": "false"
 },
 {
   "key": "g",
   "name": "g-diminished-arpeggio",
+  "scale": "false",
   "displayName": "Gdim Arpeggio",
-  "type": "diminished-arpeggio"
+  "type": "diminished-arpeggio",
+  "scale": "false"
 },
 {
   "key": "a",
   "name": "a-diminished-arpeggio",
+  "scale": "false",
   "displayName": "Adim Arpeggio",
-  "type": "diminished-arpeggio"
+  "type": "diminished-arpeggio",
+  "scale": "false"
 },
 {
   "key": "b",
   "name": "b-diminished-arpeggio",
+  "scale": "false",
   "displayName": "Bdim Arpeggio",
-  "type": "diminished-arpeggio"
+  "type": "diminished-arpeggio",
+  "scale": "false"
 },
 {
   "key": "db",
   "name": "db-diminished-arpeggio",
+  "scale": "false",
   "displayName": "D♭/C♯dim Arpeggio",
-  "type": "diminished-arpeggio"
+  "type": "diminished-arpeggio",
+  "scale": "false"
 },
 {
   "key": "eb",
   "name": "eb-diminished-arpeggio",
+  "scale": "false",
   "displayName": "E♭dim Arpeggio",
-  "type": "diminished-arpeggio"
+  "type": "diminished-arpeggio",
+  "scale": "false"
 },
 {
   "key": "gb",
   "name": "gb-diminished-arpeggio",
+  "scale": "false",
   "displayName": "G♭/F♯dim Arpeggio",
-  "type": "diminished-arpeggio"
+  "type": "diminished-arpeggio",
+  "scale": "false"
 },
 {
   "key": "ab",
   "name": "ab-diminished-arpeggio",
+  "scale": "false",
   "displayName": "A♭dim Arpeggio",
-  "type": "diminished-arpeggio"
+  "type": "diminished-arpeggio",
+  "scale": "false"
 },
 {
   "key": "bb",
   "name": "bb-diminished-arpeggio",
+  "scale": "false",
   "displayName": "B♭dim Arpeggio",
-  "type": "diminished-arpeggio"
+  "type": "diminished-arpeggio",
+  "scale": "false"
 },
 {
   "key": "c",
   "name": "c-augmented-7-arpeggio",
+  "scale": "false",
   "displayName": "Caug7 Arpeggio",
-  "type": "augmented-7-arpeggio"
+  "type": "augmented-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "d",
   "name": "d-augmented-7-arpeggio",
+  "scale": "false",
   "displayName": "Daug7 Arpeggio",
-  "type": "augmented-7-arpeggio"
+  "type": "augmented-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "e",
   "name": "e-augmented-7-arpeggio",
+  "scale": "false",
   "displayName": "Eaug7 Arpeggio",
-  "type": "augmented-7-arpeggio"
+  "type": "augmented-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "f",
   "name": "f-augmented-7-arpeggio",
+  "scale": "false",
   "displayName": "Faug7 Arpeggio",
-  "type": "augmented-7-arpeggio"
+  "type": "augmented-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "g",
   "name": "g-augmented-7-arpeggio",
+  "scale": "false",
   "displayName": "Gaug7 Arpeggio",
-  "type": "augmented-7-arpeggio"
+  "type": "augmented-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "a",
   "name": "a-augmented-7-arpeggio",
+  "scale": "false",
   "displayName": "Aaug7 Arpeggio",
-  "type": "augmented-7-arpeggio"
+  "type": "augmented-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "b",
   "name": "b-augmented-7-arpeggio",
+  "scale": "false",
   "displayName": "Baug7 Arpeggio",
-  "type": "augmented-7-arpeggio"
+  "type": "augmented-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "db",
   "name": "db-augmented-7-arpeggio",
+  "scale": "false",
   "displayName": "D♭/C♯aug7 Arpeggio",
-  "type": "augmented-7-arpeggio"
+  "type": "augmented-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "eb",
   "name": "eb-augmented-7-arpeggio",
+  "scale": "false",
   "displayName": "E♭aug7 Arpeggio",
-  "type": "augmented-7-arpeggio"
+  "type": "augmented-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "gb",
   "name": "gb-augmented-7-arpeggio",
+  "scale": "false",
   "displayName": "G♭/F♯aug7 Arpeggio",
-  "type": "augmented-7-arpeggio"
+  "type": "augmented-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "ab",
   "name": "ab-augmented-7-arpeggio",
+  "scale": "false",
   "displayName": "A♭aug7 Arpeggio",
-  "type": "augmented-7-arpeggio"
+  "type": "augmented-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "bb",
   "name": "bb-augmented-7-arpeggio",
+  "scale": "false",
   "displayName": "B♭aug7 Arpeggio",
-  "type": "augmented-7-arpeggio"
+  "type": "augmented-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "c",
   "name": "c-diminished-7-arpeggio",
+  "scale": "false",
   "displayName": "Cdim7 Arpeggio",
-  "type": "diminished-7-arpeggio"
+  "type": "diminished-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "d",
   "name": "d-diminished-7-arpeggio",
+  "scale": "false",
   "displayName": "Ddim7 Arpeggio",
-  "type": "diminished-7-arpeggio"
+  "type": "diminished-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "e",
   "name": "e-diminished-7-arpeggio",
+  "scale": "false",
   "displayName": "Edim7 Arpeggio",
-  "type": "diminished-7-arpeggio"
+  "type": "diminished-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "f",
   "name": "f-diminished-7-arpeggio",
+  "scale": "false",
   "displayName": "Fdim7 Arpeggio",
-  "type": "diminished-7-arpeggio"
+  "type": "diminished-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "g",
   "name": "g-diminished-7-arpeggio",
+  "scale": "false",
   "displayName": "Gdim7 Arpeggio",
-  "type": "diminished-7-arpeggio"
+  "type": "diminished-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "a",
   "name": "a-diminished-7-arpeggio",
+  "scale": "false",
   "displayName": "Adim7 Arpeggio",
-  "type": "diminished-7-arpeggio"
+  "type": "diminished-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "b",
   "name": "b-diminished-7-arpeggio",
+  "scale": "false",
   "displayName": "Bdim7 Arpeggio",
-  "type": "diminished-7-arpeggio"
+  "type": "diminished-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "db",
   "name": "db-diminished-7-arpeggio",
+  "scale": "false",
   "displayName": "D♭/C♯dim7 Arpeggio",
-  "type": "diminished-7-arpeggio"
+  "type": "diminished-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "eb",
   "name": "eb-diminished-7-arpeggio",
+  "scale": "false",
   "displayName": "E♭dim7 Arpeggio",
-  "type": "diminished-7-arpeggio"
+  "type": "diminished-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "gb",
   "name": "gb-diminished-7-arpeggio",
+  "scale": "false",
   "displayName": "G♭/F♯dim7 Arpeggio",
-  "type": "diminished-7-arpeggio"
+  "type": "diminished-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "ab",
   "name": "ab-diminished-7-arpeggio",
+  "scale": "false",
   "displayName": "A♭dim7 Arpeggio",
-  "type": "diminished-7-arpeggio"
+  "type": "diminished-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "bb",
   "name": "bb-diminished-7-arpeggio",
+  "scale": "false",
   "displayName": "B♭dim7 Arpeggio",
-  "type": "diminished-7-arpeggio"
+  "type": "diminished-7-arpeggio",
+  "scale": "false"
 },
 {
   "key": "c",
   "name": "chromatic",
+  "scale": "true",
   "displayName": "Chromatic Scale",
-  "type": "chromatic"
+  "type": "chromatic",
+  "scale": "true"
 }
 ]

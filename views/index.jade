@@ -7,6 +7,6 @@ block content
       each entry in goodScales
         a(href='/scalepractice/' + entry._id + '/' + (entry.exerciseId ? entry.exerciseId : ''))
           li.list-group-item
-            span.right.badge= (entry.bpm)+ 'bpm'
+            span.right.badge= (entry.bpm ? entry.bpm : 15)+ 'bpm'
             div.scale-name= entry.displayName
 
