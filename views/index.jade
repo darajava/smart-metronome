@@ -2,16 +2,7 @@ extends layout
 
 block content
   .exercise-container
-    h3 A few of your slowest scales:
-    ul.list-group
-      each entry in badScales
-        a(href='/scalepractice/' + entry._id + '/' + (entry.exerciseId ? entry.exerciseId : ''))
-          li.list-group-item
-            span.right.badge= (entry.bpm)+ 'bpm'
-            div.scale-name= entry.displayName
-
-  .exercise-container
-    h2 A few of your fastest scales:
+    h2 All scales/arpeggios:
     ul.list-group
       each entry in goodScales
         a(href='/scalepractice/' + entry._id + '/' + (entry.exerciseId ? entry.exerciseId : ''))

@@ -2,6 +2,8 @@ doctype html
 html
   head
     title= title
+    script(src="https://code.jquery.com/jquery-3.1.1.min.js")
+    script(src="/javascripts/usermenu.js")
     link(href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet") 
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/piano.css')
@@ -12,5 +14,9 @@ html
       a#logo(href='/') Smart Scales
       .right.user-section 
         img(src=user.image)
-
+    .hidden.user-menu(tabindex='-1')
+      a.menu-entry(href='/settings') Settings
+      a.menu-entry(href='/tutorial') How to use this app
+      a.menu-entry(href='/tips') Practising tips
+      a.menu-entry(href='/logout') Logout
     block content

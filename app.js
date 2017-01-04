@@ -27,10 +27,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Configuring Passport
 var passport = require('passport');
-var expressSession = require('express-session');
+var session = require('express-session');
 
-app.use(expressSession({
-    secret: 'mySecretKey'
+var RedisStore = require('connect-redis')(session);
+
+app.use(session({
+  cookie : {
+    maxAge: 31536000000 // one year
+  },
+  store: new RedisStore(),  
+  secret: 'mySecretKey omg this is on GH isn\'t it lololol'
 }));
 app.use(passport.initialize());
 app.use(passport.session());

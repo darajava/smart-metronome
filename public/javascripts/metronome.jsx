@@ -42,6 +42,8 @@ class Metronome extends React.Component {
     this.displayName = userlog.scale[0].displayName;
     this.scaleType = userlog.scale[0].type;
 
+    console.log(this.scaleType);
+
     switch (this.scaleType) {
       case "major-scale":
         this.sequence = [2, 2, 1, 2, 2, 2, 1];
@@ -49,11 +51,41 @@ class Metronome extends React.Component {
       case "minor-scale":
         this.sequence = [2, 1, 2, 2, 1, 3, 1];
         break;
+      case "major-pentatonic":
+        this.sequence = [2, 2, 3, 2, 3];
+        break;
+      case "minor-pentatonic":
+        this.sequence = [3, 2, 2, 3, 2];
+        break;
+      case "blues-pentatonic":
+        this.sequence = [3, 2, 1, 1, 3, 2];
+        break;
       case "major-arpeggio":
-        this.sequence = [4, 3];
+        this.sequence = [4, 3, 5];
         break;
       case "minor-arpeggio":
-        this.sequence = [3, 4];
+        this.sequence = [3, 4, 5];
+        break;
+      case "major-7-arpeggio":
+        this.sequence = [4, 3, 4, 1];
+        break;
+      case "minor-7-arpeggio":
+        this.sequence = [3, 4, 4, 1];
+        break;
+      case "augmented-arpeggio":
+        this.sequence = [4, 4, 4];
+        break;
+      case "diminished-arpeggio":
+        this.sequence = [3, 3, 6];
+        break;
+      case "augmented-7-arpeggio":
+        this.sequence = [4, 4, 2, 2];
+        break;
+      case "diminished-7-arpeggio":
+        this.sequence = [3, 3, 3, 3];
+        break;
+      case "chromatic":
+        this.sequence = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
         break;
     }
 
@@ -66,12 +98,12 @@ class Metronome extends React.Component {
     this.state = {
       count: 0,
       counting: false,
-      bpm: userlog.bpm + 10,
       octaves: userlog.octaves,
       mode: 0,
       displayRetryDialogue: false,
       notesPerBeat: userlog.notesPerBeat,
-      actualBpm: this.calculateActualBpm(userlog.bpm + 1000, userlog.notesPerBeat),
+      actualBpm: this.calculateActualBpm(userlog.bpm + 10, userlog.notesPerBeat),
+      bpm: userlog.bpm + 10,
       completed: false
     }
     
@@ -267,6 +299,7 @@ class Metronome extends React.Component {
 
     console.log(this.scaleType);
 
+    var modeLabel = "mode";
     if (this.scaleType == 'major-scale') {
       var modes = [
         "I - Ionian",
@@ -287,6 +320,13 @@ class Metronome extends React.Component {
         "VI - Lydian #2",
         "VII - Superlocrian",
       ];
+    } else if (this.scaleType == 'major-arpeggio' || this.scaleType == 'minor-arpeggio') {
+      var modes = [
+        "Root",
+        "Second",
+        "Third",
+      ];
+      modeLabel = "position";
     }
 
     var modesOptions = [];
@@ -334,16 +374,14 @@ class Metronome extends React.Component {
                 <select onChange={this.changeMode}>
                   {modesOptions}
                 </select>
-                <span></span>
               </div>
-              mode
+              {modeLabel}
             </li>
             <li>
               <div className="select-style" >
                 <select value={this.state.notesPerBeat} onChange={this.changeNotesPerBeat}>
                   {notesOptions}
                 </select>
-                <span></span>
               </div>
               note{this.state.notesPerBeat == 1 ? '' : 's'} per beat
             </li>
@@ -352,7 +390,6 @@ class Metronome extends React.Component {
                 <select value={this.state.octaves} onChange={this.changeOctaves}>
                   {octavesOptions}
                 </select>
-                <span></span>
               </div>
               octave{this.state.octaves == 1 ? '' : 's'}
             </li>
@@ -362,9 +399,9 @@ class Metronome extends React.Component {
             </li>
             <li>
               BPM at 4 notes per beat:
-              <input type="button" value="-" className="plus-minus"  onClick={() => this.incrementBpm(-1)}/>
-              <b> {this.state.bpm}</b>
-              <input type="button" value="+" className="plus-minus"  onClick={() => this.incrementBpm(1)}/>
+              <input type="button" value="-" className="plus-minus"  onClick={() => this.incrementBpm(-2)}/>
+              <b className="display-bpm">{this.state.bpm}</b>
+              <input type="button" value="+" className="plus-minus"  onClick={() => this.incrementBpm(2)}/>
             </li>
           </ul>
         </div>

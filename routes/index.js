@@ -51,9 +51,12 @@ module.exports = function(passport){
           displayName: {$first: "$displayName"},
           date: {$first: "$log.time"},
           bpm: {$first: "$log.bpm"},
-          notesPerBeat: {$first: "$log.notesPerBeat"}}
-        },
-      { $sort: {'bpm':-1}},
+          notesPerBeat: {$first: "$log.notesPerBeat"},
+          key: {$first: "$key"}
+        }
+      },
+      { $sort: {'bpm':1}},
+      { $sort: {'key':1}},
       ],
       function(err, scales) {
         var goodScales = scales.slice(0, scales.length / 2).slice(0, 3);
@@ -105,6 +108,11 @@ module.exports = function(passport){
   /* GET login page. */
   router.get('/login', function(req, res) {
     res.render('login', { message: req.flash('message') });
+  });
+
+  /* GET login page. */
+  router.get('/settings', isAuthenticated, function(req, res) {
+    res.render('settings', { user: req.user });
   });
 
   /* Handle Login POST */

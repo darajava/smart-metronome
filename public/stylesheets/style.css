@@ -9,6 +9,33 @@ ul a {
   text-decoration: none;
 }
 
+.hidden {
+  display: none;
+}
+
+.user-menu {
+  position: absolute;
+  top: 29px;
+  right: 19px;
+  background: white;
+  z-index: 100;
+  border: 2px solid #CCC;
+  box-shadow: 4px 4px 6px 0px;
+  outline: 0;
+}
+
+.menu-entry {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+}
+
+.menu-entry:last-child {
+  border: 0;
+}
+
 .login-hint {
   padding-right: 14px;
   line-height: 22px;
@@ -303,43 +330,40 @@ button:active {
   border: solid 1px #DADADA;
   position: relative;
   cursor: pointer;
-  padding-right:20px;
   left: -3px;
   margin-right: 2px;
 }
 
-.select-style span
-{
-  position: absolute;
-  right: 10px;
-  width: 8px;
-  height: 8px;
-  background: url(/images/arrow.png) no-repeat;
-  top: 50%;
-  margin-top: -4px;
-}
 .select-style select
 {
   -webkit-appearance: none;
   appearance:none;
-  width:150%;
   background:none;
   background:transparent;
   border:none;
   outline:none;
   cursor:pointer;
   padding:7px 10px;
+  text-align-last: center;
+}
+
+.display-bpm {
+  width: 30px;
+  text-align: center;
+  display: inline-block;
 }
 
 .plus-minus {
   width: 27px;
   height: 27px;
+  -webkit-appearance: none;
   font-size: 18px;
   font-weight: bold;
   border-radius: 50%;
   border: 2px solid #ccc;
-  color: #ddd;
+  color: #aaa;
   background-color: white;
   outline: none;
   margin-left: 5px;
+  margin-right: 5px;
 }

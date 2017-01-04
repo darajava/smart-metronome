@@ -1,0 +1,102 @@
+extends layout
+
+block content
+  h1
+    div These are your settings!
+
+  span Overall grade:
+    select
+      option Grade I
+      option Grade II
+      option Grade III
+      option Grade IV
+      option Grade V
+      option Grade VI
+      option Grade VII
+      option Grade VIII
+
+  div Custom settings:
+
+
+  div
+    div Base bpm:
+      input
+    div Base notes per beat:
+      select
+        option 1
+        option 2
+        option 3
+        option 4
+    div Number of octaves:
+      select
+        option 2
+        option 3
+        option 4
+
+
+  h2 Scales
+  div
+    div
+      label Include modes where appropriate
+        input(type='checkbox')
+    div
+      label Use random mode
+        input(type='checkbox')
+    div
+      div
+        label Major
+          input(type='checkbox' checked onclick='return false;')
+      div
+        label Harmonic Minor
+          input(type='checkbox' checked onclick='return false;')
+      div
+        label Major pentatonic
+          input(type='checkbox')
+      div
+        label Minor pentatonic
+          input(type='checkbox')
+      div
+        label Blues minor pentatonic
+          input(type='checkbox')
+        
+
+
+  h2 Arpeggios/Chords
+  div
+    div
+      label Include non-root positions
+        input(type='checkbox')
+    div
+      label Use random position
+        input(type='checkbox')
+    div
+      div
+        label Major
+          input(type='checkbox' checked onclick='return false;')
+      div
+        label Minor
+          input(type='checkbox' checked onclick='return false;')
+      div
+        label Major 7th
+          input(type='checkbox')
+      div
+        label Minor 7th
+          input(type='checkbox')
+      div
+        label Major 6th
+          input(type='checkbox')
+      div
+        label Minor 6th
+          input(type='checkbox')
+      div
+        label Diminished
+          input(type='checkbox')
+      div
+        label Augmented
+          input(type='checkbox')
+      div
+        label Diminished 7th
+          input(type='checkbox')
+      div
+        label Augmented 7th
+          input(type='checkbox')
