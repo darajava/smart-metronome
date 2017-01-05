@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Practice #{type} in:
+  div
+  - each val, key in keys
+    a(href=type + '/' + key)
+      div.keyholder= val
+
+  a(href=type + '/' + random) 
+    div.keyholder.wide Choose random key
+

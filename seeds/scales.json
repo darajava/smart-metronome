@@ -169,6 +169,102 @@
 },
 {
   "key": "c",
+  "name": "c-major-pentatonic",
+  "scale": "true",
+  "displayName": "C Major Pentatonic",
+  "type": "major-pentatonic",
+  "scale": "true"
+},
+{
+  "key": "d",
+  "name": "d-major-pentatonic",
+  "scale": "true",
+  "displayName": "D Major Pentatonic",
+  "type": "major-pentatonic",
+  "scale": "true"
+},
+{
+  "key": "e",
+  "name": "e-major-pentatonic",
+  "scale": "true",
+  "displayName": "E Major Pentatonic",
+  "type": "major-pentatonic",
+  "scale": "true"
+},
+{
+  "key": "f",
+  "name": "f-major-pentatonic",
+  "scale": "true",
+  "displayName": "F Major Pentatonic",
+  "type": "major-pentatonic",
+  "scale": "true"
+},
+{
+  "key": "g",
+  "name": "g-major-pentatonic",
+  "scale": "true",
+  "displayName": "G Major Pentatonic",
+  "type": "major-pentatonic",
+  "scale": "true"
+},
+{
+  "key": "a",
+  "name": "a-major-pentatonic",
+  "scale": "true",
+  "displayName": "A Major Pentatonic",
+  "type": "major-pentatonic",
+  "scale": "true"
+},
+{
+  "key": "b",
+  "name": "b-major-pentatonic",
+  "scale": "true",
+  "displayName": "B Major Pentatonic",
+  "type": "major-pentatonic",
+  "scale": "true"
+},
+{
+  "key": "db",
+  "name": "db-major-pentatonic",
+  "scale": "true",
+  "displayName": "D♭ Major Pentatonic",
+  "type": "major-pentatonic",
+  "scale": "true"
+},
+{
+  "key": "eb",
+  "name": "eb-major-pentatonic",
+  "scale": "true",
+  "displayName": "E♭ Major Pentatonic",
+  "type": "major-pentatonic",
+  "scale": "true"
+},
+{
+  "key": "gb",
+  "name": "gb-major-pentatonic",
+  "scale": "true",
+  "displayName": "G♭/F♯ Major Pentatonic",
+  "type": "major-pentatonic",
+  "scale": "true"
+},
+{
+  "key": "ab",
+  "name": "ab-major-pentatonic",
+  "scale": "true",
+  "displayName": "A♭ Major Pentatonic",
+  "type": "major-pentatonic",
+  "scale": "true"
+},
+{
+  "key": "bb",
+  "name": "bb-major-pentatonic",
+  "scale": "true",
+  "displayName": "B♭ Major Pentatonic",
+  "type": "major-pentatonic",
+  "scale": "true"
+},
+{
+  "key": "c",
   "name": "c-minor-pentatonic",
   "scale": "true",
   "displayName": "C Minor Pentatonic",

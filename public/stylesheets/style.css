@@ -1,12 +1,18 @@
 body {
   margin: 0;
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Varela Round', sans-serif;
   color: #444;
 }
 
 ul a {
   color: inherit;
   text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-weight: normal;
 }
 
 .hidden {
@@ -50,6 +56,29 @@ ul a {
 
 .scale-name {
   font-size: 24px;
+}
+
+.keyholder {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fcfcfc;
+  box-shadow: 2px 2px 2px #888888;
+  display: inline-block;
+  width: 20%;
+  margin: 2.5%;
+  text-align: center;
+  padding: 25px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: #444;
+  font-size: 20px;
+}
+.keyholder.wide {
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 70%;
+  font-weight: bold;
+  background-color: #fff4f4;
 }
 
 span.badge {
@@ -259,15 +288,16 @@ button:active {
 }
 
 .modal-bg .modal .message {
-  font-size: 24px;
+  font-size: 22px;
   text-align: center;
+  margin-top: 10px;
 }
 .modal-bg .modal .fail,
 .modal-bg .modal .retry {
   width: 115px;
   margin: 10px;
   padding: 0;
-  margin-top: 30px;
+  margin-top: 24px;
   color: #333;
 }
 .modal-bg .modal .fail {

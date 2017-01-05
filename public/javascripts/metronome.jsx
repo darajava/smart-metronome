@@ -358,7 +358,7 @@ class Metronome extends React.Component {
               null
         }
         <div className="todo">
-          <h2><b>{this.displayName}</b></h2> 
+          <h1>{this.displayName}</h1> 
           <div className="image-holder">
             <Piano mode={this.state.mode} startingKey={this.key} sequence={this.sequence} />
           </div>
@@ -530,11 +530,10 @@ class RetryModal extends React.Component {
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <span className="close-modal" onClick={() => this.props.closeModal()}></span>
         <div className="message">
-          Would you like to retry or slow down?
+          Would you like to slow down or retry?
         </div>
         <button className="fail" onClick={() => this.props.fail()}>Slow down</button>
         <button className="retry" onClick={() => this.props.retry()}>Retry</button>
-        <a className="go-home" href="/">or <span>go back home</span></a>
       </div>
     </div>
   }

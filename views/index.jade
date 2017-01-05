@@ -1,12 +1,8 @@
 extends layout
 
 block content
-  .exercise-container
-    h2 All scales/arpeggios:
-    ul.list-group
-      each entry in goodScales
-        a(href='/scalepractice/' + entry._id + '/' + (entry.exerciseId ? entry.exerciseId : ''))
-          li.list-group-item
-            span.right.badge= (entry.bpm ? entry.bpm : 15)+ 'bpm'
-            div.scale-name= entry.displayName
-
+  h1 Choose to practice:
+  a(href='/scales') 
+    div.keyholder.wide Scales
+  a(href='/arpeggios') 
+    div.keyholder.wide Arpeggios

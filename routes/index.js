@@ -4,6 +4,24 @@ var router = express.Router();
 var passport = require('passport');
 require('../config/passport.js')(passport)
 
+var keys = {
+  'a': 'A',
+  'bb': 'B♭',
+  'b': 'B',
+  'c': 'C',
+  'db': 'D♭/C♯',
+  'd': 'D',
+  'eb': 'E♭',
+  'e': 'E',
+  'f': 'F',
+  'gb': 'G♭/F♯',
+  'g': 'G',
+  'ab': 'A♭',
+};
+
+var getRandomKey = function () {
+  return Object.keys(keys)[Math.floor(Math.random() * 12)];
+}
 
 var isAuthenticated = function (req, res, next) {
   // if user is authenticated in the session,
@@ -18,54 +36,89 @@ var isAuthenticated = function (req, res, next) {
   res.redirect('/login');
 }
 
+var getScalesWithLogs = function(req, res, key, scale, runFunction) {
+  var Scale = require('../models/scale.js');
+  var UserLog = require('../models/userlog.js');
+ 
+ 
+  Scale.aggregate([
+    { $lookup: {
+        from: "userlogs",
+        localField: "name",
+        foreignField: "scale",
+        as: "log"
+      }
+    },
+    { $unwind:
+      {
+        path: '$log', preserveNullAndEmptyArrays: true
+      }
+    },
+    { $match: {
+      "$and" : [
+        {"$or":[
+          {'log.userId': "" + req.user._id},
+          {'log.userId': {"$exists" : false}}
+        ]},
+        {'scale' : scale.toString()},
+        {'key' : key}
+      ],
+      }
+    },
+    { $sort: {'log.time':-1}},
+    { $group:
+      {
+        _id: '$name',
+        exerciseId: {$first: "$log._id"},
+        displayName: {$first: "$displayName"},
+        date: {$first: "$log.time"},
+        bpm: {$first: "$log.bpm"},
+        notesPerBeat: {$first: "$log.notesPerBeat"},
+        key: {$first: "$key"}
+      }
+    },
+    { $sort: {'bpm':1}},
+    { $sort: {'key':1}},
+    { $sort: {'scale':1}},
+   ], function(err, scales) {runFunction(err, scales)}
+    );
+  
+};
+
 module.exports = function(passport){
+
 
   /* GET homepage. */
   router.get('/', isAuthenticated, function(req, res) {
-    var Scale = require('../models/scale.js');
-    var UserLog = require('../models/userlog.js');
-    Scale.aggregate([
-      { $lookup: {
-          from: "userlogs",
-          localField: "name",
-          foreignField: "scale",
-          as: "log"
-        }
-      },
-      { $unwind:
-        {
-          path: '$log', preserveNullAndEmptyArrays: true
-        }
-      },
-      { $match: {
-        "$or":[
-          {'log.userId': "" + req.user._id},
-          {'log.userId': {"$exists" : false}}
-        ]}
-      },
-      { $sort: {'log.time':-1}},
-      { $group:
-        {
-          _id: '$name',
-          exerciseId: {$first: "$log._id"},
-          displayName: {$first: "$displayName"},
-          date: {$first: "$log.time"},
-          bpm: {$first: "$log.bpm"},
-          notesPerBeat: {$first: "$log.notesPerBeat"},
-          key: {$first: "$key"}
-        }
-      },
-      { $sort: {'bpm':1}},
-      { $sort: {'key':1}},
-      ],
+    res.render('index', {user: req.user});
+  });
+
+  /* GET scales. */
+  router.get('/scales', isAuthenticated, function(req, res) {
+    res.render('choosekey', {user: req.user, type: 'scales', keys: keys, random: getRandomKey()});
+  });
+
+  router.get('/scales/:key', isAuthenticated, function(req, res) {
+    getScalesWithLogs(req, res, req.params.key, true,
       function(err, scales) {
-        var goodScales = scales.slice(0, scales.length / 2).slice(0, 3);
-        var badScales = scales.slice(scales.length / 2).slice(0, 3);
-        console.log(scales);
         if (!err)
-          res.render('index', { user: req.user, goodScales: scales, badScales, badScales});
+          res.render('scales', { user: req.user, scales: scales, name: "Scales"});
         else throw err;
-    });
+      });
+  });
+  
+  router.get('/arpeggios', isAuthenticated, function(req, res) {
+    res.render('choosekey', {user: req.user, type: 'arpeggios', keys: keys, random: getRandomKey()});
+  });
+  
+  /* GET arpeggios. */
+  router.get('/arpeggios/:key', isAuthenticated, function(req, res) {
+    getScalesWithLogs(req, res, req.params.key, false,
+      function(err, scales) {
+        if (!err)
+          res.render('scales', { user: req.user, scales: scales, name: "Arpeggios", random: getRandomKey()});
+        else throw err;
+      });
   });
   
   router.get('/scalepractice/:scale', isAuthenticated, function(req, res) {
