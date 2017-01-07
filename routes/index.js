@@ -36,46 +36,46 @@ var isAuthenticated = function (req, res, next) {
   res.redirect('/login');
 }
 
-var getScalesWithLogs = function(req, res, key, scale, runFunction) {
+var getScalesWithLogs = function(req, res, key, isScale, runFunction) {
   var Scale = require('../models/scale.js');
   var UserLog = require('../models/userlog.js');
 
-console.log(key);
-console.log(scale);
-console.log(req.user.settings.exercises);
-
-  Scale.find({
+console.log(req.user._id);
+  UserLog.aggregate([
+    {$match : {      
       '$and' : [
-        {'scale' : scale.toString()},
-        {'type' : {$in : req.user.settings.exercises}}
+        {'userId' : req.user._id.toString()},
+        {'scale' : {$in : req.user.settings.exercises }},
+        {'key' : key}
       ]
-    }, function(err, scales) {
-      var scaleArr = [];
-      for (var i = 0; i < scales.length; i++) {
-        scaleArr.push(key + '-harmonic-minor');// + scales[i].type);
+    }},
+    {
+      $lookup : {
+        'from': 'scales',
+        'localField': 'scale',
+        'foreignField': 'type',
+        'as': 'scaleData'
       }
-
-      UserLog.aggregate([
-        {$match : {
-          'scale' : {$in : scaleArr }
-        }},
-        {$sort : { 'time' : -1}},
-        { $group:
-          {
-            _id: '$scale',
-            exerciseId: {$first: "$_id"},
-            date: {$first: "$time"},
-            bpm: {$first: "$bpm"},
-            notesPerBeat: {$first: "$notesPerBeat"},
-          }
-        }
+    },
+    {$unwind : '$scaleData'}, 
+    {$sort : { 'time' : -1}},
+    { $group:
+      {
+        _id: '$scale',
+        exerciseId: {$first: "$_id"},
+        date: {$first: "$time"},
+        key: {$first: "$key"},
+        bpm: {$first: "$bpm"},
+        userId: {$first: "$userId"},
+        displayName: {$first: "$scaleData.displayName"},
+        notesPerBeat: {$first: "$notesPerBeat"},
+      }
+    }
       
-      ], function(err, log) {
-          runFunction(err, log);
-        });
+  ], function(err, log) {
+    runFunction(err, log);
+  });
   
-      console.log(scaleArr);
-  }, function(err, scales) { }); 
 };
 
 module.exports = function(passport){
@@ -96,7 +96,7 @@ module.exports = function(passport){
       function(err, scales) {
         console.log(scales);
         if (!err)
-          res.render('scales', { user: req.user, scales: scales, name: "Scales"});
+          res.render('scales', { user: req.user, key: req.params.key, scales: scales, name: "Scales"});
         else throw err;
       });
   });
@@ -110,7 +110,7 @@ module.exports = function(passport){
     getScalesWithLogs(req, res, req.params.key, false,
       function(err, scales) {
         if (!err)
-          res.render('scales', { user: req.user, scales: scales, name: "Arpeggios", random: getRandomKey()});
+          res.render('scales', { user: req.user, key: req.params.key, scales: scales, name: "Arpeggios", random: getRandomKey()});
         else throw err;
       });
   });
