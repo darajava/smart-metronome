@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var scaleSchema = new Schema({
   key: String,
   displayName: String,
-  type: String
+  type: String,
+  isScale: Boolean
 });
 
 var Scale = mongoose.model('Scale', scaleSchema);

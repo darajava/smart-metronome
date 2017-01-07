@@ -1,3 +1,7 @@
+$(document).ready(function(e) {
+  $("#note-select").msDropDown();
+});
+
 String.prototype.ucFirst = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 }
@@ -37,12 +41,9 @@ class Metronome extends React.Component {
 
     var userlog = this.props.userlog[0];
 
-    this.scaleName = userlog.scale[0].name;
-    this.key = userlog.scale[0].key;
+    this.key = userlog.key;
     this.displayName = userlog.scale[0].displayName;
     this.scaleType = userlog.scale[0].type;
-
-    console.log(this.scaleType);
 
     switch (this.scaleType) {
       case "major-scale":
@@ -89,11 +90,9 @@ class Metronome extends React.Component {
         break;
     }
 
-    console.log(this.sequence);
-
     this.hands = "both"; 
     this.beatsInBar = 4;
-    this.reps = 6;
+    this.reps = 4;
     
     this.state = {
       count: 0,
@@ -204,26 +203,24 @@ class Metronome extends React.Component {
       bpm: (this.state.bpm - 2),
       actualBpm: this.calculateActualBpm(this.state.bpm - 2),
     }, () => {
-      console.log(this.state);
       this.startMetronome();
     });
   }
 
   saveWorkout() {
     var userlog = {
-      scale: this.scaleName,
+      scale: this.scaleType,
       notesPerBeat: this.state.notesPerBeat,
       octaves: this.state.octaves,
-      bpm: parseInt(this.state.bpm)
+      bpm: parseInt(this.state.bpm),
+      actualBpm: parseInt(this.state.actualBpm),
+      key: this.key
     };
-
-    console.log(this.scaleName);
 
     $.post({
       url: '/saveuserlog',
       data: userlog,
       success: function() {
-        console.log('Success!');
         $('.success').html('Saved!<br/>Congrats!');
         setTimeout(function() {
           document.location = '/';
@@ -240,6 +237,7 @@ class Metronome extends React.Component {
   }
 
   changeNotesPerBeat(event) {
+    console.log('new' + event.target.value);
     this.setState({
       notesPerBeat: event.target.value,
     }, () => {
@@ -277,16 +275,28 @@ class Metronome extends React.Component {
     var click = this.state.counting ? this.userStopMetronome : this.startMetronome;
 
     var progresses = [];
-    for (var i=1; i <= 6; i++) {
+    for (var i=1; i <= this.reps; i++) {
       progresses.push(
         <Progress key={i} number={i} complete={this.state.count > i * this.beatsInScale || this.state.completed}/>
       );
     }
 
+
     var notesOptions = [];
     for (var notes = 1; notes <= 4; notes++) {
+      var noteValue = 'semiquaver';
+      if (notes == 1) {
+        noteValue = 'semiquaver';
+      } else if (notes == 2) {
+        noteValue = 'quaver';
+      } else if (notes == 4) {
+        noteValue = 'crotchet';
+      } else {
+        continue;
+      }
+
       notesOptions.push(
-        <option key={notes} value={notes}>{toEnglish(notes).ucFirst()}</option>
+        <option key={notes} value={notes} data-image={"/images/notes/" + noteValue + ".png"}></option>
       );
     }
 
@@ -296,8 +306,6 @@ class Metronome extends React.Component {
         <option key={octaves} value={octaves}>{toEnglish(octaves).ucFirst()}</option>
       );
     }
-
-    console.log(this.scaleType);
 
     var modeLabel = "mode";
     if (this.scaleType == 'major-scale') {
@@ -358,16 +366,26 @@ class Metronome extends React.Component {
               null
         }
         <div className="todo">
-          <h1>{this.displayName}</h1> 
+          <h1>{this.key.toUpperCase()}{this.displayName}</h1> 
           <div className="image-holder">
             <Piano mode={this.state.mode} startingKey={this.key} sequence={this.sequence} />
           </div>
           <hr />
-          <h3>Play this scale:</h3> 
           <ul className="rounded-list">
             <li>
-              <b>{toEnglish(this.reps).ucFirst()} </b>
+              Play <b>{toEnglish(this.reps)} </b>
               time{this.reps == 1 ? '' : 's'} 
+            </li>
+            <li>
+              Tempo: 
+              <span>
+                <select id='note-select' onBlur={this.changeNotesPerBeat}>
+                  {notesOptions}
+                </select>
+              </span> = 
+              <b className="display-bpm">{this.state.bpm}</b>
+              <input type="button" value="-" className="plus-minus"  onClick={() => this.incrementBpm(-2)}/>
+              <input type="button" value="+" className="plus-minus"  onClick={() => this.incrementBpm(2)}/>
             </li>
             <li>
               <div className="select-style" >
@@ -379,29 +397,11 @@ class Metronome extends React.Component {
             </li>
             <li>
               <div className="select-style" >
-                <select value={this.state.notesPerBeat} onChange={this.changeNotesPerBeat}>
-                  {notesOptions}
-                </select>
-              </div>
-              note{this.state.notesPerBeat == 1 ? '' : 's'} per beat
-            </li>
-            <li>
-              <div className="select-style" >
                 <select value={this.state.octaves} onChange={this.changeOctaves}>
                   {octavesOptions}
                 </select>
               </div>
               octave{this.state.octaves == 1 ? '' : 's'}
-            </li>
-            <li>
-              Actual BPM:
-              <b> {Number(this.state.actualBpm.toFixed(2))} </b>
-            </li>
-            <li>
-              BPM at 4 notes per beat:
-              <input type="button" value="-" className="plus-minus"  onClick={() => this.incrementBpm(-2)}/>
-              <b className="display-bpm">{this.state.bpm}</b>
-              <input type="button" value="+" className="plus-minus"  onClick={() => this.incrementBpm(2)}/>
             </li>
           </ul>
         </div>
@@ -453,8 +453,6 @@ class Piano extends React.Component {
       i++;
     }
    
-    console.log(sequence);
- 
     // Press the correct notes
     key[i] = "pressed";
     for (var value of sequence) {

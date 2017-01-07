@@ -40,7 +40,7 @@ var getScalesWithLogs = function(req, res, key, isScale, runFunction) {
   var Scale = require('../models/scale.js');
   var UserLog = require('../models/userlog.js');
 
-console.log(req.user._id);
+console.log(isScale);
   UserLog.aggregate([
     {$match : {      
       '$and' : [
@@ -57,7 +57,8 @@ console.log(req.user._id);
         'as': 'scaleData'
       }
     },
-    {$unwind : '$scaleData'}, 
+    {$unwind : '$scaleData'},
+    {$match: {'scaleData.isScale' : isScale}}, 
     {$sort : { 'time' : -1}},
     { $group:
       {
@@ -115,39 +116,22 @@ module.exports = function(passport){
       });
   });
   
-  router.get('/scalepractice/:scale', isAuthenticated, function(req, res) {
-    var UserLog = require('../models/userlog.js');
-    var log = new UserLog({
-      scale: req.params.scale,
-      userId: req.user._id,
-      notesPerBeat: 1,
-      octaves: 2,
-      bpm: 15
-    });
-
-    log.save(function(err, userlog) {
-      if (err) return console.log(err); 
-      res.redirect('/scalepractice/' + userlog.scale + '/' + userlog._id);
-    });
-
-  });
-  
   /* GET login page. */
-  router.get('/scalepractice/:scale/:exerciseId', isAuthenticated, function(req, res) {
+  router.get('/scalepractice/:key/:scale/:exerciseId', isAuthenticated, function(req, res) {
     var UserLog = require('../models/userlog.js');
     UserLog.aggregate([
       {$match: {_id: mongoose.Types.ObjectId(req.params.exerciseId)}},
       {$lookup: {
           from: "scales",
           localField: "scale",
-          foreignField: "name",
+          foreignField: "type",
           as: "scale"
         }
       }
     ], function(err, userlog) {
       console.log(userlog);
       if (!err){ 
-        res.render('scalepractice', { user: req.user, userlog: userlog });
+        res.render('scalepractice', { user: req.user, userlog: userlog, key: req.params.key });
       } else {throw err;}
     });
   });
@@ -205,7 +189,9 @@ module.exports = function(passport){
         userId: req.user._id,
         notesPerBeat: req.body.notesPerBeat,
         octaves: req.body.octaves,
-        bpm: req.body.bpm
+        bpm: req.body.bpm,
+        actualBpm: req.body.actualBpm,
+        key: req.body.key
       });
     
       log.save(function(err, userlog){

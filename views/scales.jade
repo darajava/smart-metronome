@@ -5,7 +5,7 @@ block content
     h1= name
     ul.list-group
       each entry in scales
-        a(href='/scalepractice/' + entry._id + '/' + (entry.exerciseId ? entry.exerciseId : ''))
+        a(href='/scalepractice/' + entry.key + '/' + entry._id + '/' + (entry.exerciseId ? entry.exerciseId : ''))
           li.list-group-item
             span.right.badge= (entry.bpm ? entry.bpm : 15)+ 'bpm'
             div.scale-name= key.toUpperCase() + entry.displayName

@@ -1,82 +1,82 @@
 [
 {
-  "displayName": " Major Scale",
+  "displayName": " Major",
   "type": "major-scale",
-  "scale": "true"
+  "isScale": true
 },
 {
   "displayName": " Harmonic Minor",
   "type": "minor-scale",
-  "scale": "true"
+  "isScale": true
 },
 {
   "displayName": " Major Pentatonic",
   "type": "major-pentatonic",
-  "scale": "true"
+  "isScale": true
 },
 {
   "displayName": " Minor Pentatonic",
   "type": "minor-pentatonic",
-  "scale": "true"
+  "isScale": true
 },
 {
   "displayName": " Blues Pentatonic",
   "type": "blues-pentatonic",
-  "scale": "true"
+  "isScale": true
 },
 {
   "displayName": " Major Arpeggio",
   "type": "major-arpeggio",
-  "scale": "false"
+  "isScale": false
 },
 {
   "displayName": " Minor Arpeggio",
   "type": "minor-arpeggio",
-  "scale": "false"
+  "isScale": false
 },
 {
   "displayName": "M7 Arpeggio",
   "type": "major-7-arpeggio",
-  "scale": "false"
+  "isScale": false
 },
 {
   "displayName": "min7 Arpeggio",
   "type": "minor-7-arpeggio",
-  "scale": "false"
+  "isScale": false
 },
 {
   "displayName": "M6 Arpeggio",
   "type": "major-6-arpeggio",
-  "scale": "false"
+  "isScale": false
 },
 {
   "displayName": "min6 Arpeggio",
   "type": "minor-6-arpeggio",
-  "scale": "false"
+  "isScale": false
 },
 {
   "displayName": "aug Arpeggio",
   "type": "augmented-arpeggio",
-  "scale": "false"
+  "isScale": false
 },
 {
   "displayName": "dim Arpeggio",
   "type": "diminished-arpeggio",
-  "scale": "false"
+  "isScale": false
 },
 {
   "displayName": "aug7 Arpeggio",
   "type": "augmented-7-arpeggio",
-  "scale": "false"
+  "isScale": false
 },
 {
   "displayName": "dim7 Arpeggio",
   "type": "diminished-7-arpeggio",
-  "scale": "false"
+  "isScale": false
 },
 {
-  "displayName": " Chromatic Scale",
+  "displayName": " Chromatic",
   "type": "chromatic",
-  "scale": "true"
+  "isScale": true
 }
 ]

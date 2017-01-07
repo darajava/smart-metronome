@@ -7,6 +7,7 @@ var userLogSchema = new Schema({
   notesPerBeat: Number,
   octaves: Number,
   bpm: Number,
+  actualBpm: Number,
   time: {type: Date, default: Date.now}
 });
 

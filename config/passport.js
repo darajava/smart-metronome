@@ -13,7 +13,7 @@ var configAuth = require('./auth.js');
 
 var seedUserLogs = function(user) {
   Scale.find({}).exec(function(err, scales) {
-    var keys = ['a','bb','b','c','cb','d','e','eb','g','gb','ab'];
+    var keys = ['a','bb','b','c','db','d','eb','e','f','gb','g','ab'];
 
     var userLogs = [];
     for (var key = 0; key < keys.length; key++) {
@@ -25,6 +25,7 @@ var seedUserLogs = function(user) {
           notesPerBeat: 1,
           octaves: 2,
           bpm: 15,
+          actualBpm: 60,
           time: new Date()
         };
 
