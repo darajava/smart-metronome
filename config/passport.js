@@ -4,10 +4,41 @@
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 // load up the user model
-var User  = require('../models/user');
+var User = require('../models/user');
+var UserLog = require('../models/userlog');
+var Scale = require('../models/scale');
 
 // load the auth variables
 var configAuth = require('./auth.js');
+
+var seedUserLogs = function(user) {
+  Scale.find({}).exec(function(err, scales) {
+    var keys = ['a','bb','b','c','cb','d','e','eb','g','gb','ab'];
+
+    var userLogs = [];
+    for (var key = 0; key < keys.length; key++) {
+      for (var scale = 0; scale < scales.length; scale++) {
+        var userLog = {
+          key: keys[key],
+          scale: scales[scale].type,
+          userId: user._id,
+          notesPerBeat: 1,
+          octaves: 2,
+          bpm: 15,
+          time: new Date()
+        };
+
+        userLogs.push(userLog);
+      }
+    }
+
+    UserLog.create(userLogs, function(err) {
+      if (err) {
+        throw err;
+      }
+    });
+  });
+}
 
 module.exports = function(passport) {
 
@@ -87,6 +118,8 @@ module.exports = function(passport) {
           newUser.save(function(err) {
             if (err)
               throw err;
+
+            seedUserLogs(newUser);
             return done(null, newUser);
           });
         }

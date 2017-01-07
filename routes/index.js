@@ -43,45 +43,39 @@ var getScalesWithLogs = function(req, res, key, scale, runFunction) {
 console.log(key);
 console.log(scale);
 console.log(req.user.settings.exercises);
- 
-  Scale.aggregate([
-    { $lookup: {
-        from: "userlogs",
-        localField: "name",
-        foreignField: "scale",
-        as: "log"
-      }
-    },
-    { $unwind:
-      {
-        path: '$log', preserveNullAndEmptyArrays: true
-      }
-    },
-    { $match: {
-      "$and" : [
+
+  Scale.find({
+      '$and' : [
         {'scale' : scale.toString()},
-        {'type' : {'$in': req.user.settings.exercises}},
-        {'key' : key}
-      ],
+        {'type' : {$in : req.user.settings.exercises}}
+      ]
+    }, function(err, scales) {
+      var scaleArr = [];
+      for (var i = 0; i < scales.length; i++) {
+        scaleArr.push(key + '-harmonic-minor');// + scales[i].type);
       }
-    },
-    { $sort: {'log.time':-1}},
-    { $group:
-      {
-        _id: '$name',
-        exerciseId: {$first: "$log._id"},
-        displayName: {$first: "$displayName"},
-        date: {$first: "$log.time"},
-        bpm: {$first: "$log.bpm"},
-        notesPerBeat: {$first: "$log.notesPerBeat"},
-        key: {$first: "$key"}
-      }
-    },
-    { $sort: {'bpm':1}},
-    { $sort: {'scale':1}},
-   ], function(err, scales) {runFunction(err, scales)}
-    );
+
+      UserLog.aggregate([
+        {$match : {
+          'scale' : {$in : scaleArr }
+        }},
+        {$sort : { 'time' : -1}},
+        { $group:
+          {
+            _id: '$scale',
+            exerciseId: {$first: "$_id"},
+            date: {$first: "$time"},
+            bpm: {$first: "$bpm"},
+            notesPerBeat: {$first: "$notesPerBeat"},
+          }
+        }
+      
+      ], function(err, log) {
+          runFunction(err, log);
+        });
   
+      console.log(scaleArr);
+  }, function(err, scales) { }); 
 };
 
 module.exports = function(passport){
@@ -100,6 +94,7 @@ module.exports = function(passport){
   router.get('/scales/:key', isAuthenticated, function(req, res) {
     getScalesWithLogs(req, res, req.params.key, true,
       function(err, scales) {
+        console.log(scales);
         if (!err)
           res.render('scales', { user: req.user, scales: scales, name: "Scales"});
         else throw err;

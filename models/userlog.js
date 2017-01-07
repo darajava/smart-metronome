@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var userLogSchema = new Schema({
   scale: String,
+  key: String,
   userId: String,
   notesPerBeat: Number,
   octaves: Number,
