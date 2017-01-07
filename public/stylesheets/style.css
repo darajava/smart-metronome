@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: 'Varela Round', sans-serif;
   color: #444;
+  font-kerning: none;
 }
 
 ul a {
@@ -15,8 +16,26 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
+blockquote {
+  font-style: italic;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  padding-left: 15px;
+  border-left: 3px solid #ccc;
+}
+
 .hidden {
   display: none;
+}
+
+.body-container {
+  padding: 15px;
+}
+
+ul.tips a {
+  color: blue;
 }
 
 .user-menu {

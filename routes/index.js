@@ -39,7 +39,10 @@ var isAuthenticated = function (req, res, next) {
 var getScalesWithLogs = function(req, res, key, scale, runFunction) {
   var Scale = require('../models/scale.js');
   var UserLog = require('../models/userlog.js');
- 
+
+console.log(key);
+console.log(scale);
+console.log(req.user.settings.exercises);
  
   Scale.aggregate([
     { $lookup: {
@@ -56,11 +59,8 @@ var getScalesWithLogs = function(req, res, key, scale, runFunction) {
     },
     { $match: {
       "$and" : [
-        {"$or":[
-          {'log.userId': "" + req.user._id},
-          {'log.userId': {"$exists" : false}}
-        ]},
         {'scale' : scale.toString()},
+        {'type' : {'$in': req.user.settings.exercises}},
         {'key' : key}
       ],
       }
@@ -78,7 +78,6 @@ var getScalesWithLogs = function(req, res, key, scale, runFunction) {
       }
     },
     { $sort: {'bpm':1}},
-    { $sort: {'key':1}},
     { $sort: {'scale':1}},
    ], function(err, scales) {runFunction(err, scales)}
     );
@@ -158,15 +157,36 @@ module.exports = function(passport){
     });
   });
   
+  /* GET tips page. */
+  router.get('/tips', isAuthenticated, function(req, res) {
+    res.render('tips', {user: req.user});
+  });
+
   /* GET login page. */
   router.get('/login', function(req, res) {
     res.render('login', { message: req.flash('message') });
   });
 
-  /* GET login page. */
+  /* GET settings page. */
   router.get('/settings', isAuthenticated, function(req, res) {
     res.render('settings', { user: req.user });
   });
+
+  /* POST settings page. */
+  router.post('/settings', isAuthenticated, function(req, res) {
+    var User = require('../models/user.js');
+
+    User.findById({_id : req.user._id}, function (err, user) {
+      if (err) return res.send(err);
+  
+      user.settings = req.body.settings;
+      user.save(function (err, updatedUser) {
+        if (err) res.status(422);
+        res.send(updatedUser);
+      });
+    });
+  });
+
 
   /* Handle Login POST */
   router.post('/login', passport.authenticate('login', {

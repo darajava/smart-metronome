@@ -12,8 +12,9 @@ html
   body
     div.container
       a#logo(href='/') Smart Scales
-      .right.user-section 
-        img(src=user.image)
+      if user
+        .right.user-section 
+          img(src=user.image)
     .hidden.user-menu(tabindex='-1')
       a.menu-entry(href='/settings') Settings
       a.menu-entry(href='/tutorial') How to use this app

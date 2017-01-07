@@ -62,6 +62,27 @@ module.exports = function(passport) {
           newUser.image = profile._json.image.url;
           newUser.email = profile.emails[0].value; // pull the first email
 
+          newUser.settings = {
+            bpm: 15,
+            notesPerBeat: 1,
+            octaves: 2,
+            scaleSettings: {
+              includeModes: false,
+              useRandomMode: false,
+            },
+            arpeggioSettings: {
+              includeModes: false,
+              useRandomMode: false,
+            },
+            exercises: [
+              'major-arpeggio',
+              'minor-arpeggio',
+              'major-scale',
+              'minor-scale',
+              'chromatic'
+            ]
+          };
+
           // save the user
           newUser.save(function(err) {
             if (err)

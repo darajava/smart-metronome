@@ -1,102 +1,107 @@
 extends layout
 
 block content
+  script(src='javascripts/settings.js')
   h1
     div These are your settings!
 
-  span Overall grade:
-    select
-      option Grade I
-      option Grade II
-      option Grade III
-      option Grade IV
-      option Grade V
-      option Grade VI
-      option Grade VII
-      option Grade VIII
+  div Overall grade:
+    div.select-style
+      select
+        option Grade I
+        option Grade II
+        option Grade III
+        option Grade IV
+        option Grade V
+        option Grade VI
+        option Grade VII
+        option Grade VIII
 
   div Custom settings:
 
 
   div
     div Base bpm:
-      input
+      input(id='bpm' value=user.settings.bpm)
     div Base notes per beat:
-      select
-        option 1
-        option 2
-        option 3
-        option 4
+      div.select-style
+        select(id='notesPerBeat')
+          option(value='1' selected=user.settings.notesPerBeat == 1) 1
+          option(value='2' selected=user.settings.notesPerBeat == 2) 2
+          option(value='3' selected=user.settings.notesPerBeat == 3) 3
+          option(value='4' selected=user.settings.notesPerBeat == 4) 4
     div Number of octaves:
-      select
-        option 2
-        option 3
-        option 4
-
+      div.select-style
+        select(id='octaves')
+          option(value='2' selected=user.settings.octaves == 2) 2
+          option(value='3' selected=user.settings.octaves == 3) 3
+          option(value='4' selected=user.settings.octaves == 4) 4
 
   h2 Scales
   div
     div
       label Include modes where appropriate
-        input(type='checkbox')
+        input(id='scaleIncludeModes' type='checkbox' checked=user.settings.scaleSettings.includeModes)
     div
       label Use random mode
-        input(type='checkbox')
+        input(id='scaleUseRandomMode' type='checkbox' checked=user.settings.scaleSettings.useRandomMode)
     div
       div
         label Major
-          input(type='checkbox' checked onclick='return false;')
+          input(id='major-scale' class='exercise' type='checkbox' checked=user.settings.exercises.includes('major-scale') onclick='return false;')
       div
         label Harmonic Minor
-          input(type='checkbox' checked onclick='return false;')
+          input(id='minor-scale' class='exercise' type='checkbox' checked=user.settings.exercises.includes('minor-scale') onclick='return false;')
       div
         label Major pentatonic
-          input(type='checkbox')
+          input(id='major-pentatonic' class='exercise' type='checkbox' checked=user.settings.exercises.includes('major-pentatonic'))
       div
         label Minor pentatonic
-          input(type='checkbox')
+          input(id='minor-pentatonic' class='exercise' type='checkbox' checked=user.settings.exercises.includes('minor-pentatonic'))
       div
         label Blues minor pentatonic
-          input(type='checkbox')
-        
+          input(id='blues-pentatonic' class='exercise' type='checkbox' checked=user.settings.exercises.includes('blues-pentatonic'))
+      div
+        label Chromatic
+          input(id='chromatic' class='exercise' type='checkbox' checked=user.settings.exercises.includes('chromatic'))
 
 
   h2 Arpeggios/Chords
   div
     div
       label Include non-root positions
-        input(type='checkbox')
+        input(id='arpeggioIncludeModes' type='checkbox' checked=user.settings.exercises.includeModes)
     div
       label Use random position
-        input(type='checkbox')
+        input(id='arpeggioUseRandomMode' type='checkbox' checked=user.settings.exercises.useRandomMode)
     div
       div
         label Major
-          input(type='checkbox' checked onclick='return false;')
+          input(id='major-arpeggio' class='exercise' type='checkbox' checked=user.settings.exercises.includes('major-arpeggio') onclick='return false;')
       div
         label Minor
-          input(type='checkbox' checked onclick='return false;')
+          input(id='minor-arpeggio' class='exercise' type='checkbox' checked=user.settings.exercises.includes('minor-arpeggio') onclick='return false;')
       div
         label Major 7th
-          input(type='checkbox')
+          input(id='major-7-arpeggio' class='exercise' type='checkbox' checked=user.settings.exercises.includes('major-7-arpeggio'))
       div
         label Minor 7th
-          input(type='checkbox')
+          input(id='minor-7-arpeggio' class='exercise' type='checkbox' checked=user.settings.exercises.includes('minor-7-arpeggio'))
       div
         label Major 6th
-          input(type='checkbox')
+          input(id='major-6-arpeggio' class='exercise' type='checkbox' checked=user.settings.exercises.includes('major-6-arpeggio'))
       div
         label Minor 6th
-          input(type='checkbox')
+          input(id='minor-6-arpeggio' class='exercise' type='checkbox' checked=user.settings.exercises.includes('minor-6-arpeggio'))
       div
         label Diminished
-          input(type='checkbox')
+          input(id='diminished-arpeggio' class='exercise' type='checkbox' checked=user.settings.exercises.includes('diminished-arpeggio'))
       div
         label Augmented
-          input(type='checkbox')
+          input(id='augmented-arpeggio' class='exercise' type='checkbox' checked=user.settings.exercises.includes('augmented-arpeggio'))
       div
         label Diminished 7th
-          input(type='checkbox')
+          input(id='diminished-7-arpeggio' class='exercise' type='checkbox' checked=user.settings.exercises.includes('diminished-7-arpeggio'))
       div
         label Augmented 7th
-          input(type='checkbox')
+          input(id='augmented-7-arpeggio' class='exercise' type='checkbox' checked=user.settings.exercises.includes('augmented-7-arpeggio'))
