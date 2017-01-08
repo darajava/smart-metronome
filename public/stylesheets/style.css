@@ -91,6 +91,7 @@ ul.tips a {
   border-radius: 5px;
   color: #444;
   font-size: 20px;
+  line-height: 1;
 }
 .keyholder.wide {
   margin-left: 15%;
@@ -224,15 +225,16 @@ div.image-holder {
   list-style: none;
   padding: 0;
   margin-left: -17px;
+  margin-top: -7px;
 }
 
 .todo ul li::before {
   content: '';
 }
 
-.todo ul li {
-   margin: 0;
-   padding: 3px 10px 5px 20px;
+.todo ul li.todo-elem {
+   margin-left: 20px;
+   padding: 9px 10px 11px 0px;
    border-bottom: 1px solid #ccc;
    color: #444; 
    line-height: 32px;
@@ -397,6 +399,7 @@ button:active {
 }
 
 .display-bpm {
+  margin-left: 4px;
   width: 30px;
   text-align: center;
   display: inline-block;

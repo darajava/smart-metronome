@@ -88,7 +88,7 @@ module.exports = function(passport){
   });
 
   /* GET scales. */
-  router.get('/scales', isAuthenticated, function(req, res) {
+  router.get('/scales', function(req, res) {
     res.render('choosekey', {user: req.user, type: 'scales', keys: keys, random: getRandomKey()});
   });
 

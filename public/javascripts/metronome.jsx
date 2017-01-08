@@ -237,9 +237,9 @@ class Metronome extends React.Component {
   }
 
   changeNotesPerBeat(event) {
-    console.log('new' + event.target.value);
+    console.log('new' + $('#note-select').val());
     this.setState({
-      notesPerBeat: event.target.value,
+      notesPerBeat: $('#note-select').val(),
     }, () => {
       this.setState({actualBpm: this.calculateActualBpm(this.state.bpm)});
     });
@@ -308,6 +308,7 @@ class Metronome extends React.Component {
     }
 
     var modeLabel = "mode";
+    var showModes = true;
     if (this.scaleType == 'major-scale') {
       var modes = [
         "I - Ionian",
@@ -335,6 +336,8 @@ class Metronome extends React.Component {
         "Third",
       ];
       modeLabel = "position";
+    } else {
+      showModes = false;
     }
 
     var modesOptions = [];
@@ -372,14 +375,14 @@ class Metronome extends React.Component {
           </div>
           <hr />
           <ul className="rounded-list">
-            <li>
+            <li className="todo-elem">
               Play <b>{toEnglish(this.reps)} </b>
               time{this.reps == 1 ? '' : 's'} 
             </li>
-            <li>
+            <li className="todo-elem">
               Tempo: 
-              <span>
-                <select id='note-select' onBlur={this.changeNotesPerBeat}>
+              <span onBlur={this.changeNotesPerBeat}>
+                <select id='note-select' value={this.state.notesPerBeat} onChange={function(){}}>
                   {notesOptions}
                 </select>
               </span> = 
@@ -387,7 +390,7 @@ class Metronome extends React.Component {
               <input type="button" value="-" className="plus-minus"  onClick={() => this.incrementBpm(-2)}/>
               <input type="button" value="+" className="plus-minus"  onClick={() => this.incrementBpm(2)}/>
             </li>
-            <li>
+            <li className={"todo-elem " + (showModes ? '' : 'hidden')}>
               <div className="select-style" >
                 <select onChange={this.changeMode}>
                   {modesOptions}
@@ -395,7 +398,7 @@ class Metronome extends React.Component {
               </div>
               {modeLabel}
             </li>
-            <li>
+            <li className="todo-elem">
               <div className="select-style" >
                 <select value={this.state.octaves} onChange={this.changeOctaves}>
                   {octavesOptions}
