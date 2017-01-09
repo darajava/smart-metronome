@@ -36,6 +36,48 @@ var isAuthenticated = function (req, res, next) {
   res.redirect('/login');
 }
 
+var getAverageKeySpeed = function(req, res, isScale, runFunction) {
+  var Scale = require('../models/scale.js');
+  var UserLog = require('../models/userlog.js');
+
+  UserLog.aggregate([
+    {$match : {      
+      '$and' : [
+        {'userId' : req.user._id.toString()},
+        {'scale' : {$in : req.user.settings.exercises }},
+        {'nextId' : null}
+      ]
+    }},
+    {
+      $lookup : {
+        'from': 'scales',
+        'localField': 'scale',
+        'foreignField': 'type',
+        'as': 'scaleData'
+      }
+    },
+    {$unwind : '$scaleData'},
+    {$match: {'scaleData.isScale' : isScale}}, 
+    {$sort : { 'time' : -1}},
+    { $group:
+      {
+        _id: '$key',
+        exerciseId: {$first: "$_id"},
+        date: {$first: "$time"},
+        key: {$first: "$key"},
+        bpm: {$avg: "$bpm"},
+        actualBpm: {$avg: "$actualBpm"},
+        userId: {$first: "$userId"},
+        displayName: {$first: "$scaleData.displayName"},
+      }
+    },
+    {$sort : { 'key' : 1}},
+      
+  ], function(err, log) {
+    runFunction(err, log);
+  });
+  
+};
 var getScalesWithLogs = function(req, res, key, isScale, runFunction) {
   var Scale = require('../models/scale.js');
   var UserLog = require('../models/userlog.js');
@@ -89,7 +131,10 @@ module.exports = function(passport){
 
   /* GET scales. */
   router.get('/scales', function(req, res) {
-    res.render('choosekey', {user: req.user, type: 'scales', keys: keys, random: getRandomKey()});
+    getAverageKeySpeed(req, res, true, function(err, keylogs) {
+      if (err) throw err; 
+      res.render('choosekey', {user: req.user, type: 'scales', keys: keys, keylogs: keylogs, random: getRandomKey()});
+    });
   });
 
   router.get('/scales/:key', isAuthenticated, function(req, res) {
@@ -131,7 +176,7 @@ module.exports = function(passport){
     ], function(err, userlog) {
       console.log(userlog);
       if (!err){ 
-        res.render('scalepractice', { user: req.user, userlog: userlog, key: req.params.key });
+        res.render('scalepractice', { user: req.user, prevId: req.params.exerciseId, userlog: userlog, key: req.params.key });
       } else {throw err;}
     });
   });
@@ -183,7 +228,10 @@ module.exports = function(passport){
   router.post('/saveuserlog', function(req, res) {
     try {
       console.log(req.body);
+
       var UserLog = require('../models/userlog.js');
+
+
       var log = new UserLog({
         scale: req.body.scale,
         userId: req.user._id,
@@ -196,7 +244,10 @@ module.exports = function(passport){
     
       log.save(function(err, userlog){
         if (err) return console.log(err);
-        console.log(userlog);
+        UserLog.update({_id: mongoose.Types.ObjectId(req.body.prevId)}, {$set: {'nextId': userlog._id}},
+          function(err, ulog){
+            console.log(ulog);
+          });
       });
     } catch (err) {
       res.status(500);

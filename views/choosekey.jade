@@ -3,9 +3,15 @@ extends layout
 block content
   h1 Practice #{type} in:
   div
-  - each val, key in keys
-    a(href=type + '/' + key)
-      div.keyholder= val
+  - each keylog in keylogs
+    a(href=type + '/' + keylog.key)
+      div.keyholder
+        div= keys[keylog.key]
+        span.right.badge
+          span
+            img(src='/images/notes/crotchet.png')
+          span  = 
+          span= Math.round(keylog.bpm) 
 
   a(href=type + '/' + random) 
     div.keyholder.wide Choose random key

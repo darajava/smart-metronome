@@ -44,6 +44,7 @@ class Metronome extends React.Component {
     this.key = userlog.key;
     this.displayName = userlog.scale[0].displayName;
     this.scaleType = userlog.scale[0].type;
+    this.prevId = $('#prevId').val();
 
     switch (this.scaleType) {
       case "major-scale":
@@ -214,7 +215,8 @@ class Metronome extends React.Component {
       octaves: this.state.octaves,
       bpm: parseInt(this.state.bpm),
       actualBpm: parseInt(this.state.actualBpm),
-      key: this.key
+      key: this.key,
+      prevId: this.prevId
     };
 
     $.post({
@@ -389,6 +391,8 @@ class Metronome extends React.Component {
               <b className="display-bpm">{this.state.bpm}</b>
               <input type="button" value="-" className="plus-minus"  onClick={() => this.incrementBpm(-2)}/>
               <input type="button" value="+" className="plus-minus"  onClick={() => this.incrementBpm(2)}/>
+              <input type="button" value="Megaplus" className="plus-minus"  onClick={() => this.incrementBpm(-50)}/>
+              <input type="button" value="megaplus" className="plus-minus"  onClick={() => this.incrementBpm(50)}/>
             </li>
             <li className={"todo-elem " + (showModes ? '' : 'hidden')}>
               <div className="select-style" >

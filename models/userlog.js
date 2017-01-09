@@ -8,7 +8,8 @@ var userLogSchema = new Schema({
   octaves: Number,
   bpm: Number,
   actualBpm: Number,
-  time: {type: Date, default: Date.now}
+  time: {type: Date, default: Date.now},
+  nextId: {type: String, default: null}
 });
 
 var UserLog = mongoose.model('UserLog', userLogSchema);

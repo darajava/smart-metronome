@@ -45,7 +45,6 @@ img.fnone{float:none !important}
 /*************** default theme **********************/
 .dd{outline: 0; border:1px solid #c3c3c3; width: 32px !important; margin-left: 8px;}
 .dd .divider{right:24px;}
-.dd .ddArrow{width:16px;height:16px; margin-top:-8px; background:url(../../images/msdropdown/skin1/dd_arrow.gif) no-repeat;}
 .dd .ddArrow:hover{background-position:0 100%;}
 .dd .ddTitle .ddTitleText{padding-left:8px;}
 .dd .ddTitle .ddTitleText .ddTitleText{padding:0;}
