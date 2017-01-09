@@ -8,7 +8,8 @@ block content
       div.keyholder
         b
           div= keys[keylog.key]
-        span.avg-tempo Avg tempo:
+        hr
+        div.avg-tempo Avg tempo:
         span.badge(class=keylog.rank)
           span
             img(src='/images/notes/crotchet.png')
@@ -19,4 +20,7 @@ block content
 
   a(href=type + '/' + random) 
     div.keyholder.wide Choose random key
+  
+  a(href=type + '/' + random) 
+    div.keyholder.wide Choose random scale
 

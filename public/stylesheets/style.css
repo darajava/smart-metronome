@@ -74,7 +74,7 @@ ul.tips a {
 }
 
 .scale-name {
-  font-size: 24px;
+  font-size: 19px;
 }
 
 .keyholder {
@@ -101,6 +101,12 @@ ul.tips a {
 
 .keyholder .avg-tempo {
   font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.keyholder hr {
+  margin: 5px;
+  border: 1px dotted;
 }
 
 div.or {
@@ -119,8 +125,8 @@ span.badge {
 }
 
 .badge img {
-  height: auto;
-  width: 5px;
+  height: 16px;
+  width: auto;
   position: relative;
   top: 3px;
   right: 1px;
@@ -186,6 +192,8 @@ li.list-group-item:active {
 }
 div.image-holder {
   text-align: center;
+  max-width: 300px;
+  margin: auto;
 }
 
 .piano-scale {

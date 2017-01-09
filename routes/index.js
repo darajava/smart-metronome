@@ -123,13 +123,25 @@ console.log(isScale);
         date: {$first: "$time"},
         key: {$first: "$key"},
         bpm: {$first: "$bpm"},
+        adjustedBpm: {$first: "$adjustedBpm"},
         userId: {$first: "$userId"},
         displayName: {$first: "$scaleData.displayName"},
         notesPerBeat: {$first: "$notesPerBeat"},
       }
-    }
+    },
+    {$sort : { 'adjustedBpm' : 1}},
       
   ], function(err, log) {
+    var speeds = [];
+    for (var i = 0; i < log.length; i++) {
+      speeds.push(log[i].adjustedBpm);
+    }
+    var sorted = speeds.slice().sort(function(a,b){return b-a});
+    var ranks = speeds.slice().map(function(v){ return sorted.indexOf(v)+1 });
+    
+    for (var i = 0; i < log.length; i++) {
+      log[i].rank = 'rank-' + ranks[i];
+    }
     runFunction(err, log);
   });
   
@@ -156,13 +168,16 @@ module.exports = function(passport){
       function(err, scales) {
         console.log(scales);
         if (!err)
-          res.render('scales', { user: req.user, key: req.params.key, scales: scales, name: "Scales"});
+          res.render('scales', { user: req.user, keys: keys, key: req.params.key, scales: scales, name: "Scales"});
         else throw err;
       });
   });
   
   router.get('/arpeggios', isAuthenticated, function(req, res) {
-    res.render('choosekey', {user: req.user, type: 'arpeggios', keys: keys, random: getRandomKey()});
+    getAverageKeySpeed(req, res, false, function(err, keylogs) {
+      if (err) throw err; 
+      res.render('choosekey', {user: req.user, type: 'arpeggios', keys: keys, keylogs: keylogs, random: getRandomKey()});
+    });
   });
   
   /* GET arpeggios. */
@@ -170,7 +185,7 @@ module.exports = function(passport){
     getScalesWithLogs(req, res, req.params.key, false,
       function(err, scales) {
         if (!err)
-          res.render('scales', { user: req.user, key: req.params.key, scales: scales, name: "Arpeggios", random: getRandomKey()});
+          res.render('scales', { user: req.user, keys: keys, key: req.params.key, scales: scales, name: "Arpeggios", random: getRandomKey()});
         else throw err;
       });
   });

@@ -7,6 +7,16 @@ block content
       each entry in scales
         a(href='/scalepractice/' + entry.key + '/' + entry._id + '/' + (entry.exerciseId ? entry.exerciseId : ''))
           li.list-group-item
-            span.right.badge= (entry.bpm ? entry.bpm : 15)+ 'bpm'
-            div.scale-name= key.toUpperCase() + entry.displayName
+            span.badge.right(class=entry.rank)
+              span
+                if entry.notesPerBeat == 1
+                  img(src='/images/notes/semiquaver.png')
+                else if entry.notesPerBeat == 2
+                  img(src='/images/notes/quaver.png')
+                else 
+                  img(src='/images/notes/crotchet.png')
+              span  = 
+              span=  Math.round(entry.bpm)
+
+            div.scale-name= keys[key] + entry.displayName
 
