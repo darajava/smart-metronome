@@ -8,6 +8,7 @@ var userLogSchema = new Schema({
   octaves: Number,
   bpm: Number,
   actualBpm: Number,
+  adjustedBpm: Number,
   time: {type: Date, default: Date.now},
   nextId: {type: String, default: null}
 });

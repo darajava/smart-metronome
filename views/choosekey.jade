@@ -6,12 +6,16 @@ block content
   - each keylog in keylogs
     a(href=type + '/' + keylog.key)
       div.keyholder
-        div= keys[keylog.key]
-        span.right.badge
+        b
+          div= keys[keylog.key]
+        span.avg-tempo Avg tempo:
+        span.badge(class=keylog.rank)
           span
             img(src='/images/notes/crotchet.png')
           span  = 
-          span= Math.round(keylog.bpm) 
+          span= Math.round(keylog.adjustedBpm) 
+
+  .or - or -
 
   a(href=type + '/' + random) 
     div.keyholder.wide Choose random key

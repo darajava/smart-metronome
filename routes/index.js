@@ -67,6 +67,7 @@ var getAverageKeySpeed = function(req, res, isScale, runFunction) {
         key: {$first: "$key"},
         bpm: {$avg: "$bpm"},
         actualBpm: {$avg: "$actualBpm"},
+        adjustedBpm: {$avg: "$adjustedBpm"},
         userId: {$first: "$userId"},
         displayName: {$first: "$scaleData.displayName"},
       }
@@ -74,6 +75,19 @@ var getAverageKeySpeed = function(req, res, isScale, runFunction) {
     {$sort : { 'key' : 1}},
       
   ], function(err, log) {
+    var speeds = [];
+    for (var i = 0; i < log.length; i++) {
+      speeds.push(log[i].adjustedBpm);
+    }
+    var sorted = speeds.slice().sort(function(a,b){return b-a});
+    var ranks = speeds.slice().map(function(v){ return sorted.indexOf(v)+1 });
+    
+    for (var i = 0; i < log.length; i++) {
+      log[i].rank = 'rank-' + ranks[i];
+    }
+
+    console.log(ranks);
+
     runFunction(err, log);
   });
   
@@ -239,6 +253,7 @@ module.exports = function(passport){
         octaves: req.body.octaves,
         bpm: req.body.bpm,
         actualBpm: req.body.actualBpm,
+        adjustedBpm: req.body.adjustedBpm,
         key: req.body.key
       });
     

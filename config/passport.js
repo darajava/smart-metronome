@@ -24,7 +24,8 @@ var seedUserLogs = function(user) {
           userId: user._id,
           notesPerBeat: 1,
           octaves: 2,
-          bpm: 15,
+          bpm: 60,
+          adjustedBpm: 15,
           actualBpm: 60,
           time: new Date()
         };

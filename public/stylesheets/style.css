@@ -86,7 +86,7 @@ ul.tips a {
   width: 20%;
   margin: 2.5%;
   text-align: center;
-  padding: 25px 0;
+  padding: 13px 0;
   box-sizing: border-box;
   border-radius: 5px;
   color: #444;
@@ -97,15 +97,33 @@ ul.tips a {
   margin-left: 15%;
   margin-right: 15%;
   width: 70%;
-  font-weight: bold;
-  background-color: #fff4f4;
+}
+
+.keyholder .avg-tempo {
+  font-size: 10px;
+}
+
+div.or {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 span.badge {
   border-radius: 4px;
-  background-color: #F44E53;
+  background-color: #FFB9B9;
   padding: 4px 8px;
   color: #222; 
+  font-size: 12px;
+}
+
+.badge img {
+  height: auto;
+  width: 5px;
+  position: relative;
+  top: 3px;
+  right: 1px;
 }
 
 li.list-group-item {
@@ -418,4 +436,41 @@ button:active {
   outline: none;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.badge.rank-1 {
+  background-color: #63E067;
+}
+.badge.rank-2 {
+  background-color: #7BDB68;
+}
+.badge.rank-3 {
+  background-color: #96D66A;
+}
+.badge.rank-4 {
+  background-color: #B3CF6A;
+}
+.badge.rank-5 {
+  background-color: #D0CA6C;
+}
+.badge.rank-6 {
+  background-color: #EDC46E;
+}
+.badge.rank-7 {
+  background-color: #FFBF77;
+}
+.badge.rank-8 {
+  background-color: #FFBE82;
+}
+.badge.rank-9 {
+  background-color: #FFBD90;
+}
+.badge.rank-10 {
+  background-color: #FFBC9C;
+}
+.badge.rank-11 {
+  background-color: #FFBAAE;
+}
+.badge.rank-12 {
+  background-color: #FFB9B9;
 }

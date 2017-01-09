@@ -40,6 +40,8 @@ class Metronome extends React.Component {
     this.oscillatorStarted = false;
 
     var userlog = this.props.userlog[0];
+    
+    console.log(userlog);
 
     this.key = userlog.key;
     this.displayName = userlog.scale[0].displayName;
@@ -102,7 +104,6 @@ class Metronome extends React.Component {
       mode: 0,
       displayRetryDialogue: false,
       notesPerBeat: userlog.notesPerBeat,
-      actualBpm: this.calculateActualBpm(userlog.bpm + 10, userlog.notesPerBeat),
       bpm: userlog.bpm + 10,
       completed: false
     }
@@ -114,7 +115,7 @@ class Metronome extends React.Component {
     this.changeOctaves = this.changeOctaves.bind(this);
     this.changeMode = this.changeMode.bind(this);
     this.changeNotesPerBeat = this.changeNotesPerBeat.bind(this);
-    this.calculateActualBpm = this.calculateActualBpm.bind(this);
+    this.calculateAdjustedBpm = this.calculateAdjustedBpm.bind(this);
   }
   
   startMetronome() {
@@ -128,7 +129,7 @@ class Metronome extends React.Component {
     var totalNotesInScale = degreesOfScale * this.state.octaves * 2 + 1;
     this.beatsInScale = Math.ceil((totalNotesInScale / this.state.notesPerBeat)/4) * 4;
     
-    var bpm = this.state.actualBpm;
+    var bpm = this.state.bpm;
     var beat = 1/20;
     var rest = (60 / bpm) - beat;
 
@@ -202,7 +203,6 @@ class Metronome extends React.Component {
   slowMetronome() {
     this.setState({
       bpm: (this.state.bpm - 2),
-      actualBpm: this.calculateActualBpm(this.state.bpm - 2),
     }, () => {
       this.startMetronome();
     });
@@ -214,7 +214,7 @@ class Metronome extends React.Component {
       notesPerBeat: this.state.notesPerBeat,
       octaves: this.state.octaves,
       bpm: parseInt(this.state.bpm),
-      actualBpm: parseInt(this.state.actualBpm),
+      adjustedBpm: this.calculateAdjustedBpm(this.state.bpm, this.state.notesPerBeat),
       key: this.key,
       prevId: this.prevId
     };
@@ -233,17 +233,15 @@ class Metronome extends React.Component {
     });
   } 
 
-  calculateActualBpm(bpm, notesPerBeat) {
+  calculateAdjustedBpm(bpm, notesPerBeat) {
     var npb = typeof notesPerBeat === "undefined" ? this.state.notesPerBeat : notesPerBeat; 
-    return bpm / (npb/ 4);
+    return bpm * (npb/ 4);
   }
 
   changeNotesPerBeat(event) {
     console.log('new' + $('#note-select').val());
     this.setState({
       notesPerBeat: $('#note-select').val(),
-    }, () => {
-      this.setState({actualBpm: this.calculateActualBpm(this.state.bpm)});
     });
   }
 
@@ -262,7 +260,6 @@ class Metronome extends React.Component {
   incrementBpm(inc) {
     this.setState({
       bpm: this.state.bpm + inc,
-      actualBpm: this.calculateActualBpm(this.state.bpm + inc)
     });
   }
 
