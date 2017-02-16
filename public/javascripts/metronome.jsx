@@ -1,13 +1,17 @@
 $(document).ready(function(e) {
   $("#note-select").msDropDown();
+  $('#notation svg').css("transform", "scale(" +  $(window).width() / $('#notation svg').attr('width') + ")");
 });
+
+$(window).on('resize', function(){
+  $('#notation svg').css("transform", "scale(" +  $(window).width() / $('#notation svg').attr('width') + ")");
+})
 
 String.prototype.ucFirst = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
 var toEnglish = function(w) {
-  // lol
   if (w == '1') return 'one';
   if (w == '2') return 'two';
   if (w == '3') return 'three';
@@ -270,6 +274,7 @@ class Metronome extends React.Component {
     });
   }
 
+
   render() {
     var click = this.state.counting ? this.userStopMetronome : this.startMetronome;
 
@@ -369,8 +374,11 @@ class Metronome extends React.Component {
         }
         <div className="todo">
           <h1>{this.key.toUpperCase()}{this.displayName}</h1> 
-          <div className="image-holder">
+          <div className="piano-holder">
             <Piano mode={this.state.mode} startingKey={this.key} sequence={this.sequence} />
+          </div>
+          <div className="notation-holder">
+            <div id="notation"></div>
           </div>
           <hr />
           <ul className="rounded-list">
@@ -427,7 +435,68 @@ class Metronome extends React.Component {
 }
 
 class Piano extends React.Component {
-  
+
+  constructor(props) {
+    super();
+  }
+
+  transposeString(cString, targetKey) {
+    var notes = cString.split(',');
+
+    var difference = (notes[0].charCodeAt(0) - targetKey.charCodeAt(0));
+    for (var i = 0; i < notes.length; i++) {
+      notes[i] = String.fromCharCode((notes[i].charCodeAt(0) - difference))
+      if (notes[i].charCodeAt(0) > 'G'.charCodeAt(0))
+        notes[i] = String.fromCharCode((notes[i].charCodeAt(0) - 7))
+    }
+    return notes.join(',');
+  }
+
+  numberOctaves(plainString) {
+    var startingOctave = 4;
+    var notes = plainString.split(',');
+
+    for (var i = 0; i < notes.length; i++) {
+      if (notes[i] == 'C') startingOctave++;
+      notes[i] += startingOctave;
+    }
+    return notes.join(',');
+  }
+
+  addTiming(plainString) {
+    var notes = plainString.split(',');
+
+    notes[0] += '/8';
+
+    return notes.join(',');
+  }
+
+  splitInTwo(longString) {
+    var notes = longString.split(',');
+    return [notes.splice(0, notes.length/2).join(','), notes.splice(notes.length/2 -2).join(',')]
+  }
+
+  componentDidMount() {
+    
+    var vf = new Vex.Flow.Factory({
+      renderer: {selector: 'notation', width: 520, height: 200}
+    });
+
+    var score = vf.EasyScore();
+    var system = vf.System();
+
+    var noteString = "C,D,E,F,G,A,B,C";
+
+    noteString = this.addTiming(this.numberOctaves(this.transposeString(noteString, this.props.startingKey.ucFirst())));    
+    noteString = this.splitInTwo(noteString);
+console.log(noteString)
+    system.addStave({
+      voices: [score.voice(score.beam(score.notes(noteString[0], {stem: 'up'})).concat(score.beam(score.notes(noteString[1], {stem: 'down'}))))]
+    }).addClef('treble').addKeySignature(this.props.startingKey.ucFirst());
+
+    vf.draw();
+  }
+ 
   render() {
 
     // 24 empty strings

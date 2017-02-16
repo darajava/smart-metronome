@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Raleway', sans-serif;
   color: #444;
   font-kerning: none;
 }
@@ -12,7 +12,7 @@ ul a {
 
 h1, h2, h3, h4, h5, h6 {
   text-align: center;
-  font-family: 'Patrick Hand', cursive;
+  font-family: 'Raleway', cursive;
   font-weight: normal;
 }
 
@@ -78,20 +78,24 @@ ul.tips a {
 }
 
 .keyholder {
-  border: 1px solid #ddd;
+  border: 1px solid #a3a3a3;
   border-radius: 5px;
   background-color: #fcfcfc;
-  box-shadow: 2px 2px 2px #888888;
+  box-shadow: 7px 7px 0px 0px rgba(136, 136, 136, 0.22);
   display: inline-block;
   width: 20%;
   margin: 2.5%;
   text-align: center;
   padding: 13px 0;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: 4px;
   color: #444;
   font-size: 20px;
   line-height: 1;
+}
+.keyholder:active {
+    transform: translate(2px, 2px);
+    box-shadow: 5px 5px 0px 0px rgba(136, 136, 136, 0.22);
 }
 .keyholder.wide {
   margin-left: 15%;
@@ -190,7 +194,7 @@ li.list-group-item:hover {
 li.list-group-item:active {
   background-color: #f6f2f2;
 }
-div.image-holder {
+div.piano-holder {
   text-align: center;
   max-width: 300px;
   margin: auto;
@@ -399,7 +403,7 @@ button:active {
   display: inline-block;
   color: #525252;
   font-weight: 300;
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Raleway', sans-serif;
   border-radius: 5px;
   -webkit-box-shadow: 0 0 5px rgba(123, 123, 123, 0.2);
   -moz-box-shadow: 0 0 5px rgba(123,123,123,.2);
@@ -481,4 +485,12 @@ button:active {
 }
 .badge.rank-12 {
   background-color: #FFB9B9;
+}
+
+#notation {
+  margin-left: -2%;
+  overflow: hidden;
+}
+#notation svg {
+  transform-origin: left top;
 }
